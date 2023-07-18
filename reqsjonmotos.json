@@ -1,0 +1,34 @@
+{
+    "RiesgosPorRamo": [
+        {
+            "kilometraje": false,
+            "AnioVehiculo": 2015,
+            "Marca": 12,
+            "Modelo": 13297,
+            "Origen": "IMPORTADO",
+            "Valor": "1111",
+            "tipo": "Motocicletas hasta 249 cc",
+            "Uso": 1,
+            "ClausulaAjuste": 3
+        }
+    ],
+    "Ramo": "24",
+    "CodTipoAgente": 4,
+    "CodAgente": 2938,
+    "Tomador": "482160",
+    "TipoTomador": "F",
+    "CondicionFiscal": "1",
+    "TipoVigencia": 1,
+    "VigenciaDesde": "2023-11-16 12:00:00",
+    "VigenciaHasta": "2023-02-16 12:00:00",
+    "PlanComercial": "2",
+    "Conducto": 1,
+    "PlanDePago": 1,
+    "Provincia": 2,
+    "Municipio": 2,
+    "CodPostal": "1657",
+    "Recargos": [],
+    "Descuentos": []
+ }
+
+

@@ -1,0 +1,59 @@
+.inputContainer {
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    justify-content: space-between;
+    width: 50%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+.inputContainer label{
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+}
+.selectContainer {
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    justify-content: space-between;
+    width: 33%;
+    position: relative;
+}
+.checkboxContainer {
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+.checkboxContainer label{
+    display: flex;
+    width: auto;
+    align-items: center;
+}
+.checkboxContainer input{
+    min-width: 1.2rem !important;
+    max-width: 1.2rem !important;
+    margin-right: 0.2rem;
+}
+
+input, select{
+    border: none;
+    width: 100%;
+}   
+
+.errorMessage {
+    color: red;
+    position: absolute;
+    margin-top: 2.5rem;
+    width: 100%;
+}
+
+@media screen and (max-width: 47.938em) {
+    .inputContainer {
+        width: 100%;
+    }
+    .selectContainer {
+        width: 100%;
+    }
+}

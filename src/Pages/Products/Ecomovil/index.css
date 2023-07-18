@@ -1,0 +1,36 @@
+.formContainer {
+    width: 60%;
+    max-height: 70vh;
+    text-align: left;
+    overflow-y: scroll;
+}
+.formIcon {
+    width: 50%;
+}
+h4 {
+    font-size: 1.4rem;
+}
+
+@media screen and (max-width: 47.938em) {
+    .inputCouple {
+        flex-direction: column;
+    }
+    .formContainer {
+        width: 100%;
+        text-align: center;
+    }
+    .formIcon {
+        width: 35%;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width: 48em) and (max-width: 60em) {
+    .formIcon {
+        width: 65%;
+    }
+    h4 {
+        font-size: 1.3rem;
+    }
+}

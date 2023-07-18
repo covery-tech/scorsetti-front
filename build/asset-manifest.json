@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bd76c680.css",
+    "main.js": "/static/js/main.d58d51a8.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/background.png": "/static/media/background.f7ead85d0ba09308e6fa.png",
+    "static/media/help.png": "/static/media/help.68405fff082e94d39060.png",
+    "static/media/Accidentes personales.png": "/static/media/Accidentes personales.27ecf6499461929ce83e.png",
+    "static/media/Caucion.png": "/static/media/Caucion.33ca7c9727900bb07e29.png",
+    "static/media/Criptominería.png": "/static/media/Criptominería.dda695c5e963fd82efa0.png",
+    "static/media/Robo.png": "/static/media/Robo.6d7500ebfd2a0f9d1360.png",
+    "static/media/Combinado Familiar.png": "/static/media/Combinado Familiar.84ea7204a5f1f8bb2539.png",
+    "static/media/icon.png": "/static/media/icon.1e18db76cf6338e5b763.png",
+    "static/media/Auto1.png": "/static/media/Auto1.0649ecd18ea80af862ae.png",
+    "static/media/auto.png": "/static/media/auto.0649ecd18ea80af862ae.png",
+    "static/media/Moto1.png": "/static/media/Moto1.4e58e5ed93eedc46ae00.png",
+    "static/media/moto.png": "/static/media/moto.4e58e5ed93eedc46ae00.png",
+    "static/media/Hogar.png": "/static/media/Hogar.7bc5a537ff09a6d67edb.png",
+    "static/media/Multiple.png": "/static/media/Multiple.e9247c044745bec1ef76.png",
+    "static/media/Vida.png": "/static/media/Vida.e9247c044745bec1ef76.png",
+    "static/media/Comercio.png": "/static/media/Comercio.2cd4a39cfcf5a809ca79.png",
+    "static/media/SeguroTecnico.png": "/static/media/SeguroTecnico.b7305125de36ee82d686.png",
+    "static/media/Consorcio.png": "/static/media/Consorcio.0460faa7d67b7c1bab2d.png",
+    "static/media/Sepelio.png": "/static/media/Sepelio.01f07b57551375a79567.png",
+    "static/media/Incendios.png": "/static/media/Incendios.308091df2ac5bafe651d.png",
+    "static/media/Ecomovil.png": "/static/media/Ecomovil.1e18db76cf6338e5b763.png",
+    "static/media/ViajeroProtegido.png": "/static/media/ViajeroProtegido.86c3cb3fa9f8ae5b2828.png",
+    "static/media/RC.png": "/static/media/RC.8b65c45a83cb9b1ccbeb.png",
+    "static/media/bitmap.png": "/static/media/bitmap.af7d80a0fb70e3039893.png",
+    "index.html": "/index.html",
+    "main.bd76c680.css.map": "/static/css/main.bd76c680.css.map",
+    "main.d58d51a8.js.map": "/static/js/main.d58d51a8.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd76c680.css",
+    "static/js/main.d58d51a8.js"
+  ]
+}

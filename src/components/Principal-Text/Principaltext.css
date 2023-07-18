@@ -1,0 +1,16 @@
+.principal-text b {
+    color: #0037c1;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 48em) {
+    .principal-text b {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (min-width: 48em) and (max-width: 60em) {
+    .principal-text b {
+        font-size: 1.5rem;
+    }
+}

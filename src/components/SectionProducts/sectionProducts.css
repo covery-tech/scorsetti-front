@@ -1,0 +1,28 @@
+.content {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 900px) {
+  .content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 450px) {
+  .content {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+.aProducts {
+  width: auto;
+  align-items: center;
+}

@@ -1,0 +1,35 @@
+{
+    "EsValido": true,
+    "Mensaje": "ok",
+    "TipoMensaje": "Correcto",
+    "DatosAdicionales": [
+      {
+        "ProductCode": 2,
+        "Description": "PLAN MOTOS TRIMESTRAL",
+        "CurrencyId": 0
+      },
+      {
+        "ProductCode": 25,
+        "Description": "PLAN MOTOS TRIMESTRAL FAC. MENSUAL",
+        "CurrencyId": 0
+      },
+      {
+        "ProductCode": 28,
+        "Description": "PLAN MOTOS TRIMESTRAL ORANGE TIME",
+        "CurrencyId": 0
+      },
+      {
+        "ProductCode": 32,
+        "Description": "PLAN MUJER TRIMESTRAL",
+        "CurrencyId": 0
+      },
+      {
+        "ProductCode": 27,
+        "Description": "PLAN PLUS 20 MOTOS TRIMESTRAL",
+        "CurrencyId": 0
+      }
+    ],
+    "ListaMensajes": [
+      "Correcto"
+    ]
+  }

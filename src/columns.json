@@ -1,0 +1,12 @@
+[{
+    "name": "id_producto",
+     "type": "uuid"
+},{
+    "name": "id_aseguradora",
+     "type": "uuid"
+},{
+    "name": "fecha_alta",
+     "type": "timestamp without time zone"
+},{
+    "name": "fecha_modif",
+     "type": "timestamp without time zone"}, {"name": "estatus", "type": "integer"}, {"name": "orden", "type": "integer"}, {"name": "precio", "type": "numeric"}, {"name": "tipo_gestion", "type": "integer"}, {"name": "cantidad_elementos", "type": "integer"}, {"name": "cotizacion", "type": "integer"}, {"name": "cantidad_columnas", "type": "integer"}, {"name": "autoinspector_product", "type": "character varying"}, {"name": "tipo_formulario", "type": "character varying"}, {"name": "json_cotizaciones", "type": "character varying"}, {"name": "descripcion_resaltada_home", "type": "character varying"}, {"name": "nombre", "type": "character varying"}, {"name": "imagen_1", "type": "character varying"}, {"name": "imagen_2", "type": "character varying"}, {"name": "imagen_3", "type": "character varying"}, {"name": "descripcion_resaltada", "type": "character varying"}, {"name": "descripcion_reducida", "type": "character varying"}, {"name": "descripcion_ampliada", "type": "character varying"}, {"name": "json_datos", "type": "character varying"}, {"name": "descripcion_riesgos", "type": "character varying"}]
