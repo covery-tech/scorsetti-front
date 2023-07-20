@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
+import CarsRedesign from "./Pages/Products/Carsv2/Carsv2";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/ingresar" element={<Login />} />
             <Route path="/registro" element={<Register />} />
+
             {/* Protected user routes */}
             <Route
               path="/miusuario"
@@ -103,6 +105,17 @@ function App() {
                 <>
                   <Navbar />
                   <OrdersTableAll />
+                </>
+              }
+            />
+            {/* productos Scorsetti */}
+
+            <Route
+              path="/producto/auto"
+              element={
+                <>
+                  <Navbar />
+                  <CarsRedesign />
                 </>
               }
             />
