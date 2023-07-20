@@ -1,5 +1,4 @@
 // import React from 'react'
-// import React from 'react'
 import { Link } from "react-router-dom";
 import useUser from "../hooks/UseUser";
 import "./UserMenu.css";
@@ -24,22 +23,13 @@ export const UserMenu = () => {
             className="dropdown-menu dropdown-menu-end list-drop "
             aria-labelledby="dropdownMenuLink"
           >
-            <li>
-              {isLoggedIn ? (
-                <Link className="dropdown-item" to="/miusuario">
-                  <Icon icon="mdi:pencil" />
-                  Actualizar usuario
-                </Link>
-              ) : (
-                <></>
-              )}
-            </li>
+            
             <li>
               {user?.type === "admin" ||
               user?.type === "superadmin" ||
               user.type === "pas" ? (
                 <div className="nav-item dropdown">
-                  <Link to="/libra/panel-admin" className="dropdown-item">
+                  <Link to="/rus/panel-admin" className="dropdown-item">
                     <Icon icon="vscode-icons:file-type-light-config" />
                     <span> Panel de admin</span>
                   </Link>
@@ -64,10 +54,10 @@ export const UserMenu = () => {
       ) : (
         <>
           <Link
-            className="btn text-white"
+            className="dropdown-item text-white"
             to="/ingresar"
             style={{
-              backgroundColor:"#fc9038",
+              backgroundColor: "#388dfc",
               padding: "0.5rem",
             }}
           >

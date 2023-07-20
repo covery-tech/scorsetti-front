@@ -5,17 +5,37 @@
     text-align: center;
     margin: 5px;
     transition: all 0.3s;
-    max-width: 150px;
+    width: 15rem;
+    height: 15rem;
 }
 
 .item:hover {
-    box-shadow: 0px 0px 15px rgba(255, 186, 82, 0.877);
+    box-shadow: 0px 0px 15px #0037c1;
     background-color: #adadad4b;
-    color: #d72f02ff;    
+    color: #0037c1;    
 }
-
+.item img {
+    width: 10rem;
+    height: 10rem;
+}
 .item h4 {
     margin-top: 15px;
     margin-bottom: 15px;
     font-size: 20px;
 }
+
+@media screen and (max-width: 60em) {
+    .item {
+        width: 10rem;
+        height: 10rem;
+    }
+    .item img {
+        width: 6rem;
+        height: 6rem;
+    }
+    .item h4 {
+        font-size: 1rem;
+        margin: 0;
+    }
+}
+/* #FFFFFF #CDC6BA #B99B69 #715549 #352D27 */

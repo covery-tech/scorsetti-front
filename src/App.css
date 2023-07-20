@@ -3,7 +3,7 @@
 .App {
   min-height: 100vh;
   max-width: 100vw;
-  background-image: url("./background.png");
+  background-color: #112751;
   background-attachment: fixed;
   background-size: cover;
   font-family: "PT Sans", sans-serif;
