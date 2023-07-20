@@ -2,16 +2,19 @@
     z-index: 99;    
     padding-top: 6px;
     padding-bottom: 6px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     text-align: center;
     display: flex;
     justify-content: center;
   }
-  
+  /* .pb-5 {
+    padding-bottom: 0px!important;
+  } */
+
   .infoOrganismo {
     background-color: aliceblue;
-    width: 95vw;
-    padding: 1rem;
+    width: 100vw;
+    padding: 2rem 1rem 3rem 1rem;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

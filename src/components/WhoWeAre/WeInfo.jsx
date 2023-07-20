@@ -8,7 +8,7 @@ export default function WeInfo({ description, name }) {
         <img src="/logo-vertical.png" alt="#" />
       </div>
       <div className="weDescription">
-        <h1>{name}</h1>
+        {/* <h1>{name}</h1> */}
         <h3>{description}</h3>
       </div>
     </section>

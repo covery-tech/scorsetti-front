@@ -1,8 +1,13 @@
+@import '../../style.css';
+
 .item {
-    color: rgb(0, 0, 0);
+    color: var(--color-first-dark);
     background-color: #ffffff1e;
-    border-radius: 2px;
+    border-radius: 5%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 5px;
     transition: all 0.3s;
     width: 12rem;
@@ -10,9 +15,10 @@
 }
 
 .item:hover {
-    box-shadow: 0px 0px 15px #0037c1;
-    background-color: #adadad4b;
-    color: #0037c1;    
+    box-shadow: 0px 0px 15px var(--color-first-light-one);
+    background-color: var(--color-gray-light);
+    color: var(--color-first-light-one);    
+    /* color: #0037c1;     */
 }
 .item .img {
     width: 5rem;

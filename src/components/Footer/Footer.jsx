@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <>
       <Social />
-      <div className="info p-0 pb-5 mt-5">
+      <div className="info p-0"> {/*pb-5 mt-5*/}
         <section className="infoOrganismo">
           <div className="infoItem">
             <span>
