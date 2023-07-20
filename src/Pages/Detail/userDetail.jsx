@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {  useParams } from "react-router-dom";
-import Map from "../../components/Map/MapLibra";
+import Map from "../../components/Map/Map";
 import MapForPas from "../../components/Map/MapForPas";
 import SectionProducts from "../../components/SectionProducts/SectionProducts";
 import WeInfo from "../../components/WhoWeAre/WeInfo";
@@ -13,7 +13,7 @@ export const UserDetail = () => {
   const [user, setUser] = useState([]);
   const {jwt} = useUser()
   const [image, setImage] = useState("")
-  const URLSERVER = `${process.env.REACT_APP_URI_API}`
+  const URLSERVER = process.env.REACT_APP_API + ""
   useEffect(() => {
     const config = {
       method: "GET",
@@ -33,10 +33,10 @@ export const UserDetail = () => {
         if (res.status === 201) setUser(res.status);
         if (res.status === 202) setUser(res.status);
       }
-    });
+    }).catch((err)=>{console.log(err)});
     axios(config2).then(res=>{
       setImage(res.data)
-    })
+    }).catch((err)=>{console.log(err)})
   }, []);
   return (
     <div>

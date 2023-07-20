@@ -1,28 +1,18 @@
 .content {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto;
   align-items: center;
   justify-content: space-around;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 60em) {
+  .container {
+    width: 90vw;
+  }
   .content {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    width: auto;
+    display: flex;
     align-items: center;
     justify-content: space-around;
   }
-}
-
-@media (max-width: 450px) {
-  .content {
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    justify-content: space-around;
-  }
-}
-.aProducts {
-  width: auto;
-  align-items: center;
 }

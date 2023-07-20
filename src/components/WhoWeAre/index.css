@@ -1,0 +1,46 @@
+.weInfo {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.weInfo .weImg {
+    min-width: 60vw;
+    height: 15rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.weInfo .weImg img {
+    width: 30rem;
+    height: 9rem;
+}
+.weInfo .weDescription {
+    width: 70vw;
+    margin-top: 3rem;
+    color: white;
+    text-align: center;
+}
+.weInfo .weDescription h1 {
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 62em) {
+    .weInfo .weImg {
+        height: 12rem;
+    }
+    .weInfo .weImg img {
+        width: 22rem;
+        height: 7rem;
+    }
+}
+@media screen and (max-width: 48em) {
+    .weInfo .weImg {
+        height: 10rem;
+    }
+    .weInfo .weImg img {
+        width: 15rem;
+        height: 5rem;
+    }
+}

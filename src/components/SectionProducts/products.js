@@ -1,3 +1,4 @@
+
 import Auto from "./imgs/Auto1.png";
 import Moto from "./imgs/Moto1.png";
 import Familiar from "./imgs/Combinado Familiar.png";
@@ -197,4 +198,7 @@ export const infoProducts = {
     img: faUserPlus,
     path: "vida-colectivo-rrhh",
   },
-};
+
+export const listProducts = [
+];
+

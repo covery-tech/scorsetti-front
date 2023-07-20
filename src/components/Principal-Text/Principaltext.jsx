@@ -4,7 +4,7 @@ export default function PrincipalText() {
   return (
     <div className="text-center">
       <h3>
-        Actitud <em style={{ color: "orangered" }}>que avanza</em>
+        Somos Expertos En Seguros Y Consultoría De Riesgos
       </h3>
     </div>
   );

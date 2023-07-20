@@ -2,9 +2,9 @@ import "./Map.css"
 
 export default function MapForPas({pas}){
     let {coords} = pas
-    //(coords)
+    console.log(coords)
     return(
-        <section className="contact-us container1 mt-5" id="contact-section">
+        <section className="contact-us container1 mt-5" id="contacto">
         <div className="container">
           <div className="row container2">
             <div className="col-lg-8">

@@ -11,19 +11,12 @@ import { TablePas } from "./Pages/TablePas/Table";
 import { TableEditPas } from "./Pages/TableEditPas/TableEditPas";
 import { ProtectRoute } from "./ProtectRoute";
 import { MyUser } from "./Pages/MyUser/MyUser";
-import CarsRedesign from "./Pages/Products/Carsv2/Carsv2";
-import Familiar from "./Pages/Products/Familiar/Familiar";
-import MotoRedesign from "./Pages/Products/Motov2/Motov2";
-import Life from "./Pages/Products/Life/Life";
-import Commerce from "./Pages/Products/Commerce/Commerce";
-import Accidents from "./Pages/Products/Accidents/Accidents";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { ProtectRoutePas } from "./ProtectRoutePas";
 import ProfilePas from "./Pages/ProfilePas/ProfilePas";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
-import Ecomovil from "./Pages/Products/Ecomovil/Ecomovil";
 import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
 
 function App() {
@@ -84,144 +77,6 @@ function App() {
                 </>
               }
             />
-            {/* Public PAS Products routes */}
-            <Route
-              path="/usuario_pas/:userId/producto/auto"
-              element={
-                <>
-                  <Navbar />
-                  <CarsRedesign />
-                </>
-              }
-            />
-            <Route
-              path="/usuario_pas/:userId/producto/familiar"
-              element={
-                <>
-                  <Navbar />
-                  <Familiar />
-                </>
-              }
-            />
-            <Route
-              path="/usuario_pas/:userId/producto/moto"
-              element={
-                <>
-                  <Navbar />
-                  <MotoRedesign />
-                </>
-              }
-            />
-            <Route
-              path="/usuario_pas/:userId/producto/vida"
-              element={
-                <>
-                  <Navbar />
-                  <Life />
-                </>
-              }
-            />
-            <Route
-              path="/usuario_pas/:userId/producto/comercio"
-              element={
-                <>
-                  <Navbar />
-                  <Commerce />
-                </>
-              }
-            />
-            <Route
-              path="/usuario_pas/:userId/producto/acc_personal"
-              element={
-                <>
-                  <Navbar />
-                  <Accidents />
-                </>
-              }
-            />
-            <Route
-              path="/usuario_pas/:userId/producto/ecomovil"
-              element={
-                <>
-                  <Navbar />
-                  <Ecomovil />
-                </>
-              }
-            />
-            {/* Public LIBRA Products routes */}
-            <Route
-              path="/libra/producto/auto"
-              element={
-                <>
-                  <Navbar />
-                  <CarsRedesign />
-                </>
-              }
-            />
-            <Route
-              path="/libra/producto/familiar"
-              element={
-                <>
-                  <Navbar />
-                  <Familiar />
-                </>
-              }
-            />
-            <Route
-              path="/libra/producto/moto"
-              element={
-                <>
-                  <Navbar />
-                  <MotoRedesign/>
-                </>
-              }
-            />
-            <Route
-              path="/libra/producto/vida"
-              element={
-                <>
-                  <Navbar />
-                  <Life />
-                </>
-              }
-            />
-            <Route
-              path="/libra/producto/comercio"
-              element={
-                <>
-                  <Navbar />
-                  <Commerce />
-                </>
-              }
-            />
-            <Route
-              path="/libra/producto/acc_personal"
-              element={
-                <>
-                  <Navbar />
-                  <Accidents />
-                </>
-              }
-            />
-            <Route
-              path="/libra/producto/ecomovil"
-              element={
-                <>
-                  <Navbar />
-                  <Ecomovil />
-                </>
-              }
-            />
-
-            <Route
-              path="/cards"
-              element={
-                <>
-                  <Navbar />
-                </>
-              }
-            />
-
             {/*Panel Admin and Pas */}
             <Route
               path="/libra/panel-admin"
