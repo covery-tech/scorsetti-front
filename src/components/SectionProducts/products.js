@@ -123,6 +123,7 @@ export const infoProducts = {
     img: faHandPeace,
     path: "freeStyle",
   },
+  //! a partir de aqui empresas
   "bancodelsolrrhh": {
     title: "Banco Del Sol",
     img: faHandHoldingUsd,

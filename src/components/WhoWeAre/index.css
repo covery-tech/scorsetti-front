@@ -5,15 +5,15 @@
     margin-top: 5rem;
 }
 .weInfo .weImg {
-    min-width: 60vw;
+    min-width: 25vw;
     height: 15rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .weInfo .weImg img {
-    width: 40rem;
-    height: 50%;
+    width: auto;
+    height: 60%;
 }
 .weInfo .weDescription {
     width: 70vw;
