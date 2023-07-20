@@ -37,7 +37,7 @@ export default function SectionProducts({ userId }) {
   return (
     <div className="container bg-white mt-5 p-5">
       <PrincipalText />
-      <div className="row justify-content-around mt-4">
+      <div className="row justify-content-around">
         {userId ? (
           <div className="content">
             {userPas.products?.map((p) => (
@@ -46,6 +46,7 @@ export default function SectionProducts({ userId }) {
               </Link>
             ))}
           </div>
+          
         ) : (
           <div className="content">
             {listProducts.map((p, i) => {

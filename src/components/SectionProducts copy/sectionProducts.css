@@ -1,0 +1,21 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 60em) {
+  .container {
+    width: 90vw;
+  }
+  .content {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
