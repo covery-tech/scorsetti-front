@@ -1,8 +1,7 @@
 import SectionProducts from "../../components/SectionProducts/SectionProducts";
 import WeInfo from "../../components/WhoWeAre/WeInfo";
-import Help from "../../components/Help/Help";
-import MapLibra from "../../components/Map/MapLibra";
-import { libra_description } from "./infoLibra";
+import MapLibra from "../../components/Map/Map";
+import { description } from "./info";
 import Navbar from "../../components/Navbar/Navbar";
 
 export default function Home() {
@@ -10,13 +9,13 @@ export default function Home() {
     <div className="App">
       <Navbar />
       <SectionProducts />
-      <WeInfo description={libra_description.description}
-        name={libra_description.name}/>
-      <MapLibra
-        location={libra_description.location}
-        attention_hours={libra_description.attention_hours}
+      <WeInfo description={description.description}
+        name={description.name}
       />
-      <Help />
+      <MapLibra
+        location={description.location}
+        attention_hours={description.attention_hours}
+      />
     </div>
   );
 }

@@ -3,11 +3,18 @@
     padding-top: 6px;
     padding-bottom: 6px;
     margin-top: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
   }
   
-  #info_organismo {
+  .infoOrganismo {
     background-color: aliceblue;
-    padding: 5px;
+    width: 95vw;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
   
   .info .img {
@@ -41,13 +48,13 @@
     text-align: center;
     line-height: 44px;
     background-color: #fff;
-    color: #d72f02ff;
+    color: #0037c1;
     border-radius: 50%;
     transition: all 0.5s;
   }
   
   .footer-wrapper ul.social-icons li a:hover {
-    background-color: #d72f02ff;
+    background-color: #0037c1;
     color: rgb(255, 255, 255);
     z-index: 999;
   }
@@ -55,7 +62,7 @@
   .footer-wrapper .copyright {
     text-align: center;
     color: #fff;
-    margin: 40px 0px;
+    margin: 20px 0px;
     z-index: 999;
   }
   
@@ -64,16 +71,32 @@
     color: #fff;
     z-index: 999;
   }
-  .rounded-1{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+
+  .footer-wrapper p .copyright a {
+    font-weight: 700;
+    color: #fff;
+    z-index: 999;
+    text-decoration: none;
   }
     
-  @media (max-width: 900px) {
-    *{
-      font-size: 10px;
+  @media (max-width: 48em) {
+    .infoOrganismo{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      width: 60vw;
     }
+    .info .img{
+      max-height: max-content;
+      height: 40px;
+      width: 150px;
+      margin: auto;
+    }
+    #SSN {
+      width: 9rem;
+    }
+  }
+  @media (max-width: 62em) {
     .media{
       width: 300px;
     }
@@ -83,10 +106,8 @@
     width: 150px;
     margin: auto;
     }
-    .rounded-1{
-      display: flex;
-      flex-direction: column;
-      align-content: center;
+    #SSN {
+      width: 15rem;
+      height: 2rem;
     }
-    
   }
