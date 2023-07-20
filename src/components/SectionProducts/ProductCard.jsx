@@ -8,7 +8,6 @@ export default function ProductCard({ props }) {
             <div className="service" data-toggle="tooltip" data-placement="top" title={props?.title2}>
                 <div className="icon">
                     <FontAwesomeIcon className='img' icon={props?.img} />
-                    {/* <img className='img' src={props?.img}  alt={props?.title}/> */}
                 </div>
                 <h4>{props?.title}</h4>
             </div>

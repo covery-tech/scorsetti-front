@@ -4,20 +4,20 @@
 .mobile-item{
     display: none;
 }
-embed {
-  margin-left: 2rem;
-  width: 140px;
-  height: 40px;
+.navbar img {
+  margin-left: 1rem;
+  width: 340px;
+  height: 100%;
 }
 .navbar-toggler {
   margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 61.938em) {
-  embed {
-    margin-left: 0px;
-    width: 100px;
-    height: 30px;
+  .navbar img {
+    margin-left: 0.5rem;
+    width: 200px;
+    height: 100%;
   }
   .mobile-item{
     display: block;

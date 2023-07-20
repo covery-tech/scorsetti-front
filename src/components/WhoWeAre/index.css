@@ -12,8 +12,8 @@
     align-items: center;
 }
 .weInfo .weImg img {
-    width: 30rem;
-    height: 9rem;
+    width: 40rem;
+    height: 50%;
 }
 .weInfo .weDescription {
     width: 70vw;

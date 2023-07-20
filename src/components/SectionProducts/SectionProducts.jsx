@@ -33,6 +33,7 @@ export default function SectionProducts({ userId }) {
       });
     }
   }, [userId]);
+
   return (
     <div className="container bg-white mt-5 p-5">
       <PrincipalText />
