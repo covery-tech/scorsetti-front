@@ -1,5 +1,5 @@
 h3 {
-    color: white;
-    font-weight: 800;
+    color:  var(--color-first-medium);
+    font-weight: 600;
     font-size: 2rem;
 }

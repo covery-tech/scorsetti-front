@@ -2,7 +2,7 @@
 
 .item {
     color: var(--color-first-dark);
-    background-color: #ffffff1e;
+    background-color: var(--color-gray-light);
     border-radius: 5%;
     text-align: center;
     display: flex;
@@ -10,8 +10,8 @@
     justify-content: center;
     margin: 5px;
     transition: all 0.3s;
-    width: 12rem;
-    height: 12rem;
+    width: 7rem;
+    height: 7rem;
 }
 
 .item:hover {
@@ -21,13 +21,13 @@
     /* color: #0037c1;     */
 }
 .item .img {
-    width: 5rem;
-    height: 5rem;
+    width: 2rem;
+    height: 2rem;
 }
 .item h4 {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
 }
 
 @media screen and (max-width: 60em) {
