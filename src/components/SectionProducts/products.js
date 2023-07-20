@@ -1,23 +1,3 @@
-
-import Auto from "./imgs/Auto1.png";
-import Moto from "./imgs/Moto1.png";
-import Familiar from "./imgs/Combinado Familiar.png";
-import Comercio from "./imgs/Comercio.png";
-import Consorcio from "./imgs/Consorcio.png";
-import Vida from "./imgs/Vida.png";
-import AccidentePersonal from "./imgs/Accidentes personales.png";
-import Ecomovil from "./imgs/Ecomovil.png";
-import Caucion from "./imgs/Caucion.png";
-import ViajeroProtegido from "./imgs/ViajeroProtegido.png";
-import Cripto from "./imgs/Criptominería.png";
-import RC from "./imgs/RC.png";
-import Hogar from "./imgs/Hogar.png";
-import Incendio from "./imgs/Incendios.png";
-import Multiple from "./imgs/Multiple.png";
-import Robo from "./imgs/Robo.png";
-import Tecnico from "./imgs/SeguroTecnico.png";
-import Sepelio from "./imgs/Sepelio.png";
-import Emprendedor from "./imgs/Emprendedor.png";
 import { faCar, faMotorcycle, faHome, faShip, faUserInjured, faHeart, faBuilding, faStore, faUmbrellaBeach, faHandHoldingUsd, faHandshake, faHeartbeat, faUserMd, faPeopleCarry, faPaw, faRestroom, faMoneyBillAlt, faHandPeace, faShoppingCart, faAddressBook, faHourglassEnd, faUserPlus, faIdCard, faStethoscope } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -198,7 +178,5 @@ export const infoProducts = {
     img: faUserPlus,
     path: "vida-colectivo-rrhh",
   },
-
-export const listProducts = [
-];
+}
 
