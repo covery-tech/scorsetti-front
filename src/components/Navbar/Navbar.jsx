@@ -14,13 +14,10 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <div>
-          {/* <Link to="/" className="navbar-brand">
-            <embed
-              src={logo}
-              alt="logo"
-              className="logo"
-            />
-          </Link> */}
+          <Link to="/" className="navbar-brand">
+            <img src="/logo-scorsetti.png" alt="#" />
+            {/* logo mobile */}
+          </Link>
         </div>
         <div className="d-flex">
           <button

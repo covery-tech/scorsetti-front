@@ -1,8 +1,11 @@
 .content {
-  display: grid;
-  grid-template-columns: auto;
+  display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+a {
+  text-decoration: none;
 }
 
 @media (max-width: 60em) {
