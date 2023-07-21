@@ -40,6 +40,8 @@ export default function SectionProducts({ userId }) {
       ? setClientSection('Empresa')
       : setClientSection('Persona');
   }
+  const changeClientToEmpresa = () => (clientSection === 'Persona') && setClientSection('Empresa')
+  const changeClientToPersona = () => (clientSection === 'Empresa') && setClientSection('Persona')
   // PUBLICACIÓN DE CARD PRODUCT
   const returnCardProduct = (p, i) => {
     return (
@@ -52,7 +54,14 @@ export default function SectionProducts({ userId }) {
   return (
     <div className="container bg-white mt-5 p-5">
       <PrincipalText />
-      <button onClick={changeClient}>{clientSection}</button>
+      <ul className="item-selector-content">
+        <li className="item-selector">
+          <a className={`buttonChange ${(clientSection==="Persona")&& 'selected'}`} onClick={changeClientToPersona}>Persona</a>
+        </li>
+        <li className="item-selector">
+          <a className={`buttonChange ${(clientSection==="Empresa")&& 'selected'}`} onClick={changeClientToEmpresa}>Empresa</a>
+        </li>
+      </ul>
       <div className="row justify-content-around">
         {
           userId ? (
@@ -68,9 +77,7 @@ export default function SectionProducts({ userId }) {
           ) : (
             <div className="content">
               {listProducts.map((p, i) => {
-                if (clientSection==='Persona' && i<18) {
-                  return returnCardProduct(p, i);
-                } else if(clientSection==='Empresa' && i>=18){
+                if (clientSection === infoProducts[p].client) {
                   return returnCardProduct(p, i);
                 }
               })}
