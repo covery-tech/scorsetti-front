@@ -3,7 +3,7 @@
 .item {
     color: var(--color-first-dark);
     background-color: var(--color-gray-light);
-    border-radius: 5%;
+    border-radius: 2px;
     text-align: center;
     display: flex;
     align-items: center;
