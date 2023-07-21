@@ -83,7 +83,7 @@ export default function CarsRedesign() {
   }, [values.model.description]);
 
   return (
-    <div className="container text-center justify-content-center bg-white rounded-5 p-4 mt-5 my-5">
+    <div className="container text-center justify-content-center bg-white rounded-1 p-4 mt-5 my-5">
       <PrincipalText />
       <div className="d-flex row justify-content-center">
         <div className="imgContainer">          
@@ -118,7 +118,7 @@ export default function CarsRedesign() {
                     text={"Datos del vehiculo"}
                     styles={{
                       backgroundColor: "#083180",
-                      borderRadius: "8px",
+                      borderRadius: "1px",
                       paddingLeft: "5px",
                     }}
                   />

@@ -1,6 +1,6 @@
 .inputContainer {
     border: 1px solid rgb(201, 201, 201);
-    border-radius: 0.5rem;
+    border-radius: 1px;
     padding: 0.5rem;
     justify-content: space-between;
     width: 50%;
@@ -14,7 +14,7 @@
 }
 .selectContainer {
     border: 1px solid rgb(201, 201, 201);
-    border-radius: 0.5rem;
+    border-radius: 1px;
     padding: 0.5rem;
     justify-content: space-between;
     width: 33%;
