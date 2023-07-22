@@ -1,3 +1,13 @@
+#SectionProducts-container {
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#CadsPanelSelected{
+  max-width: 640px;
+}
 .content {
   display: flex;
   align-items: center;

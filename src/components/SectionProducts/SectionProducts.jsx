@@ -52,7 +52,7 @@ export default function SectionProducts({ userId }) {
   }
 
   return (
-    <div className="container bg-white mt-5 p-5">
+    <div id="SectionProducts-container" className="container bg-white mt-5 p-5">
       <PrincipalText />
       <ul className="item-selector-content">
         <li className="item-selector">
@@ -62,7 +62,7 @@ export default function SectionProducts({ userId }) {
           <a className={`buttonChange ${(clientSection==="Empresa")&& 'selected'}`} onClick={changeClientToEmpresa}>Empresa</a>
         </li>
       </ul>
-      <div className="row justify-content-around">
+      <div id="CadsPanelSelected" className="row justify-content-around">
         {
           userId ? (
             <div className="content">
