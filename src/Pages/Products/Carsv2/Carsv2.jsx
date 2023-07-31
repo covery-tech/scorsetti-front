@@ -195,8 +195,8 @@ export default function CarsRedesign() {
                       values.brand.description !== "" &&
                       values.brand.markCode === "" ? (
                         <div className="filteredContainer">
-                          {filteredBrands?.map((b) => (
-                            <div
+                          {filteredBrands?.map((b, i) => (
+                            <div key={i}
                               onClick={(e) => {
                                 onSelectBrand({
                                   e,
@@ -253,8 +253,8 @@ export default function CarsRedesign() {
                       values.model.description !== "" &&
                       values.model.modelCode === "" ? (
                         <div className="filteredContainer">
-                          {filteredModels?.map((m) => (
-                            <div
+                          {filteredModels?.map((m, i) => (
+                            <div key={i}
                               onClick={(e) => {
                                 onSelectModel({
                                   e,
@@ -305,7 +305,7 @@ export default function CarsRedesign() {
                       styles={{
                         marginBottom: "2rem",
                         width: "50%",
-                      }}
+                      }}allowFullScreen
                       type={"select"}
                       name={"adjustment"}
                       options={adjustment}
@@ -360,8 +360,9 @@ export default function CarsRedesign() {
                     <b>Accesorios</b>
                   </h3>
                   <div className="inputCouple d-flex">
-                    {all_accessories.map((acc) => (
+                    {all_accessories.map((acc, i) => (
                       <Input
+                      key={i}
                         placeholder={acc}
                         onChange={onChange}
                         values={values}
@@ -395,8 +396,8 @@ export default function CarsRedesign() {
           {nPersons.length !== 0 && (
             <div>
               <div>
-                {nPersons.map((person) => {
-                  return <ClientSummary client={person} />;
+                {nPersons.map((person, i) => {
+                  return <ClientSummary key={i} client={person} />;
                 })}
               </div>
 

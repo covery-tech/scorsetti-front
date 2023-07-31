@@ -29,7 +29,7 @@ export const UserMenu = () => {
               user?.type === "superadmin" ||
               user.type === "pas" ? (
                 <div className="nav-item dropdown">
-                  <Link to="/rus/panel-admin" className="dropdown-item">
+                  <Link to="/scorsetti/panel-admin" className="dropdown-item">
                     <Icon icon="vscode-icons:file-type-light-config" />
                     <span> Panel de admin</span>
                   </Link>

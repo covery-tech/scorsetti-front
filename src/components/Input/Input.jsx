@@ -1,6 +1,6 @@
 import "./index.css";
 
-export default function   Input({
+export default function Input({
   placeholder,
   type,
   name,
