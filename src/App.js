@@ -81,7 +81,7 @@ function App() {
             />
             {/*Panel Admin and Pas */}
             <Route
-              path="/libra/panel-admin"
+              path="/scorsetti/panel-admin"
               element={
                 <ProtectRoutePas>
                   <Navbar />
@@ -91,7 +91,7 @@ function App() {
             />
             {/*crear perfil de cada usuario */}
             <Route
-              path="/libra/panel-admin/user/:userId"
+              path="/scorsetti/panel-admin/user/:userId"
               element={
                 <>
                   <Navbar />
