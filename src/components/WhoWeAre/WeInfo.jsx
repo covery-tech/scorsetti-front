@@ -1,7 +1,7 @@
 import "./index.css";
 
 export default function WeInfo({ description, name }) {
-  const URLSERVER = process.env.REACT_APP_API + "";
+  const URLSERVER = process.env.REACT_APP_URI_API + "";
   return (
     <section className="weInfo d-flex" id="quienes-somos">
       <div className="weImg d-flex bg-white">

@@ -5,14 +5,16 @@ import { infoProducts, listProducts } from "./products";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./sectionProducts.css";
+import useUser from "../hooks/UseUser";
 
 export default function SectionProducts({ userId }) {
   const [userPas, setUserPas] = useState([]);
+  const { getRoute } = useUser();
   useEffect(() => {
     if (userId === undefined) {
       const config = {
         method: "GET",
-        baseURL: process.env.REACT_APP_API + `/product/getProductCard`,
+        baseURL: process.env.REACT_APP_URI_API + `/product/getProductCard`,
       };
       axios(config).then((res) => {
         if (res.data) {
@@ -24,9 +26,10 @@ export default function SectionProducts({ userId }) {
     } else {
       const config2 = {
         method: "GET",
-        baseURL: process.env.REACT_APP_API + `/product/getProductsPas/${userId}`,
+        baseURL: process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
       };
       axios(config2).then((res) => {
+        getRoute(userId)
         setUserPas(res.data);
       }).catch((err) => {
         console.error(err);

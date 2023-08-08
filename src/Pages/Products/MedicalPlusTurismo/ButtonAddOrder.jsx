@@ -22,7 +22,7 @@ export const ButtonAddOrder = ({
   const handleSubmit = () => {
     const config = {
       method: "POST",
-      baseURL: process.env.REACT_APP_API + `/product/postOrderFlecha`,
+      baseURL: process.env.REACT_APP_URI_API + `/product/postOrderFlecha`,
       data: {
         name,
         last_name,
@@ -43,7 +43,7 @@ export const ButtonAddOrder = ({
       headers: { token: jwt },
     };
     axios(config).then((res) => {
-      if (res.data) window.open(process.env.REACT_APP_API + "/" + res.data);
+      if (res.data) window.open(process.env.REACT_APP_URI_API + "/" + res.data);
       else alert("ocurrio un error al generar la orden");
     }).catch((err) => console.log(err));
   };

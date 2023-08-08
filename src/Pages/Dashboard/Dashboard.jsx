@@ -11,8 +11,8 @@ import { TableOrders } from '../../components/DashBoard/TableOrders/TableOrders'
 import axios from 'axios'
 import { TableNotis } from '../../components/DashBoard/TableNotis/TableNotis'
 import { TablePas } from '../TablePas/Table'
-import { TableAllUser } from '../../components/DashBoard/TableAllUsers/TableAllUser'
 import {TableSearchUser} from "../../components/Tables/TableSearchUser"
+import { MyUser } from '../MyUser/MyUser'
 export const Dashboard = () => {
   const {site,user} = useUser()
   const [clients,setClients] = useState()
@@ -70,7 +70,9 @@ export const Dashboard = () => {
             : site === "usuariosPas" ?
             <TablePas/>
             : site === "actualizarUser" ? 
-            <TableSearchUser/>
+            <TableSearchUser/> 
+            : site === "profile" ?
+            <MyUser/>
             :<></>
           }
           

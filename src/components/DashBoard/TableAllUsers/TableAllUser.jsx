@@ -3,7 +3,7 @@ import useUser from '../../hooks/UseUser'
 import axios from 'axios'
 
 export const TableAllUser = () => {
-  const {jwt,user} = useUser() 
+  const {jwt} = useUser() 
     const [loading, setLoading] = useState(true)
     const [page,setPage] = useState(1)
     const [users,setUsers] = useState([])
@@ -24,7 +24,6 @@ export const TableAllUser = () => {
       setUsers(users.concat(response.data));
     })
     },[page])
-    //(users)
     return (
     <div>
         <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">

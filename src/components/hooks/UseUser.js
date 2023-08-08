@@ -1,9 +1,10 @@
 import { useCallback, useContext } from 'react'
 import Context from '../Context/userContext'
 import loginService from "../../services/getUser"
+import routeService from "../../services/getRoute"
 import axios from 'axios'
 export default function useUser() {
-    const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite} = useContext(Context)
+    const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute} = useContext(Context)
     const login = useCallback( async ({email,password})=>{
         loginService({email,password}).then(res=>{
             window.sessionStorage.setItem("jwt",res.token)
@@ -17,6 +18,17 @@ export default function useUser() {
             if(err.response.status===401)alert(err.response.data)
         })
     },[setJWT])
+
+    const getRoute = useCallback( (id) =>{
+      routeService(id).then(res=>{
+        console.log(res)
+          setRoute(res.route)
+          window.sessionStorage.setItem("route",res.route)
+      }).catch((err)=>{
+        console.log(err)
+          window.sessionStorage.removeItem("route")
+      })
+  },[setRoute])
 
     const getTokenPasLibra = ()=>{
         const config = {
@@ -63,6 +75,8 @@ export default function useUser() {
     getTokenPasLibra,
     tokenPas,
     updateSite,
-    site
+    site,
+    getRoute,
+    route
   }
 }

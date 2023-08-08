@@ -13,7 +13,7 @@ export const UserDetail = () => {
   const [user, setUser] = useState([]);
   const {jwt} = useUser()
   const [image, setImage] = useState("")
-  const URLSERVER = process.env.REACT_APP_API + ""
+  const URLSERVER = process.env.REACT_APP_URI_API + ""
   useEffect(() => {
     const config = {
       method: "GET",

@@ -42,11 +42,9 @@ export const SideBarAdmin = ({logout,updateSite}) => {
             Estadísticas
         </li>
         <p className='centerP'>Usuario</p>
-        <li>
-            <Link to={"/miusuario"}>
-                <FontAwesomeIcon icon={faCircleUser} />
-                Perfil
-            </Link>
+        <li onClick={() => updateSite("profile")}>
+            <FontAwesomeIcon icon={faCircleUser} />
+            Perfil
         </li>
         <li onClick={logout}>
             <FontAwesomeIcon icon={faArrowRightFromBracket}/>

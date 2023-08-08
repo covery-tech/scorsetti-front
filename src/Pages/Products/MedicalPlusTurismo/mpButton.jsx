@@ -8,7 +8,7 @@ export const MpButton = ({
   const createPay = () => {
     const config = {
       method: "POST",
-      baseURL: process.env.REACT_APP_API + `/mp/create-plan`,
+      baseURL: process.env.REACT_APP_URI_API + `/mp/create-plan`,
       data: {
         pas_id: "covery",
         type: "mpt",

@@ -12,7 +12,7 @@ export default function SectionProducts({ userId }) {
     if (userId === undefined) {
       const config = {
         method: "GET",
-        baseURL: process.env.REACT_APP_API + `/product/getProductCard`,
+        baseURL: process.env.REACT_APP_URI_API + `/product/getProductCard`,
       };
       axios(config).then((res) => {
         if (res.data) {
@@ -24,7 +24,7 @@ export default function SectionProducts({ userId }) {
     } else {
       const config2 = {
         method: "GET",
-        baseURL: process.env.REACT_APP_API + `/product/getProductsPas/${userId}`,
+        baseURL: process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
       };
       axios(config2).then((res) => {
         setUserPas(res.data);

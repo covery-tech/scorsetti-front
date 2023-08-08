@@ -50,12 +50,10 @@ export const SideBarPas = ({logout,updateSite}) => {
                     Estadísticas
                 </li>
                 <p className='centerP'>Usuario</p>
-                <Link to={"/miusuario"}>
-                    <li>
+                    <li onClick={() => updateSite("profile")}>
                         <FontAwesomeIcon icon={faCircleUser} />
                         Perfil
                     </li>
-                </Link>
                 <li onClick={logout}>
                     <FontAwesomeIcon icon={faArrowRightFromBracket}/>
                     Cerrar Sesión
