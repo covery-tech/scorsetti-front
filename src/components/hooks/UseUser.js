@@ -21,7 +21,6 @@ export default function useUser() {
 
     const getRoute = useCallback( (id) =>{
       routeService(id).then(res=>{
-        console.log(res)
           setRoute(res.route)
           window.sessionStorage.setItem("route",res.route)
       }).catch((err)=>{
