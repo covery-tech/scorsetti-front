@@ -3,12 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faCircleUser,
-  faCreditCard,
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faShop,
   faBell,
-  faSignal,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -32,10 +30,6 @@ export const SideBarClient = ({ logout, updateSite }) => {
     <>
       <ul>
         <p className="centerP">Listas</p>
-        {/* <li onClick={()=>updateSite("clientes")}>
-                        <FontAwesomeIcon icon={faUser} />
-                        Clientes
-                    </li> */}
         <li onClick={() => updateSite("compras")}>
           <FontAwesomeIcon icon={faShop} />
           Mi billetera
