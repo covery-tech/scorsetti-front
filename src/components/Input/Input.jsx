@@ -1,3 +1,4 @@
+import onClickCheckbox from "../../Pages/Products/defaultFunctions/onClickCheckbox";
 import "./index.css";
 
 export default function Input({
@@ -5,6 +6,7 @@ export default function Input({
   type,
   name,
   onChange,
+  value,
   values,
   setValues,
   errors,
@@ -14,7 +16,7 @@ export default function Input({
   styles,
   options,
   validate,
-  boolean,
+  instance
 }) {
   return (
     <>
@@ -23,7 +25,7 @@ export default function Input({
           <select
             name={name}
             onChange={(e) =>
-              onChange({ e, values, setValues, setErrors, validate })
+              onChange({ e, values, setValues, setErrors, validate, instance })
             }
             style={{
               width: "100%",
@@ -42,24 +44,31 @@ export default function Input({
             </p>
           )}
         </div>
+      ) : type === "checkbox" ? (
+        <div className={`d-flex checkboxContainer ${classes}`} style={styles}>
+          <input
+            type={type}
+            name={name}
+            onClick={(e) => {
+              onClickCheckbox({ e, values, setValues });
+            }}
+            placeholder={placeholder}
+            value={value}
+          />
+          <label>{placeholder}</label>
+        </div>
       ) : (
-        <div
-          className={`d-flex ${
-            type === "checkbox" ? "checkboxContainer" : "inputContainer"
-          } ${classes}`}
-          style={styles}
-        >
+        <div className={`d-flex inputContainer ${classes}`} style={styles}>
           {type === "date" && <label>{placeholder}</label>}
           <input
             type={type}
             name={name}
             onChange={(e) => {
-              onChange({ e, values, setValues, setErrors, validate, boolean });
+              onChange({ e, values, setValues, setErrors, validate, instance });
             }}
             placeholder={placeholder}
-            value={type === "checkbox" ? placeholder : values[name]}
+            value={values[name]}
           />
-          {type === "checkbox" && <label>{placeholder}</label>}
           {showErrors && errors[name] && (
             <p className="errorMessage" style={{ marginTop: "0.5rem" }}>
               {errors[name]}

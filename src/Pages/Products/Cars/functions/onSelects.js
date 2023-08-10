@@ -5,6 +5,7 @@ export function onSelectBrand({
   setValues,
   setErrors,
   validate,
+  instance
 }) {
   e.preventDefault();
   let b = {
@@ -18,8 +19,8 @@ export function onSelectBrand({
   setErrors(
     validate({
       ...values,
-      brand: brand.MarkCode,
-    })
+      brand: b.markCode,
+    }, instance)
   );
 }
 export function onSelectModel({
@@ -29,6 +30,7 @@ export function onSelectModel({
   setValues,
   setErrors,
   validate,
+  instance
 }) {
   e.preventDefault();
   let m = {
@@ -45,7 +47,7 @@ export function onSelectModel({
   setErrors(
     validate({
       ...values,
-      model: model.ModelCode,
-    })
+      model: m.modelCode,
+    }, instance)
   );
 }

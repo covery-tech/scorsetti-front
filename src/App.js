@@ -18,7 +18,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
-import CarsRedesign from "./Pages/Products/Carsv2/Carsv2";
+import Cars from "./Pages/Products/Cars/CarsContainer";
 
 function App() {
   return (
@@ -115,7 +115,7 @@ function App() {
               element={
                 <>
                   <Navbar />
-                  <CarsRedesign />
+                  <Cars />
                 </>
               }
             />

@@ -1,8 +1,28 @@
 .styled-text {
     text-align: left;
 }
-.styled-text h3 {
-    font-weight: bold;
+.light-text h3{
     color: white;
+}
+.dark-text h3{
+    color: var(--color-first-dark);
+}
+.f-lighter h3 {
+    font-weight: 300;
+}
+.f-bold h3 {
+    font-weight: bold;
+}
+.styled-text h3 {
     font-size: 2.3rem;
+}
+.form-title {
+    background-color: var(--color-first-medium);
+    padding-left: 0.5rem;
+}
+.form-title h3{
+    font-weight: bold;
+    color: #fff;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }

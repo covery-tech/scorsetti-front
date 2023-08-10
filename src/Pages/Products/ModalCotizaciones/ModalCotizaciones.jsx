@@ -1,23 +1,19 @@
 // import { cotizaciones } from "./example";
 import { useState } from 'react';
-import { MpButton } from "../Carsv2/mpButton";
+import { MpButton } from "../Cars/mpButton";
 import "./Modal.css";
 
-export default function ModalCotizaciones({ cotization, nPersons }) {
-  console.log(nPersons);
-  const [selectedProductIndex, setSelectedProductIndex] = useState();
-
+export default function ModalCotizaciones({ cotization, nPersons, loading }) {
+  const [selectedProductIndex, setSelectedProductIndex] = useState(0);
   // Obtener los datos del producto seleccionado
   const selectedProduct = cotization?.DatosAdicionales?.[selectedProductIndex];
-
-
   const handleProductSelect = (index) => {
     setSelectedProductIndex(index);
   };
-
   return (
     <div className="modalcontainer d-flex flex-column align-items-center">
       <h3>Cotizaciones</h3>
+      {loading && <div>Cargando cotizaciones...</div>}
       <div className="modalscroll table-fixed-header">
         <table className="table table-bordered">
           <thead>
