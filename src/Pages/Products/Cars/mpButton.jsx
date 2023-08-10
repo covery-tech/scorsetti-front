@@ -15,36 +15,29 @@ export const MpButton = ({
   const { userId } = useParams();
   const { user } = useUser();
   const createPay = () => {
-    console.log(allPerson, cotization)
     const config = {
       method: "POST",
       baseURL: `${process.env.REACT_APP_URI_API}/mp/create-plan`,
       data: {
         pas_id: userId ? userId : "covery",
         type: cotization.PlanTecnico + " | Auto",
-        name:allPerson[0].name,
-        phone_number:allPerson[0].phone_number,
-        last_name:allPerson[0].lastname,
-        email:allPerson[0].email,
-        amount:5,
+        // name:allPerson[0].name,
+        // phone_number:allPerson[0].phone_number,
+        // last_name:allPerson[0].lastname,
+        // email:allPerson[0].email,
+        amount:cotization.Premio,
         plan:cotization.PlanTecnico + " | Auto",
-        repetitions: cotization.Cuotas[0].NumeroCuota,
-        from:allPerson[0].from,
-        address:allPerson[0].address,
-        destiny:allPerson[0].destiny,
-        location:allPerson[0].location,
-        province:allPerson[0].province,
-        document:allPerson[0].document,
-        birthdate:allPerson[0].birthdate,
-        sex:allPerson[0].sex,        
+        // from:allPerson[0].from,
+        // address:allPerson[0].address,
+        // destiny:allPerson[0].destiny,
+        // location:allPerson[0].location,
+        // province:allPerson[0].province,
+        // document:allPerson[0].document,
+        // birthdate:allPerson[0].birthdate,
+        // sex:allPerson[0].sex,        
         frequency_type: "months",
-        repetitions: 1,
-
         billing_day_proportional: true,
-        // free_trial: {
-        //   frequency: 1,
-        //   frequency_type: "months"
-        // },
+        repetitions: allPerson[0].validity === "Trimestral" ? 3 : 1,
         currency_id: "ARS",
         covert:allPerson[0].covert,
         usersId: user?.id || 1,
