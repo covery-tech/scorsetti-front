@@ -2,20 +2,18 @@ import { useCallback, useContext } from 'react'
 import Context from '../Context/userContext'
 import loginService from "../../services/getUser"
 import routeService from "../../services/getRoute"
+import {toast} from 'react-toastify'
 import axios from 'axios'
+
 export default function useUser() {
     const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute} = useContext(Context)
     const login = useCallback( async ({email,password})=>{
         loginService({email,password}).then(res=>{
-            window.sessionStorage.setItem("jwt",res.token)
-            window.sessionStorage.setItem("user",JSON.stringify(res.user))
-            setJWT(res.token)
-            setUser(res.user)
-            //(res)
-        }).catch((err)=>{
-            window.sessionStorage.removeItem("jwt")
-            window.sessionStorage.removeItem("user")
-            if(err.response.status===401)alert(err.response.data)
+          if(!res) return
+          window.sessionStorage.setItem("jwt",res?.token)
+          window.sessionStorage.setItem("user",JSON.stringify(res?.user))
+          setJWT(res.token)
+          setUser(res.user)
         })
     },[setJWT])
 

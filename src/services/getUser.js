@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function login({email,password}){
     const config = {
@@ -14,5 +15,18 @@ export default function login({email,password}){
                         token:res.data.token,
                         user:res.data.result
                 }
+        }).catch(err=>{
+                window.sessionStorage.removeItem("jwt")
+                window.sessionStorage.removeItem("user")
+                        toast.error(err.response.data ,{
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                })
         })
 }
