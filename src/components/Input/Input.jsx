@@ -31,7 +31,7 @@ export default function Input({
               width: "100%",
             }}
           >
-            <option value="">{placeholder}</option>
+            <option value="disabled">{placeholder}</option>
             {options.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
