@@ -33,7 +33,9 @@ export const UserDetail = () => {
         if (res.status === 201) setUser(res.status);
         if (res.status === 202) setUser(res.status);
       }
-    }).catch((err)=>{console.log(err)});
+    }).catch((err)=>{
+      console.log(err)
+    });
     axios(config2).then(res=>{
       setImage(res.data)
     }).catch((err)=>{console.log(err)})

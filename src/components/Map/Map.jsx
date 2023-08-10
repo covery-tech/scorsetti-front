@@ -9,11 +9,11 @@ export default function MapLibra({ location, attention_hours }) {
           width="600"
           height="450"
           style={{"border":0}}
-          allowfullscreen=""
+          allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-        <div className="infoContact">
+        <div className="">
           <p>
           </p>
           <p>
