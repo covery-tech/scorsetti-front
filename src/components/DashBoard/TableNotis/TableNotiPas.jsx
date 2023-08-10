@@ -98,7 +98,7 @@ export const TableNotiPas = ({
           {notis?.length ? (
             <tbody>
               {notis?.map((e) => (
-                <tr>
+                <tr key={e?.id}>
                   <td>{e?.description}</td>
                   <td>
                     <strong

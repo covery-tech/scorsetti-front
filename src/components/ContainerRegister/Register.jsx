@@ -25,9 +25,7 @@ export default function ContainerRegister() {
             }}
             validate={Validate}
             onSubmit={(values) => {
-              // Convertir la fecha a una cadena
               const dateString = values.date.toString();
-              //(dateString);
               try {
                 axios
                   .post(`${process.env.REACT_APP_URI_API}/user/postUser`, {

@@ -20,6 +20,6 @@ export const TableProductsPas = ({products,handleUpdateState}) => {
     }
   return (
     <>
-    {products?.map(e=><DataTablePas handleUpdateState={handleUpdateState} sendNotification={sendNotification} e={e}/>)}
+    {products?.map((e,i)=><DataTablePas key={i} handleUpdateState={handleUpdateState} sendNotification={sendNotification} e={e}/>)}
   </>)
 }

@@ -32,7 +32,7 @@ export default function ContainerLogin() {
     const { email, password } = formData;
     e.preventDefault();
     if (email || password) {
-      login({ email, password }).catch(err=>console.log("err"))
+      login({ email, password })
     }
   };
 

@@ -54,8 +54,8 @@ export const TableOrders = () => {
             </thead>
             {orders.flat()?.length ? (
             <tbody>
-                {orders.flat().map((e) => (
-                    <tr>
+                {orders.flat().map((e, i) => (
+                    <tr key={i}>
                     <td>{e?.name}, {e?.last_name}</td>
                     <td>{e?.phone_number}<a href={`https://wa.me/+549${e?.phone_number}`} target="_blank"><Icon icon="ic:baseline-whatsapp" height="24" /></a></td>
                     <td>{e?.email}</td>
