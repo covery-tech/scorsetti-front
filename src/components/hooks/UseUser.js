@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import Context from '../Context/userContext'
 import loginService from "../../services/getUser"
 import routeService from "../../services/getRoute"
@@ -6,7 +6,7 @@ import {toast} from 'react-toastify'
 import axios from 'axios'
 
 export default function useUser() {
-    const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute} = useContext(Context)
+    const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute,pas,setPas} = useContext(Context)
     const login = useCallback( async ({email,password})=>{
         loginService({email,password}).then(res=>{
           if(!res) return
@@ -16,6 +16,11 @@ export default function useUser() {
           setUser(res.user)
         })
     },[setJWT])
+
+    useEffect(()=>{
+      let data = JSON?.parse(window.sessionStorage.getItem("pas"))
+      setPas(data)
+    },[])
 
     const getRoute = useCallback( (id) =>{
       routeService(id).then(res=>{
@@ -74,6 +79,7 @@ export default function useUser() {
     updateSite,
     site,
     getRoute,
-    route
+    route,
+    pas
   }
 }

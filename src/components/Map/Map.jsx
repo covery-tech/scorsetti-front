@@ -9,7 +9,7 @@ export default function MapLibra({ location, attention_hours }) {
           width="600"
           height="450"
           style={{"border":0}}
-          allowFullScreen=""
+          allowfullscreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>

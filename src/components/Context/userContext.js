@@ -9,6 +9,9 @@ export const UserContext= ({children})=>{
     const [tokenPas,setTokenPas] = useState(()=>window.sessionStorage.getItem("tokenPas"))
     const [route,setRoute] = useState(()=>window.sessionStorage.getItem("route"))
     const [site, setSite] = useState(()=>"panel")
+    useEffect(()=>{
+        setPas(()=>JSON?.parse(window?.sessionStorage?.getItem("pas")))
+    },[])
     return <Context.Provider value={{jwt,setJWT,user,setUser,pas,setPas,tokenPas,setTokenPas,site, setSite,route,setRoute}}>
     {children}
     </Context.Provider>
