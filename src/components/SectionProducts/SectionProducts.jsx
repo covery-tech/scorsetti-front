@@ -57,7 +57,7 @@ export default function SectionProducts({ userId }) {
   return (
     <div id="SectionProducts-container" className="container bg-white mt-5 p-5">
       <PrincipalText />
-      <ul className="item-selector-content">
+      <ul className="item-selector-content px-0">
         <li className="item-selector">
           <a className={`buttonChange ${(clientSection==="Persona")&& 'selected'}`} onClick={changeClientToPersona}>Persona</a>
         </li>
