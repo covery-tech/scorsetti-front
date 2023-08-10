@@ -31,5 +31,4 @@ export default function onChange({
       [e.target.name]: e.target.value,
     })
   );
-  console.warn(values);
 }

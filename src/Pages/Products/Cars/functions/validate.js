@@ -53,6 +53,5 @@ export default function Validate(values, instance) {
       errors.telefono = errorMsg;
     }
   }
-  console.log(errors);
   return errors;
 }

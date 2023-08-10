@@ -12,11 +12,13 @@ import { icon } from "./info";
 
 export default function CarsContainer() {
   const [values, setValues] = useState({
+    //TipoProducto --------------
+    tipo: "Auto",
     //CarBasicInfo --------------
     año: "",
     marca: "",
     modelo: "",
-    cerokm: false,
+    cero_km: false,
     tipo_uso: "",
     vigencia: "",
     //PersonalInfo --------------
@@ -156,7 +158,7 @@ export default function CarsContainer() {
             />
           )}
           {instance === 3 && (
-            <ClientSummary client={values} reloadPage={reloadPage} />
+            <ClientSummary values={values} reloadPage={reloadPage} />
           )}
         </div>
       </div>
