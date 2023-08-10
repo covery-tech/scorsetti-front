@@ -11,7 +11,7 @@ export default function AlertNoPas({message}) {
       >
         <h2>{message}</h2>
         <Link className="btn btn-primary w-25" to={"/"}>
-          Vuelve a Libra
+          Vuelve a Scorsetti & Asociados
         </Link>
       </div>
     </div>

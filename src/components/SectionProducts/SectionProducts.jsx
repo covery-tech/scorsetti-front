@@ -70,6 +70,7 @@ export default function SectionProducts({ userId }) {
           userId ? (
             <div className="content">
               {userPas.products?.map((p,i) => {
+
                 if(clientSection === infoProducts[p]?.client){
                     return <Link to={'producto/' + p} key={i}>
                     <ProductCard props={infoProducts[p]} />

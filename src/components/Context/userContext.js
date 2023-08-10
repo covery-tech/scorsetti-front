@@ -8,7 +8,7 @@ export const UserContext= ({children})=>{
     const [pas,setPas] = useState(()=>JSON?.parse(window?.sessionStorage?.getItem("pas")))
     const [tokenPas,setTokenPas] = useState(()=>window.sessionStorage.getItem("tokenPas"))
     const [route,setRoute] = useState(()=>window.sessionStorage.getItem("route"))
-    const [site, setSite] = useState(()=>"panel")
+    const [site, setSite] = useState(()=>"profile")
     useEffect(()=>{
         setPas(()=>JSON?.parse(window?.sessionStorage?.getItem("pas")))
     },[])

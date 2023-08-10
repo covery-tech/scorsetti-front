@@ -19,9 +19,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
 import Cars from "./Pages/Products/Cars/CarsContainer";
+import { ProtectRouteLogin } from "./ProtectRouteLog";
 
 function App() {
   return (
+    <UserContext>
       <div className="App">
         <BrowserRouter>
           <ToastContainer />
@@ -82,10 +84,10 @@ function App() {
             <Route
               path="/scorsetti/panel-admin"
               element={
-                <ProtectRoutePas>
+                <ProtectRouteLogin>
                   <Navbar />
                   <Dashboard />
-                </ProtectRoutePas>
+                </ProtectRouteLogin>
               }
             />
             {/*crear perfil de cada usuario */}
@@ -118,11 +120,20 @@ function App() {
                 </>
               }
             />
-            {/* perfilPas */}
+            <Route
+              path="/usuario_pas/:userId/producto/auto"
+              element={
+                <>
+                  <Navbar />
+                  <Cars />
+                </>
+              }
+            />
           </Routes>
           <Footer />
         </BrowserRouter>
       </div>
+    </UserContext>
   );
 }
 

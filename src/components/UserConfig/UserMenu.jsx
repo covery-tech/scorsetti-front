@@ -36,7 +36,7 @@ export const UserMenu = () => {
                 </div>
               ) : user.type === "client" ? (
                 <div className="nav-item dropdown">
-                  <Link to="/clientes/panel" className="dropdown-item">
+                  <Link to="/scorsetti/panel-admin" className="dropdown-item">
                     <Icon icon="vscode-icons:file-type-light-config" />
                     <span> Panel </span>
                   </Link>

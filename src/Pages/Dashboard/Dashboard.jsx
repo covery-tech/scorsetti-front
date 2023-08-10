@@ -73,7 +73,9 @@ export const Dashboard = () => {
             <TableSearchUser/> 
             : site === "profile" ?
             <MyUser/>
-            :<></>
+            : site === "compras" ?
+              <></>
+            : <></>
           }
           
           
