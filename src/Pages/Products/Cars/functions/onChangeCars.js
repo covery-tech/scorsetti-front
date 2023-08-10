@@ -4,6 +4,7 @@ export function onChangeBrands({
   setValues,
   setErrors,
   validate,
+  instance
 }) {
   e.preventDefault();
   let brand = {
@@ -27,7 +28,7 @@ export function onChangeBrands({
       ...values,
       brand: "",
       model: ""
-    })
+    }, instance)
   );
 }
 
@@ -37,6 +38,7 @@ export function onChangeModels({
   setValues,
   setErrors,
   validate,
+  instance
 }) {
   e.preventDefault();
   let model = {
@@ -54,6 +56,6 @@ export function onChangeModels({
     validate({
       ...values,
       model: "",
-    })
+    }, instance)
   );
 }

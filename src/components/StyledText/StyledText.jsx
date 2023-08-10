@@ -1,9 +1,9 @@
 import './index.css';
 
-export default function StyledText({text, styles}) {
+export default function StyledText({children, styles, className}) {
     return (
-          <div className="styled-text" style={styles}>
-            <h3>{text}</h3>
+          <div className={`styled-text ${className}`} style={styles}>
+            <h3>{children}</h3>
           </div>
     )
 }
