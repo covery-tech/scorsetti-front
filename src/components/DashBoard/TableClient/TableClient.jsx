@@ -43,8 +43,8 @@ export const TableClient = () => {
             </thead>
             {clients.length ? (
             <tbody>
-                {clients.map((e) => (
-                    <tr>
+                {clients.map((e,i) => (
+                    <tr key={i}>
                     <td>{e?.name}</td>
                     <td>{e?.last_name}</td>
                     <td>{e?.email}</td>

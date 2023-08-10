@@ -9,12 +9,13 @@
   height: 60vh;
 }
 
-.mapContainer .infoContact {
+.mapContainer, .infoContact {
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.mapContainer .infoContact p {
+.mapContainer, .infoContact p {
   background-color: white;
   width: fit-content;
   padding: 2rem;
@@ -28,5 +29,8 @@
   .mapContainer .infoContact p {
     font-size: 1rem;
     padding: 1rem;
+  }
+  .infoContact{
+    
   }
 }

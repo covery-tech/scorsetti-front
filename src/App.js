@@ -19,10 +19,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
 import Cars from "./Pages/Products/Cars/CarsContainer";
+import useUser from "./components/hooks/UseUser";
 
 function App() {
+  const {pas} = useUser()
+  console.log(pas)
   return (
-    <UserContext>
       <div className="App">
         <BrowserRouter>
           <ToastContainer />
@@ -124,7 +126,6 @@ function App() {
           <Footer />
         </BrowserRouter>
       </div>
-    </UserContext>
   );
 }
 

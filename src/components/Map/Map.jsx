@@ -11,7 +11,7 @@ export default function MapLibra({ location, attention_hours }) {
           style={{"border":0}}
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
         <div className="infoContact">
           <p>

@@ -7,13 +7,16 @@ import { useNavigate } from "react-router-dom";
 export default function ContainerLogin() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const { login, isLoggedIn } = useUser();
+  const { login, isLoggedIn, pas } = useUser();
+  console.log(pas)
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
 
   useEffect(() => {
-    if (isLoggedIn) navigate("/");
+    if (isLoggedIn) {
+      !pas ? navigate("/") : navigate("/usuario_pas/"+pas.id)
+    }
   }, [isLoggedIn, navigate]);
 
   const [formData, setFormData] = useState({
@@ -32,7 +35,7 @@ export default function ContainerLogin() {
     const { email, password } = formData;
     e.preventDefault();
     if (email || password) {
-      login({ email, password });
+      login({ email, password })
     }
   };
 

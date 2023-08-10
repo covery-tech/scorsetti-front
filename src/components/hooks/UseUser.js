@@ -1,23 +1,26 @@
-import { useCallback, useContext } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import Context from '../Context/userContext'
 import loginService from "../../services/getUser"
 import routeService from "../../services/getRoute"
+import {toast} from 'react-toastify'
 import axios from 'axios'
+
 export default function useUser() {
-    const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute} = useContext(Context)
+    const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute,pas,setPas} = useContext(Context)
     const login = useCallback( async ({email,password})=>{
         loginService({email,password}).then(res=>{
-            window.sessionStorage.setItem("jwt",res.token)
-            window.sessionStorage.setItem("user",JSON.stringify(res.user))
-            setJWT(res.token)
-            setUser(res.user)
-            //(res)
-        }).catch((err)=>{
-            window.sessionStorage.removeItem("jwt")
-            window.sessionStorage.removeItem("user")
-            if(err.response.status===401)alert(err.response.data)
+          if(!res) return
+          window.sessionStorage.setItem("jwt",res?.token)
+          window.sessionStorage.setItem("user",JSON.stringify(res?.user))
+          setJWT(res.token)
+          setUser(res.user)
         })
     },[setJWT])
+
+    useEffect(()=>{
+      let data = JSON?.parse(window.sessionStorage.getItem("pas"))
+      setPas(data)
+    },[])
 
     const getRoute = useCallback( (id) =>{
       routeService(id).then(res=>{
@@ -76,6 +79,7 @@ export default function useUser() {
     updateSite,
     site,
     getRoute,
-    route
+    route,
+    pas
   }
 }

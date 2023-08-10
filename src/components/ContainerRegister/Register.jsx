@@ -4,10 +4,10 @@ import axios from "axios";
 import Validate from "./Validate";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router";
+import {toast} from 'react-toastify'
+
 export default function ContainerRegister() {
   const navigate = useNavigate();
-  // const initSession =
-  // }
 
   return (
     <section className="services" id="services">
@@ -25,9 +25,7 @@ export default function ContainerRegister() {
             }}
             validate={Validate}
             onSubmit={(values) => {
-              // Convertir la fecha a una cadena
               const dateString = values.date.toString();
-              //(dateString);
               try {
                 axios
                   .post(`${process.env.REACT_APP_URI_API}/user/postUser`, {
@@ -43,7 +41,16 @@ export default function ContainerRegister() {
                     else navigate("/ingresar");
                   });
               } catch (err) {
-                alert(err.response.data);
+                toast.error( err.data.respose, {
+                  position: "bottom-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
               }
             }}
           >

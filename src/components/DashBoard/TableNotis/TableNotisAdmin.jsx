@@ -90,7 +90,7 @@ export const TableNotisAdmin = ({notis,setPage,loading,showShowMore,loadingNextP
             {notis?.length ? (
             <tbody>
                 {notis.map((e) => (
-                    <tr>
+                    <tr key={e.id}>
                     <td><img src={`${process.env.REACT_APP_URI_API}/${e?.img}`} style={{height:40,borderRadius:40}}/></td>
                     <td>{e?.name},{e?.last_name}</td>
                     <td>{e?.phone_number}</td>
