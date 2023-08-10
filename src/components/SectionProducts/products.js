@@ -143,7 +143,7 @@ export const infoProducts = {
     client: 'Persona',
   },
   //! a partir de aqui empresas
-  "bancodelsolrrhh": {
+  bancodelsolrrhh: {
     title: "Banco Del Sol",
     img: faHandHoldingUsd,
     path: "banco-del-sol-rrhh",
