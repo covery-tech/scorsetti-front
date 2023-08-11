@@ -5,7 +5,8 @@ import {faEllipsisVertical,faArrowTrendDown} from "@fortawesome/free-solid-svg-i
 import {CircularProgressbar} from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 
-export const Featured = () => {
+export const Featured = ({amount}) => {
+  console.log(amount)
   return (
     <div className='featureds'>
       <div className="top">
@@ -17,7 +18,7 @@ export const Featured = () => {
           <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
         </div>
         <p className="title">Total de Ventas del Día</p>
-        <p className="amount">$420</p>
+        <p className="amount">${amount ? amount.totalVentas : 0}</p>
         <p className="desc">Procesamiento de transacciones anteriores. Es posible que no se incluyan los últimos pagos.</p>
         <div className="summary">
           <div className="items">

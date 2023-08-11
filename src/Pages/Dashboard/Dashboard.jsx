@@ -13,16 +13,19 @@ import { TableNotis } from '../../components/DashBoard/TableNotis/TableNotis'
 import { TablePas } from '../TablePas/Table'
 import {TableSearchUser} from "../../components/Tables/TableSearchUser"
 import { MyUser } from '../MyUser/MyUser'
+import OrdersTableAll from '../../components/DashBoard/TableOrders/TableAllOrders'
 export const Dashboard = () => {
-  const {site,user} = useUser()
+  const {site,user,jwt} = useUser()
   const [clients,setClients] = useState()
   const [orders,setOrders] = useState()
   const [amount,setAmount] = useState()
+  const [dairySales,setDairySales] = useState()
 
   useEffect(()=>{
     const config = {
       method:"get",
-      baseURL:`${process.env.REACT_APP_URI_API}/product/numberOfClients/${user.id_user}`,
+      baseURL:`${process.env.REACT_APP_URI_API}/product/numberOfClients`,
+      headers: { token: jwt },
     }
     axios(config).then(res=>setClients(res.data.data))
   },[])
@@ -30,7 +33,8 @@ export const Dashboard = () => {
   useEffect(()=>{
     const config = {
       method:"get",
-      baseURL:`${process.env.REACT_APP_URI_API}/product/numberOfOrders/${user.id_user}`,
+      baseURL:`${process.env.REACT_APP_URI_API}/product/numberOfOrders`,
+      headers: { token: jwt },
     }
     axios(config).then(res=>setOrders(res.data["COUNT(*)"]))
   },[])
@@ -38,11 +42,23 @@ export const Dashboard = () => {
   useEffect(()=>{
     const config = {
       method:"get",
-      baseURL:`${process.env.REACT_APP_URI_API}/product/amountOfOrders/${user.id_user}`,
+      baseURL:`${process.env.REACT_APP_URI_API}/product/amountOfOrders`,
+      headers: { token: jwt },
     }
     axios(config).then(res=>setAmount(res.data.sum))
   },[])
-  //(site)
+
+  useEffect(()=>{
+    const fechaActual = new Date();
+    const fechaFormateada = fechaActual.toISOString().slice(0, 10);
+    const config = {
+      method:"get",
+      baseURL:`${process.env.REACT_APP_URI_API}/product/dairySales/${fechaFormateada}`,
+      headers: { token: jwt },
+    }
+    axios(config).then(res=>setDairySales(res.data))
+  },[])
+
   return (
     <div className='sidebar_home'>
         <SideBar/>
@@ -55,7 +71,7 @@ export const Dashboard = () => {
                 <Widget type="balance" amount={amount}/>
               </div>
               <div className="charts">
-                <Featured/>
+                <Featured amount={dairySales}/>
                 <Charts/>
               </div>
             </>
@@ -64,7 +80,7 @@ export const Dashboard = () => {
             : site === "productos" ?
             <TableProducts/>
             : site === "ordenes" ?
-            <TableOrders/>
+            <OrdersTableAll/>
             : site === "notificaciones" ?
             <TableNotis/>
             : site === "usuariosPas" ?
