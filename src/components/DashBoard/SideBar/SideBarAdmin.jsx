@@ -28,6 +28,10 @@ export const SideBarAdmin = ({logout,updateSite}) => {
             <FontAwesomeIcon icon={faShop} />
             Actualizar Usuario a Pas/Admin
         </li>
+        <li  onClick={()=>updateSite("ordenes")}>
+            <FontAwesomeIcon icon={faShop} />
+            Ordenes del Mercado
+        </li>
         <p className='centerP'>Útil</p>
         <li  onClick={()=>updateSite("notificaciones")} style={{position:"relative"}}>
             {

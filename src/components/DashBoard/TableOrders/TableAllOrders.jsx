@@ -2,31 +2,39 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./table.css";
 import { Icon } from "@iconify/react";
+import ModalPortal from "../../modal";
+import useUser from "../../hooks/UseUser";
 
 const OrdersTableAll = () => {
+    const {user} = useUser()
     const [ordersData, setOrdersData] = useState([]);
     const [modalData, setModalData] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [resultsPerPage, setResultsPerPage] = useState(10);
+    const [cuantityPage, setCuantityPage] = useState(0);
+    const resultsPerPage = 7;
+    const userId = (user.type === "superadmin") ? "covery" : (user.type === "admin") ? "covery" : user.id;
+    const arrayNoVacio = cuantityPage
+    ? Array(cuantityPage)
+        .fill(null)
+        .map((_, index) => index + 1)
+    : [];
+
 
     useEffect(() => {
-        const idPas = "covery";
-        const offset = (currentPage - 1) * resultsPerPage;
-
         axios
             .get(
-                `${process.env.REACT_APP_URI_API}/product/getAllOrdersByPas/${idPas}`,
+                `${process.env.REACT_APP_URI_API}/product/getAllOrdersByPas/${userId}`,
                 {
                     params: {
                         page: currentPage,
-                        limit: resultsPerPage,
                     },
                 }
             )
             .then((response) => {
-                let data = response.data.ordersData;
-                setOrdersData(data);
+                let data = response.data;
+                setCuantityPage(Math.ceil(data.pages / 7));
+                setOrdersData(data.orders);
 
             })
             .catch((error) => {
@@ -42,9 +50,7 @@ const OrdersTableAll = () => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
-    const handlePageChange = (newPage) => {
-        setCurrentPage(newPage);
-    };
+
 
     return (
         <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
@@ -52,10 +58,6 @@ const OrdersTableAll = () => {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            {/* {Object.keys(ordersData[0]).map((column) => (
-              <th key={column}>{column}</th>
-            ))} */}
-                            {/* Añade aquí las columnas adicionales que deseas mostrar */}
                             <th>Producto</th>
                             <th>Nombre y Apellido</th>
                             <th>Email</th>
@@ -67,22 +69,18 @@ const OrdersTableAll = () => {
                     </thead>
                     <tbody>
                         {ordersData.map((order) => {
-                            // let client = (order && order?.client !== null) ? JSON.parse(order.client) : null
                             return (
                                 <tr key={order.id}>
                                     <td>{order.type}</td>
                                     <td>
-                                        {order.client}
+                                        {(order.client === null && order?.name !== "null null" && order?.name !== "undefined undefined") ? order?.name : order.client?.nombre ? `${order.client?.nombre} ${order.client?.apellido}` : "anonimo"}
                                     </td>
                                     <td>
-                                         {/* {client.email} */}
-                                        {/* {order.email ||
-                                        (client && client.email) ? (order.email || (order.client && client.email)) : (<i>{order.email}</i>
-                                        )} */}
+                                         {(order.email === null && order?.client === null) ? "Sin email" : order.email === null ? order?.client?.email : order.email}
                                     </td>
                                     <td>{order.date}</td>
                                     <td>
-                                        {order.phone}{" "}
+                                        {(order.phone_number === null && order?.client === null) ? "sin numero" : order.phone_number === null ? order?.client?.telefono : order.phone_number}{" "}
                                         <a
                                             href={`https://wa.me/${order.phone}`}
                                         >
@@ -95,9 +93,7 @@ const OrdersTableAll = () => {
                                             <button
                                                 onClick={() =>
                                                     handleOpenModal(
-                                                        JSON.parse(
                                                             order.all_person
-                                                        )
                                                     )
                                                 }
                                             >
@@ -147,59 +143,29 @@ const OrdersTableAll = () => {
             )}
 
             {showModal && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={handleCloseModal}>
-                            &times;
-                        </span>
-                        {modalData && Object.keys(modalData).length > 0 ? (
+                <ModalPortal onClose={handleCloseModal} >
+                        {modalData && modalData.length > 0 ? (
                             <div className="row">
                                 <div className="col">
                                     <table className="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th></th>
-                                                <th></th>
+                                                <th>Nombre</th>
+                                                <th>Nacimiento</th>
+                                                <th>Sexo</th>
+                                                <th>Covertura</th>
+                                                <th>Provincia</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {Object.entries(modalData)
-                                                .slice(
-                                                    0,
-                                                    Math.ceil(
-                                                        Object.keys(modalData)
-                                                            .length / 2
-                                                    )
-                                                )
-                                                .map(([key, value]) => (
+                                            {modalData
+                                                .map((value, key) => (
                                                     <tr key={key}>
-                                                        <td>{key}</td>
-                                                        <td>{value}</td>
-                                                    </tr>
-                                                ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className="col">
-                                    <table className="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {Object.entries(modalData)
-                                                .slice(
-                                                    Math.ceil(
-                                                        Object.keys(modalData)
-                                                            .length / 2
-                                                    )
-                                                )
-                                                .map(([key, value]) => (
-                                                    <tr key={key}>
-                                                        <td>{key}</td>
-                                                        <td>{value}</td>
+                                                        <td>{value.name} {value.last_name}</td>
+                                                        <td>{value.birthdate}</td>
+                                                        <td>{value.sex}</td>
+                                                        <td>{value.covert}</td>
+                                                        <td>{value.province}</td>
                                                     </tr>
                                                 ))}
                                         </tbody>
@@ -209,25 +175,79 @@ const OrdersTableAll = () => {
                         ) : (
                             <></>
                         )}
-                    </div>
-                </div>
+                </ModalPortal>
             )}
 
-            <div className="pagination">
-                <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    Anterior
-                </button>
-                <span>Página {currentPage}</span>
-                <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={ordersData.length < resultsPerPage}
-                >
-                    Siguiente
-                </button>
-            </div>
+        {currentPage === 1 ? (
+          <button
+            style={{
+              color: "#0d6efd",
+              cursor: "pointer",
+              padding: 3,
+              cursor: "not-allowed",
+              border: "none",
+            }}
+            disabled
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >{`⪡`}</button>
+        ) : (
+          <button
+            style={{
+              color: "#0d6efd",
+              cursor: "pointer",
+              padding: 3,
+              cursor: "pointer",
+              border: "none",
+            }}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >{`⪡`}</button>
+        )}
+        <strong
+          style={{
+            color: "#0d6efd",
+            padding: 3,
+            border: "solid 1px #0d6efd",
+            margin: 10,
+          }}
+        >
+          {currentPage}
+        </strong>
+        <strong
+          style={{
+            color: "#0d6efd",
+            cursor: "pointer",
+            padding: 3,
+            border: "solid 1px #0d6efd",
+            margin: 10,
+          }}
+          onClick={() => setCurrentPage(arrayNoVacio.length)}
+        >
+          {arrayNoVacio.length}
+        </strong>
+        {currentPage === arrayNoVacio.length ? (
+          <button
+            style={{
+              color: "#0d6efd",
+              cursor: "pointer",
+              padding: 3,
+              cursor: "not-allowed",
+              border: "none",
+            }}
+            disabled
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >{`⪢`}</button>
+        ) : (
+          <button
+            style={{
+              color: "#0d6efd",
+              cursor: "pointer",
+              padding: 3,
+              cursor: "pointer",
+              border: "none",
+            }}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >{`⪢`}</button>
+        )}
         </div>
     );
 };
