@@ -101,8 +101,8 @@ const OrdersTableAll = () => {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>Clave</th>
-                  <th>Valor</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -119,8 +119,8 @@ const OrdersTableAll = () => {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>Clave</th>
-                  <th>Valor</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
