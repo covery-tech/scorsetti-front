@@ -2,7 +2,7 @@ import Input from "../../../../components/Input/Input";
 import StyledText from "../../../../components/StyledText/StyledText";
 import { use, validity } from "../info";
 
-export default function CarBasicInfo({
+export default function HomeBasicInfo({
   values,
   setShowErrors,
   setValues,
@@ -17,9 +17,9 @@ export default function CarBasicInfo({
 }) {
   return (
     <form>
-      {/* DATOS DEL VEHICULO */}
+      {/* DATOS DEL HOGAR */}
       <div className="basicInfo">
-        <StyledText className="form-title">Datos del vehículo</StyledText>
+        <StyledText className="form-title">Datos del hogar</StyledText>
         <div className="inputCouple d-flex">
           <Input
             placeholder={"Año *"}
