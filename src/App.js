@@ -17,7 +17,7 @@ import ProfilePas from "./Pages/ProfilePas/ProfilePas";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
-import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
+import OrdersTableAll from "./components/DashBoard/TableOrders/TableAllOrders";
 import Cars from "./Pages/Products/Cars/CarsContainer";
 import Motorcycles from "./Pages/Products/Motorcycles/MotorcyclesContainer";
 import { ProtectRouteLogin } from "./ProtectRouteLog";
@@ -105,6 +105,15 @@ function App() {
             />
             <Route
               path="/orders"
+              element={
+                <>
+                  <Navbar />
+                  <OrdersTableAll />
+                </>
+              }
+            />
+                        <Route
+              path="/orders/:userId"
               element={
                 <>
                   <Navbar />

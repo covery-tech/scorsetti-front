@@ -331,7 +331,7 @@ export function MyUser() {
                                                 className="mt-3 mb-2"
                                             >
                                                 Ruta ej.:
-                                                libra.emitiupoliza.com/ -{" "}
+                                                scorsetti.emitiupoliza.com/ -{" "}
                                                 <b>productor1</b> -
                                             </label>
                                             <Field

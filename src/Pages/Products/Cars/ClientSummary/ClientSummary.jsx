@@ -3,7 +3,9 @@ import StyledText from "../../../../components/StyledText/StyledText";
 import SummaryCard from "./SummaryCard";
 import "./index.css";
 
+
 export default function ClientSummary({ values, reloadPage }) {
+
   const {
     tipo,
     año,
@@ -28,6 +30,7 @@ export default function ClientSummary({ values, reloadPage }) {
   const sendCotization = async (e) => {
     e.preventDefault();
     const values = {
+
       tipo,
       description: {
         año,
@@ -55,7 +58,7 @@ export default function ClientSummary({ values, reloadPage }) {
       method: "POST",
       baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
       data: {
-        values
+        values        
       },
     };
     try {
