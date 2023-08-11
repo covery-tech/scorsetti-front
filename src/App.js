@@ -12,14 +12,17 @@ import { TableEditPas } from "./Pages/TableEditPas/TableEditPas";
 import { ProtectRoute } from "./ProtectRoute";
 import { MyUser } from "./Pages/MyUser/MyUser";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
-import { ProtectRoutePas } from "./ProtectRoutePas";
+// import { ProtectRoutePas } from "./ProtectRoutePas";
 import ProfilePas from "./Pages/ProfilePas/ProfilePas";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import OrdersTableAll from "./components/DashBoard/TableOrders/TableAll";
 import Cars from "./Pages/Products/Cars/CarsContainer";
+import Motorcycles from "./Pages/Products/Motorcycles/MotorcyclesContainer";
 import { ProtectRouteLogin } from "./ProtectRouteLog";
+import HomeProduct from "./Pages/Products/Home/HomeContainer";
+import PersonalAccidents from "./Pages/Products/PersonalAccidents/PersonalAccidentsContainer";
 
 function App() {
   return (
@@ -111,6 +114,7 @@ function App() {
             />
             {/* productos Scorsetti */}
 
+            {/* Auto */}
             <Route
               path="/producto/auto"
               element={
@@ -126,6 +130,66 @@ function App() {
                 <>
                   <Navbar />
                   <Cars />
+                </>
+              }
+            />
+
+            {/* Moto */}
+            <Route
+              path="/producto/moto"
+              element={
+                <>
+                  <Navbar />
+                  <Motorcycles />
+                </>
+              }
+            />
+            <Route
+              path="/usuario_pas/:userId/producto/moto"
+              element={
+                <>
+                  <Navbar />
+                  <Motorcycles />
+                </>
+              }
+            />
+
+            {/* Hogar */}
+            <Route
+              path="/producto/hogar"
+              element={
+                <>
+                  <Navbar />
+                  <HomeProduct />
+                </>
+              }
+            />
+            <Route
+              path="/usuario_pas/:userId/producto/hogar"
+              element={
+                <>
+                  <Navbar />
+                  <HomeProduct />
+                </>
+              }
+            />
+
+            {/* Accidente personal */}
+            <Route
+              path="/producto/ap"
+              element={
+                <>
+                  <Navbar />
+                  <PersonalAccidents />
+                </>
+              }
+            />
+            <Route
+              path="/usuario_pas/:userId/producto/ap"
+              element={
+                <>
+                  <Navbar />
+                  <PersonalAccidents />
                 </>
               }
             />

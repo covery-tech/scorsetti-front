@@ -2,7 +2,7 @@ import Input from "../../../../components/Input/Input";
 import StyledText from "../../../../components/StyledText/StyledText";
 import { use, validity } from "../info";
 
-export default function CarBasicInfo({
+export default function PersonalAccidentsBasicInfo({
   values,
   setShowErrors,
   setValues,
