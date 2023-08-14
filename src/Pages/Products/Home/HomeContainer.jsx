@@ -15,12 +15,16 @@ export default function HomeContainer() {
     //TipoProducto --------------
     tipo: "Hogar",
     //HomeBasicInfo --------------
-    año: "",
-    marca: "",
-    modelo: "",
-    cero_km: false,
-    tipo_uso: "",
-    vigencia: "",
+    tipo_de_vivienda: "",
+    uso: "",
+    ubicacion_del_riesgo: "",
+    metros_cuadrados: "",
+    material: "",
+    tipo_de_cubierta: "",
+    medidas_contra_fuego: [],
+    otras_medidas_contra_fuego:"",
+    medidas_contra_robos:[],
+    otras_medidas_contra_robos:"",
     //PersonalInfo --------------
     nombre: "",
     apellido: "",
