@@ -13,17 +13,13 @@ import { icon } from "./info";
 export default function PersonalAccidentsContainer() {
   const [values, setValues] = useState({
     //TipoProducto --------------
-    tipo: "AP",
+    tipo: "Accidentes Personales",
     //PersonalAccidentsBasicInfo --------------
-    año: "",
-    marca: "",
-    modelo: "",
-    cero_km: false,
-    tipo_uso: "",
-    vigencia: "",
-    //PersonalInfo --------------
     nombre: "",
     apellido: "",
+    tipo_documento: "",
+    documento: "",
+    //PersonalInfo --------------
     tipo_documento: "",
     numero_documento: "",
     sexo: "",

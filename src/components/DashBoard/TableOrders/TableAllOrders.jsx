@@ -53,7 +53,8 @@ const OrdersTableAll = () => {
     return (
         <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
             {ordersData && ordersData.length > 0 ? (
-                <table className="table table-striped">
+                <div className="table-responsive ">
+                    <table className="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -69,8 +70,8 @@ const OrdersTableAll = () => {
                         {ordersData.map((order) => {
                             return (
                                 <tr key={order.id}>
-                                    <td>{order.type}</td>
-                                    <td>
+                                    <td data-label="Producto">{order.type}</td>
+                                    <td data-label="Nombre y Apellido">
                                         {order.client === null &&
                                         order?.name !== "null null" &&
                                         order?.name !== "undefined undefined"
@@ -79,7 +80,7 @@ const OrdersTableAll = () => {
                                             ? `${order.client?.nombre} ${order.client?.apellido}`
                                             : "anonimo"}
                                     </td>
-                                    <td>
+                                    <td data-label="Email">
                                         {order.email === null &&
                                         order?.client === null
                                             ? "Sin email"
@@ -87,8 +88,8 @@ const OrdersTableAll = () => {
                                             ? order?.client?.email
                                             : order.email}
                                     </td>
-                                    <td>{order.date}</td>
-                                    <td>
+                                    <td data-label="Fecha">{order.date}</td>
+                                    <td data-label="Telefono">
                                         {order.phone_number === null &&
                                         order?.client === null
                                             ? "sin numero"
@@ -103,7 +104,7 @@ const OrdersTableAll = () => {
                                     </td>
                                     {order.all_person &&
                                     order.all_person !== null ? (
-                                        <td>
+                                        <td data-label="Acción">
                                             {Array.isArray(order.all_person) ? ( // Verifica si es un array
                                                 <button
                                                     onClick={() =>
@@ -127,9 +128,9 @@ const OrdersTableAll = () => {
                                             )}
                                         </td>
                                     ) : (
-                                        <th></th>
+                                        <td data-label="Acción"><p>Sin Acción</p></td>
                                     )}
-                                    <td>
+                                    <td data-label="Cotizado">
                                         {order?.cotizated === null ? (
                                             <p
                                                 style={{
@@ -164,6 +165,7 @@ const OrdersTableAll = () => {
                         })}
                     </tbody>
                 </table>
+                </div>
             ) : (
                 <></>
             )}
@@ -171,7 +173,7 @@ const OrdersTableAll = () => {
             {showModal && (
                 <ModalPortal onClose={handleCloseModal}>
                     {modalData && Object.keys(modalData).length > 0 ? (
-                        <div>
+                        <div className="table-responsive">
                             <table className="table table-striped">
                                 <thead>
                                     

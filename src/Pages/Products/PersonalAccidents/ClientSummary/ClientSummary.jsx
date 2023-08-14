@@ -6,21 +6,16 @@ import "./index.css";
 export default function ClientSummary({ values, reloadPage }) {
   const {
     tipo,
-    año,
-    marca,
-    modelo,
-    cero_km,
-    tipo_uso,
-    vigencia,
     nombre,
     apellido,
     tipo_documento,
-    numero_documento,
+    documento,
     sexo,
     fecha_nacimiento,
     domicilio,
     ciudad,
     provincia,
+    actividad,
     email,
     telefono,
   } = values;
@@ -30,23 +25,18 @@ export default function ClientSummary({ values, reloadPage }) {
     const values = {
       tipo,
       description: {
-        año,
-        marca,
-        modelo,
-        cero_km,
-        tipo_uso,
-        vigencia,
-      },
-      client: {
-        nombre,
-        apellido,
         tipo_documento,
-        numero_documento,
+        documento,
         sexo,
         fecha_nacimiento,
         domicilio,
         ciudad,
         provincia,
+        actividad
+      },
+      client: {
+        nombre,
+        apellido,
         email,
         telefono,
       },
@@ -102,17 +92,18 @@ export default function ClientSummary({ values, reloadPage }) {
       <div className="d-flex justify-content-center">
         <SummaryCard>
           <StyledText className="dark-text f-lighter">
-            Datos del vehículo
+            Datos del Cliente
           </StyledText>
           <hr />
           <div className="d-flex flex-column">
-            <h5>{año}</h5>
-            <h5>
-              {marca}, {modelo}
-            </h5>
-            <h5>Es 0km: {cero_km ? "Si" : "No"}</h5>
-            <h5>Úso {tipo_uso}</h5>
-            <h5>Vigencia {vigencia}</h5>
+            <h5>{nombre} {apellido}</h5>
+            <h5>{tipo_documento} {documento}</h5> 
+            <h5>{sexo}</h5>
+            <h5>{fecha_nacimiento}</h5>
+            <h5>{domicilio}</h5>
+            <h5>{provincia},</h5>
+            <h5>{ciudad}</h5>
+            <h5>{actividad}</h5>          
           </div>
         </SummaryCard>
         <SummaryCard>
@@ -121,17 +112,7 @@ export default function ClientSummary({ values, reloadPage }) {
           </StyledText>
           <hr />
           <div className="d-flex flex-column">
-            <h5>
-              {nombre}, {apellido}
-            </h5>
-            <h5>
-              {tipo_documento} {numero_documento}
-            </h5>
-            <h5>{sexo}</h5>
-            <h5>{fecha_nacimiento}</h5>
-            <h5>{domicilio}</h5>
-            <h5>{provincia},</h5>
-            <h5>{ciudad}</h5>
+
             <h5>
               {email}, {telefono}
             </h5>
