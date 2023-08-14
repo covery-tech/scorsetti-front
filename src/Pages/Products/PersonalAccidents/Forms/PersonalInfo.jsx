@@ -19,8 +19,8 @@ export default function PersonalInfo({
     <form>
       {/* DATOS DEL VEHICULO */}
       <div className="personalInfo">
-        <StyledText className="form-title">Datos personales</StyledText>
-        <div className="inputCouple d-flex">
+        <StyledText className="form-title">Datos de Contacto</StyledText>
+        {/* <div className="inputCouple d-flex">
           <Input
             placeholder={"Nombre *"}
             onChange={onChange}
@@ -55,8 +55,8 @@ export default function PersonalInfo({
             validate={Validate}
             instance={instance}
           />
-        </div>
-        <div className="inputCouple d-flex">
+        </div> */}
+{/* <        <div className="inputCouple d-flex">
           <Input
             placeholder={"Tipo de documento *"}
             onChange={onChange}
@@ -93,100 +93,8 @@ export default function PersonalInfo({
             validate={Validate}
             instance={instance}
           />
-        </div>
-        <div className="inputCouple d-flex">
-          <Input
-            placeholder={"Sexo *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              width: "50%",
-              marginRight: "0.5rem",
-            }}
-            type={"select"}
-            name={"sexo"}
-            options={sex}
-            validate={Validate}
-            instance={instance}
-          />
-          <Input
-            placeholder={"Fecha de nacimiento *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              width: "50%",
-            }}
-            type={"date"}
-            name={"fecha_nacimiento"}
-            validate={Validate}
-            instance={instance}
-          />
-        </div>
-        <div className="inputCouple d-flex">
-          <Input
-            placeholder={"Provincia *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            validate={Validate}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              marginRight: "0.5rem",
-              width: "33%",
-            }}
-            type={"text"}
-            name={"provincia"}
-            instance={instance}
-          />
-          <Input
-            placeholder={"Ciudad *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            validate={Validate}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              marginRight: "0.5rem",
-              width: "33%",
-            }}
-            type={"text"}
-            name={"ciudad"}
-            instance={instance}
-          />
-          <Input
-            placeholder={"Domicilio *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            validate={Validate}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              width: "33%",
-            }}
-            type={"text"}
-            name={"domicilio"}
-            instance={instance}
-          />
-        </div>
+        </div>> */}
+
         <div className="inputCouple d-flex">
           <Input
             placeholder={"Email *"}

@@ -2,38 +2,18 @@ export default function Validate(values, instance) {
   let errors = {};
   const errorMsg = 'Campo requerido.'
   if(instance === 1) {
-    if(!values.año) {
+    if(!values.nombre) {
       errors.año = errorMsg;
     }
-    if(!values.marca) {
+    if(!values.apellido) {
       errors.marca = errorMsg;
     }
-    if(!values.modelo) {
+    if(!values.tipo_documento) {
       errors.modelo = errorMsg;
     }
-    if(!values.tipo_uso) {
+    if(!values.documento) {
       errors.tipo_uso = errorMsg;
-    }
-    if(!values.vigencia) {
-      errors.vigencia = errorMsg;
-    }
-  }
-  if(instance === 2) {
-    if(!values.nombre) {
-      errors.nombre = errorMsg;
-    }
-    if(!values.apellido) {
-      errors.apellido = errorMsg;
-    }
-    if(!values.tipo_documento) {
-      errors.tipo_documento = errorMsg;
-    }
-    if(!values.numero_documento) {
-      errors.numero_documento = errorMsg;
-    }
-    if(!values.sexo) {
-      errors.sexo = errorMsg;
-    }
+    }    
     if(!values.fecha_nacimiento) {
       errors.fecha_nacimiento = errorMsg;
     }
@@ -46,6 +26,12 @@ export default function Validate(values, instance) {
     if(!values.provincia) {
       errors.provincia = errorMsg;
     }
+    if(!values.actividad) {
+      errors.actividad = errorMsg;
+    }
+  }
+  if(instance === 2) {
+
     if(!values.email) {
       errors.email = errorMsg;
     }

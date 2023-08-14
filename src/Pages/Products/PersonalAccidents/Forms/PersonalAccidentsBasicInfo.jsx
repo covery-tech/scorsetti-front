@@ -1,100 +1,216 @@
 import Input from "../../../../components/Input/Input";
 import StyledText from "../../../../components/StyledText/StyledText";
-import { use, validity } from "../info";
+import { docTypes, use, validity, tipo_documento, sex } from "../info";
 
 export default function PersonalAccidentsBasicInfo({
-  values,
-  setShowErrors,
-  setValues,
-  errors,
-  onChange,
-  setErrors,
-  showErrors,
-  Validate,
-  nextInstance,
-  instance,
-  setInstance,
+    values,
+    setShowErrors,
+    setValues,
+    errors,
+    onChange,
+    setErrors,
+    showErrors,
+    Validate,
+    nextInstance,
+    instance,
+    setInstance,
 }) {
-  return (
-    <form>
-      {/* DATOS DEL VEHICULO */}
-      <div className="basicInfo">
-        <StyledText className="form-title">Datos del vehículo</StyledText>
-        <div className="inputCouple d-flex">
-          <Input
-            placeholder={"Año *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginRight: "0.5rem",
-              marginBottom: "2rem",
-            }}
-            type={"number"}
-            name={"año"}
-            validate={Validate}
-            instance={instance}
-          />
-          <Input
-            placeholder={"Tipo de úso *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              width: "50%",
-            }}
-            type={"select"}
-            name={"tipo_uso"}
-            options={use}
-            validate={Validate}
-            instance={instance}
-          />
-        </div>
-        <div className="inputCouple d-flex">
-          <Input
-            placeholder={"Marca *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginRight: "0.5rem",
-              marginBottom: "2rem",
-              width: "50%",
-            }}
-            type={"text"}
-            name={"marca"}
-            validate={Validate}
-            instance={instance}
-          />
-          <Input
-            placeholder={"Modelo *"}
-            onChange={onChange}
-            values={values}
-            setValues={setValues}
-            errors={errors}
-            setErrors={setErrors}
-            showErrors={showErrors}
-            styles={{
-              marginBottom: "2rem",
-              width: "50%",
-            }}
-            type={"text"}
-            name={"modelo"}
-            validate={Validate}
-            instance={instance}
-          />
-        </div>
-        <div className="inputCouple d-flex">
+    return (
+        <form>
+            {/* DATOS DEL VEHICULO */}
+            <div className="basicInfo">
+                <StyledText className="form-title">
+                    Datos del vehículo
+                </StyledText>
+                <div className="inputCouple d-flex">
+                    <Input
+                        placeholder={"Nombre"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginRight: "0.5rem",
+                            marginBottom: "2rem",
+                        }}
+                        type={"text"}
+                        name={"nombre"}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                    <Input
+                        placeholder={"Apellido"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            width: "50%",
+                        }}
+                        type={"text"}
+                        name={"apellido"}
+                        options={use}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                </div>
+                <div className="inputCouple d-flex">
+                    <Input
+                        placeholder={"Tipo *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginRight: "0.5rem",
+                            marginBottom: "2rem",
+                            width: "50%",
+                        }}
+                        type={"select"}
+                        name={"tipo_documento"}
+                        options={tipo_documento}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                    <Input
+                        placeholder={"Documento *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            width: "50%",
+                        }}
+                        type={"text"}
+                        name={"documento"}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                </div>
+                <div className="inputCouple d-flex">
+                    <Input
+                        placeholder={"Sexo *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            width: "50%",
+                            marginRight: "0.5rem",
+                        }}
+                        type={"select"}
+                        name={"sexo"}
+                        options={sex}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                    <Input
+                        placeholder={"Fecha de nacimiento *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            width: "50%",
+                        }}
+                        type={"date"}
+                        name={"fecha_nacimiento"}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                </div>
+                <div className="inputCouple d-flex">
+                    <Input
+                        placeholder={"Provincia *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        validate={Validate}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            marginRight: "0.5rem",
+                            width: "33%",
+                        }}
+                        type={"text"}
+                        name={"provincia"}
+                        instance={instance}
+                    />
+                    <Input
+                        placeholder={"Ciudad *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        validate={Validate}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            marginRight: "0.5rem",
+                            width: "33%",
+                        }}
+                        type={"text"}
+                        name={"ciudad"}
+                        instance={instance}
+                    />
+                    <Input
+                        placeholder={"Domicilio *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        validate={Validate}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            width: "33%",
+                        }}
+                        type={"text"}
+                        name={"domicilio"}
+                        instance={instance}
+                    />
+                </div>
+                <div className="inputCouple d-flex">
+                    <Input
+                        placeholder={"Actividad *"}
+                        onChange={onChange}
+                        values={values}
+                        setValues={setValues}
+                        errors={errors}
+                        setErrors={setErrors}
+                        showErrors={showErrors}
+                        styles={{
+                            marginBottom: "2rem",
+                            width: "100%",
+                        }}
+                        type={"text"}
+                        name={"actividad"}
+                        validate={Validate}
+                        instance={instance}
+                    />
+                </div>
+
+                {/* <div className="inputCouple d-flex">
           <Input
             placeholder={"Vigencia *"}
             onChange={onChange}
@@ -114,8 +230,8 @@ export default function PersonalAccidentsBasicInfo({
             validate={Validate}
             instance={instance}
           />
-        </div>
-        <div className="inputCouple d-flex">
+        </div> */}
+                {/* <div className="inputCouple d-flex">
           <Input
             placeholder={"0 km"}
             onChange={onChange}
@@ -133,23 +249,23 @@ export default function PersonalAccidentsBasicInfo({
             validate={Validate}
             instance={instance}
           />
-        </div>
-      </div>
-      <button
-        className="button main-button"
-        onClick={(e) =>
-          nextInstance({
-            e,
-            errors,
-            values,
-            setShowErrors,
-            setInstance,
-            instance,
-          })
-        }
-      >
-        <b>Siguiente</b>
-      </button>
-    </form>
-  );
+        </div> */}
+            </div>
+            <button
+                className="button main-button"
+                onClick={(e) =>
+                    nextInstance({
+                        e,
+                        errors,
+                        values,
+                        setShowErrors,
+                        setInstance,
+                        instance,
+                    })
+                }
+            >
+                <b>Siguiente</b>
+            </button>
+        </form>
+    );
 }
