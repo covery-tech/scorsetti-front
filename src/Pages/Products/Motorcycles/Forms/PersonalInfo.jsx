@@ -48,7 +48,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"text"}
             name={"apellido"}
@@ -68,7 +67,6 @@ export default function PersonalInfo({
             styles={{
               marginRight: "0.5rem",
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"select"}
             options={docTypes}
@@ -86,7 +84,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"number"}
             name={"numero_documento"}
@@ -105,7 +102,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
               marginRight: "0.5rem",
             }}
             type={"select"}
@@ -124,7 +120,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"date"}
             name={"fecha_nacimiento"}
@@ -145,7 +140,6 @@ export default function PersonalInfo({
             styles={{
               marginBottom: "2rem",
               marginRight: "0.5rem",
-              width: "33%",
             }}
             type={"text"}
             name={"provincia"}
@@ -163,7 +157,6 @@ export default function PersonalInfo({
             styles={{
               marginBottom: "2rem",
               marginRight: "0.5rem",
-              width: "33%",
             }}
             type={"text"}
             name={"ciudad"}
@@ -180,7 +173,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "33%",
             }}
             type={"text"}
             name={"domicilio"}
@@ -199,7 +191,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
               marginRight: "0.5rem",
             }}
             type={"text"}
@@ -217,7 +208,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"number"}
             name={"telefono"}

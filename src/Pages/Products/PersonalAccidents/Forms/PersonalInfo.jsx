@@ -56,7 +56,7 @@ export default function PersonalInfo({
             instance={instance}
           />
         </div> */}
-{/* <        <div className="inputCouple d-flex">
+        {/* <        <div className="inputCouple d-flex">
           <Input
             placeholder={"Tipo de documento *"}
             onChange={onChange}
@@ -107,7 +107,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
               marginRight: "0.5rem",
             }}
             type={"text"}
@@ -125,7 +124,6 @@ export default function PersonalInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"number"}
             name={"telefono"}
