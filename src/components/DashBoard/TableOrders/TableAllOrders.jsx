@@ -49,11 +49,45 @@ const OrdersTableAll = () => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+    
+    const setOrders = ()=>{
+        axios
+        .get(
+            `${process.env.REACT_APP_URI_API}/product/getAllOrdersByPas/${userId}`,
+            {
+                params: {
+                    page: currentPage,
+                },
+            }
+        )
+        .then((response) => {
+            let data = response.data;
+            setCuantityPage(Math.ceil(data.pages / 7));
+            setOrdersData(data.orders);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
+
+    const changeStatusOrder = (id, cotizated) =>{
+        axios
+            .put(
+                `${process.env.REACT_APP_URI_API}/product/updateCotiStatus/${id}/${cotizated}`
+            )
+            .then((response) =>                
+                setOrders()
+            )
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
 
     return (
-        <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
+        <div className="container table-data bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
             {ordersData && ordersData.length > 0 ? (
-                <div className="table-responsive ">
+                <div className="table-responsive responsive ">
                     <table className="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -107,6 +141,7 @@ const OrdersTableAll = () => {
                                         <td data-label="Acción">
                                             {Array.isArray(order.all_person) ? ( // Verifica si es un array
                                                 <button
+                                                className="btn btn-sm btn-primary"
                                                     onClick={() =>
                                                         handleOpenModal(
                                                             order.all_person
@@ -116,7 +151,7 @@ const OrdersTableAll = () => {
                                                     Datos
                                                 </button>
                                             ) : (
-                                                <button
+                                                <button className="btn btn-sm btn-primary"
                                                     onClick={() =>
                                                         handleOpenModal(
                                                             order.all_person
@@ -131,8 +166,28 @@ const OrdersTableAll = () => {
                                         <td data-label="Acción"><p>Sin Acción</p></td>
                                     )}
                                     <td data-label="Cotizado">
-                                        {order?.cotizated === null ? (
-                                            <p
+                                        {user.type === 'pas' ? (order?.cotizated === null ? (
+                                            <p                                               
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "12px",
+                                                }}
+                                            >
+                                                No se cotiza
+                                            </p>
+                                        ) : order?.cotizated === 0 ? (
+                                            <button onClick={()=>changeStatusOrder(order?.id, order.cotizated)} className="btn btn-sm btn-danger"
+                                            >
+                                                Sin cotizar
+                                            </button>
+                                        ) : (
+                                            <button onClick={()=>changeStatusOrder(order?.id, order.cotizated)}
+                                            className="btn btn-sm btn-success"
+                                            >
+                                                Cotizado
+                                            </button>
+                                        ) ) : order?.cotizated === null ? (
+                                            <p 
                                                 style={{
                                                     color: "red",
                                                     fontSize: "12px",
@@ -158,7 +213,7 @@ const OrdersTableAll = () => {
                                             >
                                                 Cotizado
                                             </b>
-                                        )}
+                                        )} 
                                     </td>
                                 </tr>
                             );
@@ -175,8 +230,7 @@ const OrdersTableAll = () => {
                     {modalData && Object.keys(modalData).length > 0 ? (
                         <div className="table-responsive">
                             <table className="table table-striped">
-                                <thead>
-                                    
+                                <thead>                                    
                                         {Array.isArray(modalData) ? (
                                             <tr>
                                                 {Object.keys(modalData[0]).map(
@@ -189,7 +243,7 @@ const OrdersTableAll = () => {
                                             <tr>
                                                 {Object.keys(modalData).map(
                                                     (key) => (
-                                                        <th key={key}>{key}</th>
+                                                        <th key={key} >{key}</th>
                                                     )
                                                 )}
                                             </tr>
@@ -203,7 +257,7 @@ const OrdersTableAll = () => {
                                                 <tr key={i}>
                                                     {Object.values(obj).map(
                                                         (value, index) => (
-                                                            <td key={index}>
+                                                            <td key={index} data-label={i}>
                                                                 {value}
                                                             </td>
                                                         )
