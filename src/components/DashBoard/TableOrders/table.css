@@ -28,28 +28,31 @@
 }
 
 @media (max-width: 767px) {
-    .table-responsive {
+    .container{
+        width: 60vw !important;
+    }
+    .responsive{
         display: block;
-        width: 100%;
+        width: 100% !important;
     }
 
-    .table {
-        display: block;
-        width: 100%;
+    .responsive .table {
+        
+        width: 100% !important;
     }
 
-    .table th,
-    .table td {
+    .responsive .table th,
+    .responsive .table td {
         display: block;
-        width: 80%;
+        width: 100%;
         text-align: left;
     }
 
-    .table thead {
+    .responsive .table thead {
         display: none;
     }
 
-    .table tbody td:before {
+    .responsive .table tbody td:before {
         content: attr(data-label);
         font-weight: bold;
         display: block;

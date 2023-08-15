@@ -24,3 +24,8 @@
     z-index: 200;
 
 }
+@media (max-width: 767px){
+    .modal-contenido{
+        max-width: 90vw !important;
+    }
+}
