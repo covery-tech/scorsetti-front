@@ -28,9 +28,6 @@
 }
 
 @media (max-width: 767px) {
-    .container {
-        width: 60vw !important;
-    }
     .table-responsive {
         display: block;
         width: 100%;

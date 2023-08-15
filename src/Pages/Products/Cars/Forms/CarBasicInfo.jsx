@@ -48,7 +48,6 @@ export default function CarBasicInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"select"}
             name={"tipo_uso"}
@@ -69,7 +68,6 @@ export default function CarBasicInfo({
             styles={{
               marginRight: "0.5rem",
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"text"}
             name={"marca"}
@@ -86,7 +84,6 @@ export default function CarBasicInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
             }}
             type={"text"}
             name={"modelo"}
@@ -105,8 +102,6 @@ export default function CarBasicInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "50%",
-              marginRight: "0.5rem",
             }}
             type={"select"}
             name={"vigencia"}
