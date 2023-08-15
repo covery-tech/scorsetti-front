@@ -7,15 +7,15 @@ import "./dash.css"
 import useUser from '../../components/hooks/UseUser'
 import { TableClient } from '../../components/DashBoard/TableClient/TableClient'
 import { TableProducts } from '../../components/DashBoard/TableProducts/TableProducts'
-import { TableOrders } from '../../components/DashBoard/TableOrders/TableOrders'
 import axios from 'axios'
 import { TableNotis } from '../../components/DashBoard/TableNotis/TableNotis'
 import { TablePas } from '../TablePas/Table'
 import {TableSearchUser} from "../../components/Tables/TableSearchUser"
 import { MyUser } from '../MyUser/MyUser'
 import OrdersTableAll from '../../components/DashBoard/TableOrders/TableAllOrders'
+import OrdersTableAllClient from '../../components/DashBoard/TableOrders/TableAllOrdersClient'
 export const Dashboard = () => {
-  const {site,user,jwt} = useUser()
+  const {site,jwt} = useUser()
   const [clients,setClients] = useState()
   const [orders,setOrders] = useState()
   const [amount,setAmount] = useState()
@@ -90,7 +90,7 @@ export const Dashboard = () => {
             : site === "profile" ?
             <MyUser/>
             : site === "compras" ?
-              <></>
+            <OrdersTableAllClient/>
             : <></>
           }
           

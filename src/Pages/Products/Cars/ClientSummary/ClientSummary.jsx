@@ -2,10 +2,11 @@ import axios from "axios";
 import StyledText from "../../../../components/StyledText/StyledText";
 import SummaryCard from "./SummaryCard";
 import "./index.css";
+import useUser from "../../../../components/hooks/UseUser";
 
 
 export default function ClientSummary({ values, reloadPage }) {
-
+  const {user, pas} = useUser()
   const {
     tipo,
     año,
@@ -53,16 +54,22 @@ export default function ClientSummary({ values, reloadPage }) {
         email,
         telefono,
       },
+      users_id: user ? user.id : null
     };
+    console.log(pas)
     const sendCotization = {
       method: "POST",
       baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
+      params: {
+        pas_id:pas.id
+      },
       data: {
         values        
       },
     };
     try {
       const res = await axios(sendCotization);
+      console.log("hola")
       if (res) {
         alert("Tu consulta se enviará a tu email!");
       }
@@ -95,7 +102,7 @@ export default function ClientSummary({ values, reloadPage }) {
     } catch (err) {
       console.warn(err);
     }
-  };
+   };
 
   return (
     <div className="client-summary d-flex align-items-center flex-column mb-3 mt-4">
