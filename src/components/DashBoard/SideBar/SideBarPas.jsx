@@ -25,15 +25,15 @@ export const SideBarPas = ({logout,updateSite}) => {
                 <p className='centerP'>Listas</p>
                     <li onClick={()=>updateSite("clientes")}>
                         <FontAwesomeIcon icon={faUser} />
-                        Clientes
+                        <div className='text'>Clientes</div>
                     </li>
                 <li  onClick={()=>updateSite("productos")}>
                     <FontAwesomeIcon icon={faShop} />
-                    Productos
+                    <div className='text'>Productos</div>
                 </li>
                 <li  onClick={()=>updateSite("ordenes")}>
                         <FontAwesomeIcon icon={faCreditCard} />
-                        Ordenes
+                        <div className='text'>Ordenes</div>
                 </li>
                 <p className='centerP'>Útil</p>
                 <li  onClick={()=>updateSite("notificaciones")} style={{position:"relative"}}>
@@ -43,20 +43,20 @@ export const SideBarPas = ({logout,updateSite}) => {
                     }
                     
                     <FontAwesomeIcon icon={faBell} />
-                    Notificaciones
+                    <div className='text'>Notificaciones</div>
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faSignal} />
-                    Estadísticas
+                    <div className='text'>Estadísticas</div>
                 </li>
                 <p className='centerP'>Usuario</p>
                     <li onClick={() => updateSite("profile")}>
                         <FontAwesomeIcon icon={faCircleUser} />
-                        Perfil
+                        <div className='text'>Perfil</div>
                     </li>
                 <li onClick={logout}>
                     <FontAwesomeIcon icon={faArrowRightFromBracket}/>
-                    Cerrar Sesión
+                    <div className='text'>Cerrar Sesión</div>
                 </li>
             </ul>
     </>
