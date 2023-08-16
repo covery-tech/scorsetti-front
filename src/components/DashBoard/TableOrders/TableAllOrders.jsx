@@ -87,7 +87,7 @@ const OrdersTableAll = () => {
     return (
         <div className="container table-data bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
             {ordersData && ordersData.length > 0 ? (
-                <div className="table-responsive responsive ">
+                <div className="table-responsive responsive pt-3">
                     <table className="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -296,12 +296,11 @@ const OrdersTableAll = () => {
                     )}
                 </ModalPortal>
             )}
-
+            <div className="pb-3">
             {currentPage === 1 ? (
                 <button
                     style={{
-                        color: "#0d6efd",
-                        cursor: "pointer",
+                        color: "#0d6efd",                        
                         padding: 3,
                         cursor: "not-allowed",
                         border: "none",
@@ -314,8 +313,7 @@ const OrdersTableAll = () => {
                     style={{
                         color: "#0d6efd",
                         cursor: "pointer",
-                        padding: 3,
-                        cursor: "pointer",
+                        padding: 3,                        
                         border: "none",
                     }}
                     onClick={() => setCurrentPage((prev) => prev - 1)}
@@ -346,8 +344,7 @@ const OrdersTableAll = () => {
             {currentPage === arrayNoVacio.length ? (
                 <button
                     style={{
-                        color: "#0d6efd",
-                        cursor: "pointer",
+                        color: "#0d6efd",                        
                         padding: 3,
                         cursor: "not-allowed",
                         border: "none",
@@ -360,13 +357,13 @@ const OrdersTableAll = () => {
                     style={{
                         color: "#0d6efd",
                         cursor: "pointer",
-                        padding: 3,
-                        cursor: "pointer",
+                        padding: 3,                        
                         border: "none",
                     }}
                     onClick={() => setCurrentPage((prev) => prev + 1)}
                 >{`⪢`}</button>
             )}
+            </div>
         </div>
     );
 };
