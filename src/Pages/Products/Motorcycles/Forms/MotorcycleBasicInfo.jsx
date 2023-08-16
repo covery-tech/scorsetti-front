@@ -125,7 +125,7 @@ export default function MotorcycleBasicInfo({
               width: "20%",
             }}
             type={"checkbox"}
-            name={"cerokm"}
+            name={"cero_km"}
             validate={Validate}
             instance={instance}
           />

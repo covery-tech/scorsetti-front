@@ -124,7 +124,7 @@ export default function CarBasicInfo({
               width: "20%",
             }}
             type={"checkbox"}
-            name={"cerokm"}
+            name={"cero_km"}
             validate={Validate}
             instance={instance}
           />
