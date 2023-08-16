@@ -32,7 +32,7 @@ export const SideBarClient = ({ logout, updateSite }) => {
         <p className="centerP">Listas</p>
         <li onClick={() => updateSite("compras")}>
           <FontAwesomeIcon icon={faShop} />
-          Mi billetera
+          <div className='text'>Mi billetera</div>
         </li>
         <p className="centerP">Útil</p>
         <li
@@ -59,7 +59,7 @@ export const SideBarClient = ({ logout, updateSite }) => {
             <></>
           )}
           <FontAwesomeIcon icon={faBell} />
-          Notificaciones
+          <div className='text'>Notificaciones</div>
         </li>
         <p className="centerP">Usuario</p>
 
@@ -68,12 +68,12 @@ export const SideBarClient = ({ logout, updateSite }) => {
           style={{ position: "relative" }}
         >
           <FontAwesomeIcon icon={faCircleUser} />
-          Perfil
+          <div className='text'>Perfil</div>
         </li>
 
         <li onClick={logout}>
           <FontAwesomeIcon icon={faArrowRightFromBracket} />
-          Cerrar Sesión
+          <div className='text'>Cerrar Sesión</div>
         </li>
       </ul>
     </>

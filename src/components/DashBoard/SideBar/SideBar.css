@@ -75,5 +75,18 @@
 }
 
 .center ul li:hover {
-    background-color: #fff3e8;
+    background-color: #0cb1f6;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .sidebar{
+        width: 40%;        
+    }
+    .text {
+        display: none;
+    }
+    .centerP{
+        padding: 0 10px 0 0 ;
+    }
 }
