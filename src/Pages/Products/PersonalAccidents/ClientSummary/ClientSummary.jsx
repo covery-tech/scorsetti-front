@@ -2,8 +2,10 @@ import axios from "axios";
 import StyledText from "../../../../components/StyledText/StyledText";
 import SummaryCard from "./SummaryCard";
 import "./index.css";
+import useUser from "../../../../components/hooks/UseUser";
 
 export default function ClientSummary({ values, reloadPage }) {
+  const {user, pas} = useUser()
   const {
     tipo,
     nombre,
@@ -40,11 +42,16 @@ export default function ClientSummary({ values, reloadPage }) {
         email,
         telefono,
       },
+      users_id: user ? user.id : null
     };
     const sendCotization = {
       method: "POST",
       baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
+      params: {
+        pas_id:pas.id
+      },
       data: {
+        
         values
       },
     };
