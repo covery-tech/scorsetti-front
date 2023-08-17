@@ -7,7 +7,7 @@ export default function ProductCard({ props }) {
       <div className="h-50 pt2 flex justify-center items-center">
         <FontAwesomeIcon icon={props?.img} />
       </div>
-      <p className="f6-m f7 tc ph2">{props?.title}</p>
+      <p className="f6-m f6-l f7 tc ph2">{props?.title}</p>
     </div>
   );
 }
