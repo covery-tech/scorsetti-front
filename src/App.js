@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import OptionsMenu from "./Pages/OptionsMenu/OptionsMenu";
@@ -12,7 +11,6 @@ import { TableEditPas } from "./Pages/TableEditPas/TableEditPas";
 import { ProtectRoute } from "./ProtectRoute";
 import { MyUser } from "./Pages/MyUser/MyUser";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
-// import { ProtectRoutePas } from "./ProtectRoutePas";
 import ProfilePas from "./Pages/ProfilePas/ProfilePas";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
