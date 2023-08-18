@@ -60,7 +60,7 @@ export default function SectionProducts({ userId }) {
   };
 
   return (
-    <div className="w-75-m w-75-l w-90 center bg-white pa3">
+    <div className="w-75-m w-75-l w-90 center bg-white pa3 mv5">
       <PrincipalText />
       <div className="flex flex-wrap justify-center pb3">
         <span
