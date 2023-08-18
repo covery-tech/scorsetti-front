@@ -9,19 +9,7 @@ import "./sectionProducts.css";
 export default function SectionProducts({ userId }) {
   const [userPas, setUserPas] = useState([]);
   useEffect(() => {
-    if (userId === undefined) {
-      const config = {
-        method: "GET",
-        baseURL: process.env.REACT_APP_URI_API + `/product/getProductCard`,
-      };
-      axios(config).then((res) => {
-        if (res.data) {
-          setUserPas(res.data);
-        }
-      }).catch((err)=>{
-        console.error(err);
-      });
-    } else {
+    if (!userId) {
       const config2 = {
         method: "GET",
         baseURL: process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,

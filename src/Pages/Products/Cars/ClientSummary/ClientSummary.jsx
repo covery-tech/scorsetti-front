@@ -31,7 +31,6 @@ export default function ClientSummary({ values, reloadPage }) {
   const sendCotization = async (e) => {
     e.preventDefault();
     const values = {
-
       tipo,
       description: {
         año,
@@ -56,20 +55,15 @@ export default function ClientSummary({ values, reloadPage }) {
       },
       users_id: user ? user.id : null
     };
-    console.log(pas)
     const sendCotization = {
       method: "POST",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
-      params: {
-        pas_id:pas.id
-      },
+      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas ? pas.id : null}`,
       data: {
         values        
       },
     };
     try {
       const res = await axios(sendCotization);
-      console.log("hola")
       if (res) {
         alert("Tu consulta se enviará a tu email!");
       }
