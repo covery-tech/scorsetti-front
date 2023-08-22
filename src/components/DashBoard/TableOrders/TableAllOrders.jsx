@@ -143,17 +143,17 @@ const OrdersTableAll = () => {
                                                 <Icon icon="ri:whatsapp-line" />
                                             </a>
                                         </td>
-                                        {order?.all_person || order?.description &&
-                                        order?.all_person || order?.description !== null ? (
+                                        {order.all_person &&
+                                        order.all_person !== null ? (
                                             <td data-label="Acción">
                                                 {Array.isArray(
-                                                    order?.all_person || order?.description
+                                                    order.all_person
                                                 ) ? ( // Verifica si es un array
                                                     <button
                                                         className="btn btn-sm btn-primary"
                                                         onClick={() =>
                                                             handleOpenModal(
-                                                                order?.all_person || order?.description
+                                                                order.all_person
                                                             )
                                                         }
                                                     >
@@ -164,7 +164,7 @@ const OrdersTableAll = () => {
                                                         className="btn btn-sm btn-primary"
                                                         onClick={() =>
                                                             handleOpenModal(
-                                                                order.description
+                                                                order.all_person
                                                             )
                                                         }
                                                     >
@@ -178,7 +178,7 @@ const OrdersTableAll = () => {
                                             </td>
                                         )}
                                         <td data-label="Cotizado">
-                                            {user.type === "admin" || user.type === "superadmin" ? (
+                                            {user.type === "pas" ? (
                                                 order?.cotizated === null ? (
                                                     <p
                                                         style={{

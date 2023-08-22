@@ -56,10 +56,13 @@ export default function ClientSummary({ values, reloadPage }) {
       },
       users_id: user ? user.id : null
     };
-    console.log(pas.id)
+    console.log(pas)
     const sendCotization = {
       method: "POST",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas.id}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
+      params: {
+        pas_id:pas.id
+      },
       data: {
         values        
       },
