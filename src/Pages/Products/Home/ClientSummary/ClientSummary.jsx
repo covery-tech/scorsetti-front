@@ -77,10 +77,7 @@ export default function ClientSummary({ values, reloadPage }) {
         console.log(values.description.medidas_contra_fuego);
         const sendCotization = {
             method: "POST",
-            baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
-            params: {
-                pas_id:pas.id
-              },
+            baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas.id}`,
             data: {
                 values: {
                     ...values,
