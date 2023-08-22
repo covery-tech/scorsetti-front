@@ -55,7 +55,7 @@ export default function SectionProducts({ userId }) {
   }
 
   return (
-    <div className="w-75-l w-90 center bg-white pa3">
+    <div className="w-75-m w-75-l w-90 center bg-white pa3">
       <PrincipalText />
       <ul className="item-selector-content px-0">
         <li className="item-selector">
