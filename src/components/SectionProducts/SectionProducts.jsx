@@ -16,88 +16,77 @@ export default function SectionProducts({ userId }) {
         method: "GET",
         baseURL: process.env.REACT_APP_URI_API + `/product/getProductCard`,
       };
-      axios(config)
-        .then((res) => {
-          if (res.data) {
-            setUserPas(res.data);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      axios(config).then((res) => {
+        if (res.data) {
+          setUserPas(res.data);
+        }
+      }).catch((err) => {
+        console.error(err);
+      });
     } else {
       const config2 = {
         method: "GET",
-        baseURL:
-          process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
+        baseURL: process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
       };
-      axios(config2)
-        .then((res) => {
-          getRoute(userId);
-          setUserPas(res.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      axios(config2).then((res) => {
+        getRoute(userId)
+        setUserPas(res.data);
+      }).catch((err) => {
+        console.error(err);
+      });
     }
   }, [userId]);
-
   // SWITCH
-  const [clientSection, setClientSection] = useState("Persona");
+  const [clientSection, setClientSection] = useState('Persona');
   const changeClient = () => {
-    clientSection === "Persona"
-      ? setClientSection("Empresa")
-      : setClientSection("Persona");
-  };
-
+    (clientSection === 'Persona')
+      ? setClientSection('Empresa')
+      : setClientSection('Persona');
+  }
+  const changeClientToEmpresa = () => (clientSection === 'Persona') && setClientSection('Empresa')
+  const changeClientToPersona = () => (clientSection === 'Empresa') && setClientSection('Persona')
   // PUBLICACIÓN DE CARD PRODUCT
-  const ProductCardComponent = (p, i) => {
+  const returnCardProduct = (p, i) => {
     return (
-      <Link key={i} to={`/producto/${p}`} className="no-underline">
+      <Link key={i} to={`/producto/${p}`} className="aProducts">
         <ProductCard props={infoProducts[p]} />
       </Link>
     );
-  };
+  }
 
   return (
-    <div className="w-75-m w-75-l w-90 center bg-white pa3 mv5">
+    <div id="SectionProducts-container" className="container bg-white mt-5 p-5">
       <PrincipalText />
-      <div className="flex flex-wrap justify-center pb3">
-        <span
-          className={`item-selector pv2 ph3 ${
-            clientSection === "Persona" && "selected"
-          }`}
-          onClick={changeClient}
-        >
-          Persona
-        </span>
-        <span
-          className={`item-selector pa2 ${
-            clientSection === "Empresa" && "selected"
-          }`}
-          onClick={changeClient}
-        >
-          Empresa
-        </span>
-      </div>
-      <div className="flex flex-wrap justify-center">
-        {userId ? (
-          <>
-            {userPas.products?.map((p, i) => {
-              if (clientSection === infoProducts[p]?.client) {
-                return ProductCardComponent(p, i);
-              }
-            })}
-          </>
-        ) : (
-          <>
-            {listProducts.map((p, i) => {
-              if (clientSection === infoProducts[p].client) {
-                return ProductCardComponent(p, i);
-              }
-            })}
-          </>
-        )}
+      <ul className="item-selector-content px-0">
+        <li className="item-selector">
+          <a className={`buttonChange ${(clientSection==="Persona")&& 'selected'}`} onClick={changeClientToPersona}>Persona</a>
+        </li>
+        <li className="item-selector">
+          <a className={`buttonChange ${(clientSection==="Empresa")&& 'selected'}`} onClick={changeClientToEmpresa}>Empresa</a>
+        </li>
+      </ul>
+      <div id="CadsPanelSelected" className="row justify-content-around">
+        {
+          userId ? (
+            <div className="content">
+              {userPas.products?.map((p,i) => {
+
+                if(clientSection === infoProducts[p]?.client){
+                    return <Link to={'producto/' + p} key={i}>
+                    <ProductCard props={infoProducts[p]} />
+                </Link>
+                }
+})}
+            </div>
+          ) : (
+            <div className="content">
+              {listProducts.map((p, i) => {
+                if (clientSection === infoProducts[p].client) {
+                  return returnCardProduct(p, i);
+                }
+              })}
+            </div>
+          )}
       </div>
     </div>
   );

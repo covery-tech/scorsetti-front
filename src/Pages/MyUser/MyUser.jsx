@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Container } from "react-bootstrap";
 import useUser from "../../components/hooks/UseUser";
 import image from "./img/userIMG.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -135,7 +136,7 @@ export function MyUser() {
                             )}
                         </div>
                         <div>
-                            <div
+                            <Container
                                 style={{
                                     backgroundColor: "#ff8725",
                                     opacity: 1,
@@ -162,7 +163,7 @@ export function MyUser() {
                                         width: 170,
                                     }}
                                 ></input>
-                            </div>
+                            </Container>
                         </div>
                     </div>
                 ) : (
