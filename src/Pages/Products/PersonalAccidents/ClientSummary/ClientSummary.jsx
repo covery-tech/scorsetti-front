@@ -3,6 +3,7 @@ import StyledText from "../../../../components/StyledText/StyledText";
 import SummaryCard from "./SummaryCard";
 import "./index.css";
 import useUser from "../../../../components/hooks/UseUser";
+import { toast } from "react-toastify";
 
 export default function ClientSummary({ values, reloadPage }) {
   const {user, pas} = useUser()
@@ -55,7 +56,16 @@ export default function ClientSummary({ values, reloadPage }) {
     try {
       const res = await axios(sendCotization);
       if (res) {
-        alert("Tu consulta se enviará a tu email!");
+        toast("Tu consulta se enviará a tu email!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });    
       }
     } catch (err) {
       console.warn(err);
