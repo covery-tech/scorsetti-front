@@ -4,14 +4,19 @@ import "./table.css";
 import { Icon } from "@iconify/react";
 import ModalPortal from "../../modal";
 import useUser from "../../hooks/UseUser";
+import img from "./img/favicon-32x32.png"
+
 
 const OrdersTableAll = () => {
     const { user } = useUser();
     const [ordersData, setOrdersData] = useState([]);
     const [modalData, setModalData] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [modalDataPas, setModalDataPas] = useState(null);
+    const [showModalPas, setShowModalPas] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cuantityPage, setCuantityPage] = useState(0);
+    const [pasInfo, setPasInfo] = useState();
     const resultsPerPage = 7;
     const userId =
         user.type === "superadmin" ? "" : user.type === "admin" ? "" : user.id;
@@ -32,7 +37,7 @@ const OrdersTableAll = () => {
                 }
             )
             .then((response) => {
-                let data = response.data;
+                let data = response.data;                
                 setCuantityPage(Math.ceil(data.pages / 7));
                 setOrdersData(data.orders);
             })
@@ -48,6 +53,14 @@ const OrdersTableAll = () => {
 
     const handleCloseModal = () => {
         setShowModal(false);
+    };
+
+    const handleOpenModalPas = (idPas) => {
+        getPas(idPas);
+    };
+
+    const handleCloseModalPas = () => {
+        setShowModalPas(false);
     };
 
     const setOrders = () => {
@@ -81,11 +94,22 @@ const OrdersTableAll = () => {
             });
     };
 
+    const getPas = (idPas) => {
+        axios
+            .get(`${process.env.REACT_APP_URI_API}/user/getPasInfo/${idPas}`)
+            .then((response) => {
+                setPasInfo(response.data[0]);
+                setModalDataPas(response.data[0]); // Configurar modalDataPas aquí
+                setShowModalPas(true);
+            })
+            .catch((error) => console.error(error));
+    };
+
     function formatColumnName(columnName) {
         return columnName
-        .split("_")
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
     }
 
     return (
@@ -102,6 +126,11 @@ const OrdersTableAll = () => {
                                 <th>Telefono</th>
                                 <th>Acción</th>
                                 <th>Cotizado</th>
+                                {user.type !== "password" ? (
+                                    <th>PAS</th>
+                                ) : (
+                                    <></>
+                                )}
                             </tr>
                         </thead>
                         <tbody>
@@ -143,8 +172,10 @@ const OrdersTableAll = () => {
                                                 <Icon icon="ri:whatsapp-line" />
                                             </a>
                                         </td>
-                                        {order.all_person || order.description &&
-                                        order.all_person !== null || order.description ? (
+                                        {order.all_person ||
+                                        (order.description &&
+                                            order.all_person !== null) ||
+                                        order.description ? (
                                             <td data-label="Acción">
                                                 {Array.isArray(
                                                     order.all_person
@@ -153,7 +184,8 @@ const OrdersTableAll = () => {
                                                         className="btn btn-sm btn-primary"
                                                         onClick={() =>
                                                             handleOpenModal(
-                                                                order?.all_person || order?.description
+                                                                order?.all_person ||
+                                                                    order?.description
                                                             )
                                                         }
                                                     >
@@ -164,7 +196,8 @@ const OrdersTableAll = () => {
                                                         className="btn btn-sm btn-primary"
                                                         onClick={() =>
                                                             handleOpenModal(
-                                                                order.all_person || order.description
+                                                                order.all_person ||
+                                                                    order.description
                                                             )
                                                         }
                                                     >
@@ -178,7 +211,8 @@ const OrdersTableAll = () => {
                                             </td>
                                         )}
                                         <td data-label="Cotizado">
-                                            {user.type === "admin" || user.type === "superadmin" ? (
+                                            {user.type === "admin" ||
+                                            user.type === "superadmin" ? (
                                                 order?.cotizated === null ? (
                                                     <p
                                                         style={{
@@ -242,6 +276,28 @@ const OrdersTableAll = () => {
                                                 </b>
                                             )}
                                         </td>
+                                        {user.type === "admin" ||
+                                        user.type === "superadmin" ? (
+                                            <td data-label="PAS">
+                                                {order.amount !==
+                                                "undefined" ? (
+                                                    <button
+                                                        className="btn btn-sm btn-primary"
+                                                        onClick={() =>
+                                                            handleOpenModalPas(
+                                                                order.amount
+                                                            )
+                                                        }
+                                                    >
+                                                        <Icon icon="el:eye-open" />
+                                                    </button>
+                                                ) : (
+                                                    <img src={img} alt="" />
+                                                )}
+                                            </td>
+                                        ) : (
+                                            <></>
+                                        )}
                                     </tr>
                                 );
                             })}
@@ -262,7 +318,13 @@ const OrdersTableAll = () => {
                                         <tr>
                                             {Object.keys(modalData[0]).map(
                                                 (key) => (
-                                                    <th key={formatColumnName(key)}>{formatColumnName(key)}</th>
+                                                    <th
+                                                        key={formatColumnName(
+                                                            key
+                                                        )}
+                                                    >
+                                                        {formatColumnName(key)}
+                                                    </th>
                                                 )
                                             )}
                                         </tr>
@@ -270,7 +332,13 @@ const OrdersTableAll = () => {
                                         <tr>
                                             {Object.keys(modalData).map(
                                                 (key) => (
-                                                    <th key={formatColumnName(key)}>{formatColumnName(key)}</th>
+                                                    <th
+                                                        key={formatColumnName(
+                                                            key
+                                                        )}
+                                                    >
+                                                        {formatColumnName(key)}
+                                                    </th>
                                                 )
                                             )}
                                         </tr>
@@ -319,6 +387,36 @@ const OrdersTableAll = () => {
                                             }
                                         </>
                                     )}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
+                </ModalPortal>
+            )}
+            {showModalPas && (
+                <ModalPortal onClose={handleCloseModalPas}>
+                    {modalDataPas && Object.keys(modalDataPas).length > 0 ? (
+                        <div className="table-responsive">
+                            <table className="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Email</th>
+                                        <th>Teléfono</th>
+                                        <th>Ruta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{modalDataPas.name}</td>
+                                        <td>{modalDataPas.last_name}</td>
+                                        <td>{modalDataPas.email}</td>
+                                        <td>{modalDataPas.phone_number}</td>
+                                        <td>{modalDataPas.route}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
