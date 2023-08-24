@@ -19,7 +19,7 @@ const OrdersTableAll = () => {
     const [pasInfo, setPasInfo] = useState();
     const resultsPerPage = 7;
     const userId =
-        user.type === "superadmin" ? "" : user.type === "admin" ? "" : user.id;
+        user.type === "superadmin" ? "" : user.type === "admin" ? "" : user.id_user;
     const arrayNoVacio = cuantityPage
         ? Array(cuantityPage)
               .fill(null)
