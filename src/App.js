@@ -75,7 +75,7 @@ function App() {
             />
             {/* Public PAS homepage route */}
             <Route
-              path="/usuario_pas/:userId"
+              path="/:route"
               element={
                 <>
                   <Navbar />
@@ -134,7 +134,7 @@ function App() {
               }
             />
             <Route
-              path="/usuario_pas/:userId/producto/auto"
+              path="/:route/producto/auto"
               element={
                 <>
                   <Navbar />
@@ -154,7 +154,7 @@ function App() {
               }
             />
             <Route
-              path="/usuario_pas/:userId/producto/moto"
+              path="/:route/producto/moto"
               element={
                 <>
                   <Navbar />
@@ -174,7 +174,7 @@ function App() {
               }
             />
             <Route
-              path="/usuario_pas/:userId/producto/hogar"
+              path="/:route/producto/hogar"
               element={
                 <>
                   <Navbar />
@@ -194,7 +194,7 @@ function App() {
               }
             />
             <Route
-              path="/usuario_pas/:userId/producto/ap"
+              path="/:route/producto/ap"
               element={
                 <>
                   <Navbar />
