@@ -26,6 +26,7 @@ const OrdersTableAll = () => {
             .get(
                 `${process.env.REACT_APP_URI_API}/product/getAllOrdersByPas/${userId}`,
                 {
+                    
                     params: {
                         page: currentPage,
                     },
