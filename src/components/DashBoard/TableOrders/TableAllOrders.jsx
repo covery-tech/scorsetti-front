@@ -99,7 +99,7 @@ const OrdersTableAll = () => {
             .get(`${process.env.REACT_APP_URI_API}/user/getPasInfo/${idPas}`)
             .then((response) => {
                 setPasInfo(response.data[0]);
-                setModalDataPas(response.data[0]); // Configurar modalDataPas aquí
+                setModalDataPas(response.data[0]); // ToDo: configure modelDataPas
                 setShowModalPas(true);
             })
             .catch((error) => console.error(error));
