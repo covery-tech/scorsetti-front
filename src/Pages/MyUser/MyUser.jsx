@@ -106,8 +106,8 @@ export function MyUser() {
                                     id="img"
                                     src={
                                         image3
-                                            ? image3
-                                            : `http://localhost:3001/${users.image}`
+                                            // ? image3
+                                            // : `http://localhost:3001/${users.image}`
                                     }
                                     alt={users?.name}
                                     style={{
@@ -152,7 +152,7 @@ export function MyUser() {
                                 <label>Seleccionar archivo</label>
                                 <input
                                     type="file"
-                                    onChange={(e) => handleFileChange(e)}
+                                    // onChange={(e) => handleFileChange(e)}
                                     style={{
                                         position: "absolute",
                                         opacity: 0,
@@ -340,6 +340,7 @@ export function MyUser() {
                                                 type="text"
                                                 className="form-control mt-2"
                                             />
+                                            
                                         </div>
                                     ) : (
                                         <></>
