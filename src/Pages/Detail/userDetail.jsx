@@ -31,8 +31,7 @@ export const UserDetail = () => {
           window.sessionStorage.setItem("pas", JSON.stringify(res.data));
         }
         if (res.status === 201) setUser(res.status);
-        if (res.status === 202) setUser(res.status);
-        console.log(pas, user);
+        if (res.status === 202) setUser(res.status);        
       }
     }).catch((err)=>{
       console.log(err)
