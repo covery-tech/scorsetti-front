@@ -14,7 +14,7 @@ export default function ContainerLogin() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      !pas ? navigate("/") : navigate(`/usuario_pas/${pas.id}`)
+      !pas ? navigate("/") : navigate(`/${pas.route}`)
     }
   }, [isLoggedIn, navigate]);
 
