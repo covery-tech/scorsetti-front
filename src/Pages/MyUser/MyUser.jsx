@@ -55,8 +55,7 @@ export function MyUser() {
         };
         setTimeout(() => {
             axios(config)
-                .then((e) => {
-                    console.log(e);
+                .then((e) => {                    
                     if (e.data) {
                         toast.success("Datos de usuario actualizados", {
                             position: "bottom-center",
