@@ -32,6 +32,7 @@ export const UserDetail = () => {
         }
         if (res.status === 201) setUser(res.status);
         if (res.status === 202) setUser(res.status);
+        console.log(pas, user);
       }
     }).catch((err)=>{
       console.log(err)
@@ -50,7 +51,7 @@ export const UserDetail = () => {
         <AlertNoPas message = {"Éste productor no está habilitado"}/>
       ) : (
         <div>
-          <SectionProducts userId={pas.id} />
+          <SectionProducts userId={pas?.id} />
           {user.description?.length ? (
             <WeInfo description={user.description} image={image || ""} name={user.name}/>
           ) : (
