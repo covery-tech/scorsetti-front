@@ -61,7 +61,7 @@ export default function ClientSummary({ values, reloadPage }) {
                 email,
                 telefono,
             },
-            users_id: user ? user.id : null
+            users_id: user ? user.id_user : null
         };
         const medidasContraFuegoDescriptions =
             values.description.medidas_contra_fuego.map(
@@ -78,7 +78,7 @@ export default function ClientSummary({ values, reloadPage }) {
         console.log(values.description.medidas_contra_fuego);
         const sendCotization = {
             method: "POST",
-            baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas.id}`,
+            baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas?.id}`,
             data: {
                 values: {
                     ...values,
