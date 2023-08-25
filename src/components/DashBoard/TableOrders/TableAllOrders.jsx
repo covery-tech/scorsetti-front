@@ -4,8 +4,7 @@ import "./table.css";
 import { Icon } from "@iconify/react";
 import ModalPortal from "../../modal";
 import useUser from "../../hooks/UseUser";
-import img from "./img/favicon-32x32.png"
-
+import img from "./img/favicon-32x32.png";
 
 const OrdersTableAll = () => {
     const { user } = useUser();
@@ -19,12 +18,18 @@ const OrdersTableAll = () => {
     const [pasInfo, setPasInfo] = useState();
     const resultsPerPage = 7;
     const userId =
-        user.type === "superadmin" ? "" : user.type === "admin" ? "" : user.id_user;
+        user.type === "superadmin"
+            ? ""
+            : user.type === "admin"
+            ? ""
+            : user.id_user;
     const arrayNoVacio = cuantityPage
         ? Array(cuantityPage)
               .fill(null)
               .map((_, index) => index + 1)
         : [];
+
+    const userAdmin = user.type === "admin" || user.type === "superadmin";
 
     useEffect(() => {
         axios
@@ -37,7 +42,7 @@ const OrdersTableAll = () => {
                 }
             )
             .then((response) => {
-                let data = response.data;                
+                let data = response.data;
                 setCuantityPage(Math.ceil(data.pages / 7));
                 setOrdersData(data.orders);
             })
@@ -211,8 +216,7 @@ const OrdersTableAll = () => {
                                             </td>
                                         )}
                                         <td data-label="Cotizado">
-                                            {user.type === "admin" ||
-                                            user.type === "superadmin" ? (
+                                            { userAdmin ? (
                                                 order?.cotizated === null ? (
                                                     <p
                                                         style={{
@@ -276,8 +280,7 @@ const OrdersTableAll = () => {
                                                 </b>
                                             )}
                                         </td>
-                                        {user.type === "admin" ||
-                                        user.type === "superadmin" ? (
+                                        {userAdmin ? (
                                             <td data-label="PAS">
                                                 {order.amount !==
                                                 "undefined" ? (
