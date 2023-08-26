@@ -45,7 +45,7 @@ export default function ProfilePas() {
         alert("error de servidor: Not Found");
       });
     getPas();
-  }, []);
+  }, [getPas, jwt, pas.route]);
   const handleUpdateState = (name, status) => {
     //(status, name);
     const config = {
