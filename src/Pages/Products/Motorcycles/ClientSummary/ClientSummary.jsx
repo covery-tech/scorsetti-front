@@ -53,11 +53,11 @@ export default function ClientSummary({ values, reloadPage }) {
         email,
         telefono,
       },
-      users_id: user ? user.id : null
+      users_id: user ? user.id_user : null
     };
     const sendCotization = {
       method: "POST",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas.id}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas?.id}`,
       data: {
         values
       },

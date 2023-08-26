@@ -34,8 +34,8 @@ const handleClick = () => {
 };
 
   return (
-    <div className='modal'>
-        <div className='modal-contenido' ref={menuRef}>
+    <div className='modal' >
+        <div className='modal-contenido overflow-auto ' ref={menuRef}>
             <button style={{cursor:"pointer"}} className='btn btn-danger' id='buto'>✖</button>
             {children} 
         </div>
