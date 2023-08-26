@@ -8,15 +8,15 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilePas() {
-  const { jwt, user } = useUser();
+  const { jwt, pas } = useUser();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [pas, setPas] = useState(null);
+  const [pasState, setPas] = useState(null);
   const { userId } = useParams();
   const getPas = () => {
     const config = {
       method: "get",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/getProductsPasAll/${userId}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/getProductsPasAll/${pas.id}`,
       headers: { token: jwt },
     };
     axios(config)
@@ -32,7 +32,7 @@ export default function ProfilePas() {
   useEffect(() => {
     const config = {
       method: "get",
-      baseURL: `${process.env.REACT_APP_URI_API}/user/getPasById/${userId}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/user/getPasByRoute/${pas.route}`,
       headers: { token: jwt },
     };
     axios(config)
@@ -73,13 +73,12 @@ export default function ProfilePas() {
         alert("error ocurrido");
       });
   };
-  //(pas);
   return (
     <>
       <div className="container bg-light rounded-4 mt-4">
         <PrincipalText/>
         <div className="text-center">
-          <h4>Productor: {pas?.name}</h4>
+          <h4>Productor: {pasState?.name}</h4>
         </div>
         <TableProductsAdmin
           products={products}

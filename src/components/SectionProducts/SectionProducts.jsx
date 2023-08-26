@@ -12,35 +12,17 @@ export default function SectionProducts({ userId }) {
   const [userPas, setUserPas] = useState([]);
   const { getRoute } = useUser();
   useEffect(() => {
-    if (userId === undefined) {
-      const config = {
-        method: "GET",
-        baseURL: process.env.REACT_APP_URI_API + `/product/getProductCard`,
-      };
-      axios(config)
-        .then((res) => {
-          if (res.data) {
-            setUserPas(res.data);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    } else {
       const config2 = {
         method: "GET",
         baseURL:
           process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
       };
-      axios(config2)
-        .then((res) => {
-          getRoute(userId);
-          setUserPas(res.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+      axios(config2).then((res) => {
+        getRoute(userId)
+        setUserPas(res.data);
+      }).catch((err) => {
+        console.error(err);
+      });
   }, [userId]);
 
   // SWITCH

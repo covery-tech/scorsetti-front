@@ -54,8 +54,33 @@ export function MyUser() {
         };
         setTimeout(() => {
             axios(config)
-                .then((e) => {
+                .then((e) => {                    
                     if (e.data) {
+                        toast.success("Datos de usuario actualizados", {
+                            position: "bottom-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        });
+                    } else {
+                        toast.warning(
+                            "La ruta ya está utilizada, intenta con otra",
+                            {
+                                position: "bottom-center",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            }
+                        );
+                        return;
                     }
                 })
                 .catch((error) => {
@@ -68,16 +93,19 @@ export function MyUser() {
             if (image2) {
                 axios(config2)
                     .then((e) => {
-                        toast.success("Datos de usuario actualizados", {
-                            position: "bottom-center",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                        });
+                        toast.success(
+                            "La imagen ha sido actualizada con éxito",
+                            {
+                                position: "bottom-center",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            }
+                        );
                     })
                     .catch((error) => {
                         console.log(
@@ -105,8 +133,8 @@ export function MyUser() {
                                     id="img"
                                     src={
                                         image3
-                                            ? image3
-                                            : `http://localhost:3001/${users.image}`
+                                        // ? image3
+                                        // : `http://localhost:3001/${users.image}`
                                     }
                                     alt={users?.name}
                                     style={{
@@ -144,14 +172,14 @@ export function MyUser() {
                                     height: 30,
                                     borderRadius: 5,
                                     display: "block",
-                                    padding:5
+                                    padding: 5,
                                 }}
                                 className="mt-4 mb-4"
                             >
                                 <label>Seleccionar archivo</label>
                                 <input
                                     type="file"
-                                    onChange={(e) => handleFileChange(e)}
+                                    // onChange={(e) => handleFileChange(e)}
                                     style={{
                                         position: "absolute",
                                         opacity: 0,
@@ -339,6 +367,12 @@ export function MyUser() {
                                                 type="text"
                                                 className="form-control mt-2"
                                             />
+                                            <ErrorMessage
+                                                name="description"
+                                                component={() => (
+                                                    <div> {errors.route} </div>
+                                                )}
+                                            />
                                         </div>
                                     ) : (
                                         <></>
@@ -357,7 +391,7 @@ export function MyUser() {
                                     />
                                     <br />
                                     <ErrorMessage
-                                        name="password"
+                                        name="route"
                                         component={() => (
                                             <div> {errors.password} </div>
                                         )}

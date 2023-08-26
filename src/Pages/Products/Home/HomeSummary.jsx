@@ -3,6 +3,7 @@ import StyledText from "../../../components/StyledText/StyledText";
 import useUser from "../../../components/hooks/UseUser";
 import SummaryCard from "../../../components/ClientSummary/SummaryCard";
 import ClientSummary from "../../../components/ClientSummary/ClientSummary";
+import { toast } from "react-toastify";
 
 export default function HomeSummary({ values, reloadPage }) {
   const { user, pas } = useUser();
@@ -75,7 +76,7 @@ export default function HomeSummary({ values, reloadPage }) {
     const medidasContraRoboText = medidasContraRoboDescriptions.join(", ");
     const sendCotization = {
       method: "POST",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas.id}`,
       params: {
         pas_id: pas.id,
       },
@@ -93,8 +94,17 @@ export default function HomeSummary({ values, reloadPage }) {
     try {
       const res = await axios(sendCotization);
       if (res) {
-        alert("Tu consulta se enviará a tu email!");
-      }
+        toast("Tu consulta se enviará a tu email!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });    
+    }
     } catch (err) {
       console.warn(err);
     }

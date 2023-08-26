@@ -8,9 +8,9 @@ export default function MapForPas({pas}){
           <div className="row container2">
             <div className="col-lg-8">
               <div id="map">
-                <iframe src={`https://maps.google.com/maps?q=${coords?.long}, ${coords?.lat}&z=15&output=embed`} width="100%" height="420px" frameBorder="0" style={{border:0, borderRadius: '15px', position: 'relative', zIndex: 2}} allowFullScreen=""></iframe>
-                <div className="row"  >
-                  <div className="col-lg-4 offset-lg-1 infoContact">
+                <iframe src={`https://maps.google.com/maps?q=${coords?.long}, ${coords?.lat}&z=15&output=embed`} width="100%" height="420px" frameBorder="0" style={{border:0, position: 'relative', zIndex: 2}} allowFullScreen=""></iframe>
+                <div className="row gap-3"  >
+                  <div className="col-lg-4 offset-lg-1 infoContact bg-white p-2">
                     <div className="contact-info">
                       <div className="icon">
                         <i className="fa fa-envelope"></i>
@@ -19,13 +19,13 @@ export default function MapForPas({pas}){
                       <span>{pas.email}</span>
                     </div>
                   </div>
-                  <div className="col-lg-4 infoContact">
+                  <div className="col-lg-4 infoContact bg-white p-2">
                     <div className="contact-info">
                       <div className="icon">
                         <i className="fa fa-whatsapp"></i>
                       </div>
                       <h4>Whatsapp</h4>
-                      <a href="https://wa.me/?text=Hola!%20Quiero%20contratar%20un%20seguro%20OnDemand" ><span>{pas?.phone_number}</span></a>
+                      <a href="https://wa.me/?text=Hola!%20Quiero%20contratar%20un%20seguro%20OnDemand" target="_blank" rel="noopener noreferrer"><span>{pas?.phone_number}</span></a>
                     </div>
                   </div>
                 </div>
