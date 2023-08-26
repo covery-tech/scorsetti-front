@@ -31,8 +31,24 @@ function App() {
           <Routes>
             {/* Public home routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/ingresar" element={<Login />} />
-            <Route path="/registro" element={<Register />} />
+            <Route
+              path="/ingresar"
+              element={
+                <>
+                  <Navbar />
+                  <Login />
+                </>
+              }
+            />
+            <Route
+              path="/registro"
+              element={
+                <>
+                  <Navbar />
+                  <Register />
+                </>
+              }
+            />
 
             {/* Protected user routes */}
             <Route
@@ -110,7 +126,7 @@ function App() {
                 </>
               }
             />
-                        <Route
+            <Route
               path="/orders/:userId"
               element={
                 <>

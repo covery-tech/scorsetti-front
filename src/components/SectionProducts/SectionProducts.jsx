@@ -6,6 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./sectionProducts.css";
 import useUser from "../hooks/UseUser";
+import Container from "../Container/Container";
 
 export default function SectionProducts({ userId }) {
   const [userPas, setUserPas] = useState([]);
@@ -60,7 +61,7 @@ export default function SectionProducts({ userId }) {
   };
 
   return (
-    <div className="w-75-m w-75-l w-90 center bg-white pa3 mv5">
+    <Container>
       <PrincipalText />
       <div className="flex flex-wrap justify-center pb3">
         <span
@@ -99,6 +100,6 @@ export default function SectionProducts({ userId }) {
           </>
         )}
       </div>
-    </div>
+    </Container>
   );
 }

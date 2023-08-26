@@ -68,8 +68,6 @@ input[type="number"] {
   color: #fff;
   padding: 0.5rem;
   border: none;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 .main-button {
   background-color: var(--color-first-medium);

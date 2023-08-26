@@ -18,9 +18,9 @@ export default function PersonalInfo({
   return (
     <form>
       {/* DATOS DEL VEHICULO */}
-      <div className="personalInfo">
-        <StyledText className="form-title">Datos personales</StyledText>
-        <div className="inputCouple d-flex">
+      <div className="personal-info">
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">Datos personales</StyledText>
+        <div className="input-couple">
           <Input
             placeholder={"Nombre *"}
             onChange={onChange}
@@ -55,7 +55,7 @@ export default function PersonalInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Tipo de documento *"}
             onChange={onChange}
@@ -91,7 +91,7 @@ export default function PersonalInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Sexo *"}
             onChange={onChange}
@@ -127,7 +127,7 @@ export default function PersonalInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Provincia *"}
             onChange={onChange}
@@ -179,7 +179,7 @@ export default function PersonalInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Email *"}
             onChange={onChange}

@@ -1,14 +1,13 @@
 import { useState } from "react";
-import PrincipalText from "../../../components/Principal-Text/Principaltext";
 import onChange from "../defaultFunctions/onChange";
 import reloadPage from "../defaultFunctions/reloadPage";
 import Validate from "./functions/validate";
-import "./index.css";
-import ClientSummary from "./ClientSummary/ClientSummary";
+import HomeSummary from "./HomeSummary";
 import HomeBasicInfo from "./Forms/HomeBasicInfo";
 import PersonalInfo from "./Forms/PersonalInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "./info";
+import Form from "../../../components/FormContainer/FormContainer";
 
 export default function HomeContainer() {
   const [values, setValues] = useState({
@@ -22,9 +21,9 @@ export default function HomeContainer() {
     material: "",
     tipo_de_cubierta: "",
     medidas_contra_fuego: [],
-    otras_medidas_contra_fuego:"",
-    medidas_contra_robos:[],
-    otras_medidas_contra_robos:"",
+    otras_medidas_contra_fuego: "",
+    medidas_contra_robos: [],
+    otras_medidas_contra_robos: "",
     //PersonalInfo --------------
     nombre: "",
     apellido: "",
@@ -112,65 +111,53 @@ export default function HomeContainer() {
   };
 
   return (
-    <div className="container text-center justify-content-center bg-white rounded-2 p-4 mt-5 my-5">
-      <PrincipalText />
-      <div className="d-flex row justify-content-center">
-        {(instance === 1 || instance === 2) && (
-          <div className="imgContainer">
-            <FontAwesomeIcon className="img" icon={icon} />
-            <h1 className="mt-3">Hogar</h1>
-          </div>
-        )}
-        <div
-          className={`${
-            instance === 3 ? "summaryContainer" : "formContainer"
-          } py-4`}
-        >
-          {(instance === 1 || instance === 2) && (
-            <p className="mb-3">
-              Campos requeridos* ( Rellene los campos en órden →)
-            </p>
-          )}
-          {instance === 1 && (
-            <HomeBasicInfo
-              values={values}
-              setShowErrors={setShowErrors}
-              setValues={setValues}
-              errors={errors}
-              onChange={onChange}
-              setErrors={setErrors}
-              showErrors={showErrors}
-              Validate={Validate}
-              nextInstance={nextInstance}
-              instance={instance}
-              setInstance={setInstance}
-            />
-          )}
-          {instance === 2 && (
-            <PersonalInfo
-              values={values}
-              setShowErrors={setShowErrors}
-              setValues={setValues}
-              errors={errors}
-              onChange={onChange}
-              setErrors={setErrors}
-              showErrors={showErrors}
-              Validate={Validate}
-              nextInstance={nextInstance}
-              instance={instance}
-              setInstance={setInstance}
-            />
-          )}
-          {instance === 3 && (
-            <ClientSummary values={values} reloadPage={reloadPage} />
-          )}
+    <Form>
+      {(instance === 1 || instance === 2) && (
+        <div className="img-container tc">
+          <FontAwesomeIcon className="img" icon={icon} />
+          <h1>Hogar</h1>
         </div>
+      )}
+      <div className={instance === 3 ? "summary-container" : "form-container"}>
+        {(instance === 1 || instance === 2) && (
+          <p className="mb3">
+            Campos requeridos* ( Rellene los campos en órden →)
+          </p>
+        )}
+        {instance === 1 && (
+          <HomeBasicInfo
+            values={values}
+            setShowErrors={setShowErrors}
+            setValues={setValues}
+            errors={errors}
+            onChange={onChange}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            Validate={Validate}
+            nextInstance={nextInstance}
+            instance={instance}
+            setInstance={setInstance}
+          />
+        )}
+        {instance === 2 && (
+          <PersonalInfo
+            values={values}
+            setShowErrors={setShowErrors}
+            setValues={setValues}
+            errors={errors}
+            onChange={onChange}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            Validate={Validate}
+            nextInstance={nextInstance}
+            instance={instance}
+            setInstance={setInstance}
+          />
+        )}
+        {instance === 3 && (
+          <HomeSummary values={values} reloadPage={reloadPage} />
+        )}
       </div>
-      {/* {showModal && (
-        <ModalPortal onClose={handleCloseModal}>
-          <ModalCotizaciones cotization={cotization} nPersons={nPersons}/>
-        </ModalPortal>
-      )} */}
-    </div>
+    </Form>
   );
 }

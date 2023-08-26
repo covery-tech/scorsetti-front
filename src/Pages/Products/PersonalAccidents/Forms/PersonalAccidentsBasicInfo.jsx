@@ -1,6 +1,6 @@
 import Input from "../../../../components/Input/Input";
 import StyledText from "../../../../components/StyledText/StyledText";
-import { docTypes, use, validity, tipo_documento, sex } from "../info";
+import { use, tipo_documento, sex } from "../info";
 
 export default function PersonalAccidentsBasicInfo({
   values,
@@ -18,9 +18,11 @@ export default function PersonalAccidentsBasicInfo({
   return (
     <form>
       {/* DATOS DEL VEHICULO */}
-      <div className="basicInfo">
-        <StyledText className="form-title">Datos del vehículo</StyledText>
-        <div className="inputCouple d-flex">
+      <div className="basic-info">
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          Datos del vehículo
+        </StyledText>
+        <div className="input-couple">
           <Input
             placeholder={"Nombre"}
             onChange={onChange}
@@ -56,7 +58,7 @@ export default function PersonalAccidentsBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Tipo *"}
             onChange={onChange}
@@ -92,7 +94,7 @@ export default function PersonalAccidentsBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Sexo *"}
             onChange={onChange}
@@ -128,7 +130,7 @@ export default function PersonalAccidentsBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Provincia *"}
             onChange={onChange}
@@ -180,7 +182,7 @@ export default function PersonalAccidentsBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Actividad *"}
             onChange={onChange}
@@ -199,7 +201,7 @@ export default function PersonalAccidentsBasicInfo({
           />
         </div>
 
-        {/* <div className="inputCouple d-flex">
+        {/* <div className="input-couple d-flex">
           <Input
             placeholder={"Vigencia *"}
             onChange={onChange}
@@ -220,7 +222,7 @@ export default function PersonalAccidentsBasicInfo({
             instance={instance}
           />
         </div> */}
-        {/* <div className="inputCouple d-flex">
+        {/* <div className="input-couple d-flex">
           <Input
             placeholder={"0 km"}
             onChange={onChange}

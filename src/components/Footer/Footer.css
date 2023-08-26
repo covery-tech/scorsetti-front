@@ -53,7 +53,7 @@
     background-color: #fff;
     color: #0037c1;
     border-radius: 50%;
-    transition: all 0.5s;
+    transition: all 0.2s;
   }
   
   .footer-wrapper ul.social-icons li a:hover {

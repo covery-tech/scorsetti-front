@@ -1,8 +1,6 @@
 import Input from "../../../../components/Input/Input";
 import StyledText from "../../../../components/StyledText/StyledText";
 import {
-  use,
-  validity,
   medidas_contra_fuego,
   medidas_contra_robos,
   tipo_de_casa,
@@ -27,9 +25,11 @@ export default function HomeBasicInfo({
   return (
     <form>
       {/* DATOS DEL HOGAR */}
-      <div className="basicInfo">
-        <StyledText className="form-title">Datos del hogar</StyledText>
-        <div className="inputCouple d-flex">
+      <div className="basic-info">
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          Datos del hogar
+        </StyledText>
+        <div className="input-couple">
           <Input
             placeholder={"Vivienda *"}
             onChange={onChange}
@@ -64,7 +64,7 @@ export default function HomeBasicInfo({
             validate={Validate}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Ubicación del riesgo *"}
             type={"text"}
@@ -91,7 +91,7 @@ export default function HomeBasicInfo({
             validate={Validate}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Material de construcción *"}
             onChange={onChange}
@@ -126,25 +126,14 @@ export default function HomeBasicInfo({
             validate={Validate}
           />
         </div>
-        <StyledText className="form-title">Medidas de seguridad</StyledText>
-        <div className="securityData">
-          <StyledText
-            text={"Medidas de seguridad"}
-            styles={{
-              backgroundColor: "#ef7927",
-              borderRadius: "8px",
-              paddingLeft: "5px",
-            }}
-          />
-          <h3
-            style={{
-              paddingTop: "5px",
-              paddingBottom: "5px",
-            }}
-          >
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          Medidas de seguridad
+        </StyledText>
+        <div className="security-data">
+          <h3 className="pt1 pb1">
             <b>Incendio</b>
           </h3>
-          <div className="inputCouple d-flex">
+          <div className="input-couple">
             {medidas_contra_fuego.map(
               (fm, i) =>
                 i < 2 && (
@@ -180,15 +169,10 @@ export default function HomeBasicInfo({
               validate={Validate}
             />
           </div>
-          <h3
-            style={{
-              paddingTop: "5px",
-              paddingBottom: "5px",
-            }}
-          >
+          <h3 className="pt1 pb1">
             <b>Robo</b>
           </h3>
-          <div className="inputCouple d-flex">
+          <div className="input-couple">
             {medidas_contra_robos.map(
               (fm, i) =>
                 i < 3 && (
@@ -211,7 +195,7 @@ export default function HomeBasicInfo({
                 )
             )}
           </div>
-          <div className="inputCouple d-flex">
+          <div className="input-couple">
             {medidas_contra_robos.map(
               (fm, i) =>
                 i > 2 &&

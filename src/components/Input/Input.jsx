@@ -21,7 +21,7 @@ export default function Input({
   return (
     <>
       {type === "select" ? (
-        <div style={styles} className="selectContainer">
+        <div style={styles} className="select-container">
           <select
             name={name}
             onChange={(e) =>
@@ -39,13 +39,13 @@ export default function Input({
             ))}
           </select>
           {showErrors && errors[name] && (
-            <p className="errorMessage" style={{ marginTop: "0.5rem" }}>
+            <p className="error-message" style={{ marginTop: "0.5rem" }}>
               {errors[name]}
             </p>
           )}
         </div>
       ) : type === "checkbox" ? (
-        <div className={`d-flex checkboxContainer ${classes}`} style={styles}>
+        <div className={`flex checkbox-container ${classes}`} style={styles}>
           <input
             type={type}
             name={name}
@@ -58,7 +58,7 @@ export default function Input({
           <label>{placeholder}</label>
         </div>
       ) : (
-        <div className={`d-flex inputContainer ${classes}`} style={styles}>
+        <div className={`flex input-container ${classes}`} style={styles}>
           {type === "date" && <label>{placeholder}</label>}
           <input
             type={type}
@@ -70,7 +70,7 @@ export default function Input({
             value={values[name]}
           />
           {showErrors && errors[name] && (
-            <p className="errorMessage" style={{ marginTop: "0.5rem" }}>
+            <p className="error-message" style={{ marginTop: "0.5rem" }}>
               {errors[name]}
             </p>
           )}
