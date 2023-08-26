@@ -16,7 +16,7 @@ export default function ProfilePas() {
   const getPas = () => {
     const config = {
       method: "get",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/getProductsPasAll/${pas.id}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/getProductsPasAll/${userId}`,
       headers: { token: jwt },
     };
     axios(config)
