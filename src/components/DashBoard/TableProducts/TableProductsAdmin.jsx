@@ -32,14 +32,14 @@ export const TableProductsAdmin = ({ products, handleUpdateState }) => {
     <>
       <div className="p-4">
         <table className="table">
-          <thead class="thead-dark">
+          <thead className="thead-dark">
             <tr>
               <th scope="col">Producto</th>
               <th scope="col">Acciones</th>              
             </tr>
           </thead>
-          {products.map((e) => (
-            <tbody>
+          {products.map((e,i) => (
+            <tbody key={i}>
               <tr>
                 <th scope="row">{e.title}</th>
                 <td>
