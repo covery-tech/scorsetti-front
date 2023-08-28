@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilePas() {
-  const { jwt, pas, user } = useUser();
+  const { jwt } = useUser();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pasState, setPas] = useState(null);
@@ -24,13 +24,12 @@ export default function ProfilePas() {
         setLoading(false);
         setProducts(e.data);
       })
-      .catch(() => {
+      .catch((e) => {
         setLoading(false);
         alert("error de servidor: Not Found");
       });
   };
   useEffect(() => {
-    console.log(user)
     const config = {
       method: "get",
       baseURL: `${process.env.REACT_APP_URI_API}/user/getPasById/${userId}`,
@@ -46,7 +45,7 @@ export default function ProfilePas() {
         alert("error de servidor: Not Found");
       });
     getPas();
-  }, [getPas, jwt, user, userId]);
+  }, [getPas, jwt, userId]);
   const handleUpdateState = (name, status) => {
     //(status, name);
     const config = {
