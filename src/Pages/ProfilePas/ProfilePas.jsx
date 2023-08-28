@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useUser from "../../components/hooks/UseUser";
 import { TableProductsAdmin } from "../../components/DashBoard/TableProducts/TableProductsAdmin";
 import axios from "axios";
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilePas() {
-  const { jwt, pas } = useUser();
+  const { jwt } = useUser();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pasState, setPas] = useState(null);
@@ -32,7 +32,7 @@ export default function ProfilePas() {
   useEffect(() => {
     const config = {
       method: "get",
-      baseURL: `${process.env.REACT_APP_URI_API}/user/getPasByRoute/${pas.route}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/user/getPasById/${userId}`,
       headers: { token: jwt },
     };
     axios(config)
@@ -45,7 +45,7 @@ export default function ProfilePas() {
         alert("error de servidor: Not Found");
       });
     getPas();
-  }, []);
+  }, [getPas, jwt, userId]);
   const handleUpdateState = (name, status) => {
     //(status, name);
     const config = {
@@ -78,7 +78,7 @@ export default function ProfilePas() {
       <div className="container bg-light rounded-4 mt-4">
         <PrincipalText/>
         <div className="text-center">
-          <h4>Productor: {pasState?.name}</h4>
+          <h4>Productor: {pasState?.name} {pasState?.last_name}</h4>
         </div>
         <TableProductsAdmin
           products={products}
