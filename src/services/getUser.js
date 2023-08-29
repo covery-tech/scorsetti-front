@@ -18,7 +18,7 @@ export default function login({email,password}){
         }).catch(err=>{
                 window.sessionStorage.removeItem("jwt")
                 window.sessionStorage.removeItem("user")
-                        toast.error(err.response.data ,{
+                        toast.error(err.response.data.message ,{
                         position: "bottom-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -28,5 +28,6 @@ export default function login({email,password}){
                         progress: undefined,
                         theme: "light",
                 })
+                console.log(err)
         })
 }
