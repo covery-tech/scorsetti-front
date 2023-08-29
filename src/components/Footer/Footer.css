@@ -1,116 +1,37 @@
-.info {
-    z-index: 99;    
-    padding-top: 6px;
-    padding-bottom: 6px;
-    /* margin-top: 50px; */
-    text-align: center;
-    display: flex;
-    justify-content: center;
-  }
-  /* .pb-5 {
-    padding-bottom: 0px!important;
-  } */
+.social-item {
+  width: 1.2rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: white;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all .2s;
+}
+.social-item i {
+  color: var(--color-first-light-one);
+}
 
-  .infoOrganismo {
-    background-color: aliceblue;
-    width: 100vw;
-    padding: 2rem 1rem 3rem 1rem;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  .info .img {
-    max-height: max-content;
-    height: 40px;
-    width: 300px;
-    margin: auto;
-  }
+.footer a {
+  color: var(--color-first-light-one);
+}
+.copyright a {
+  color: var(--color-first-light-two);
+}
 
-  .footer-wrapper {
-    z-index: 999;    
-    padding-bottom: 1px;
+@media screen and (min-width: 48em) and (max-width: 60em) {
+  .flexrow-m {
+    flex-direction: row;
   }
-  
-  .footer-wrapper ul.social-icons li {
-    display: inline-block;
-    margin: 0px 5px;
-    z-index: 999;
+  .w-50m {
+    width: 50%;
   }
-  
-  .footer-wrapper ul.social-icons {
-    text-align: center;
-    margin-top: 70px;
-    z-index: 999;
+}
+@media screen and (min-width: 60em) {
+  .social-item:hover {
+    background-color: var(--color-first-light-two);
   }
-  
-  .footer-wrapper ul.social-icons li a {
-    width: 44px;
-    height: 44px;
-    display: inline-block;
-    text-align: center;
-    line-height: 44px;
-    background-color: #fff;
-    color: #0037c1;
-    border-radius: 50%;
-    transition: all 0.2s;
+  .social-item:hover i {
+    color: white;
   }
-  
-  .footer-wrapper ul.social-icons li a:hover {
-    background-color: #0037c1;
-    color: rgb(255, 255, 255);
-    z-index: 999;
-  }
-  
-  .footer-wrapper .copyright {
-    text-align: center;
-    color: #fff;
-    margin: 20px 0px;
-    z-index: 999;
-  }
-  
-  .footer-wrapper p .copyright a {
-    font-weight: 700;
-    color: #fff;
-    z-index: 999;
-  }
-
-  .footer-wrapper p .copyright a {
-    font-weight: 700;
-    color: #fff;
-    z-index: 999;
-    text-decoration: none;
-  }
-    
-  @media (max-width: 48em) {
-    .infoOrganismo{
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      width: 60vw;
-    }
-    .info .img{
-      max-height: max-content;
-      height: 40px;
-      width: 150px;
-      margin: auto;
-    }
-    #SSN {
-      width: 9rem;
-    }
-  }
-  @media (max-width: 62em) {
-    .media{
-      width: 300px;
-    }
-    .info .img{
-    max-height: max-content;
-    height: 40px;
-    width: 150px;
-    margin: auto;
-    }
-    #SSN {
-      width: 15rem;
-      height: 2rem;
-    }
-  }
+}
