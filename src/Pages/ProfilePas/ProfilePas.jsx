@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useUser from "../../components/hooks/UseUser";
 import { TableProductsAdmin } from "../../components/DashBoard/TableProducts/TableProductsAdmin";
 import axios from "axios";
@@ -8,10 +8,10 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilePas() {
-  const { jwt, user } = useUser();
+  const { jwt } = useUser();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [pas, setPas] = useState(null);
+  const [pasState, setPas] = useState(null);
   const { userId } = useParams();
   const getPas = () => {
     const config = {
@@ -45,7 +45,7 @@ export default function ProfilePas() {
         alert("error de servidor: Not Found");
       });
     getPas();
-  }, []);
+  }, [getPas, jwt, userId]);
   const handleUpdateState = (name, status) => {
     //(status, name);
     const config = {
@@ -73,13 +73,12 @@ export default function ProfilePas() {
         alert("error ocurrido");
       });
   };
-  //(pas);
   return (
     <>
       <div className="container bg-light rounded-4 mt-4">
         <PrincipalText/>
         <div className="text-center">
-          <h4>Productor: {pas?.name}</h4>
+          <h4>Productor: {pasState?.name} {pasState?.last_name}</h4>
         </div>
         <TableProductsAdmin
           products={products}

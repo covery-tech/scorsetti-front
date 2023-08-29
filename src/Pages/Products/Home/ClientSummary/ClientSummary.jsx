@@ -61,7 +61,7 @@ export default function ClientSummary({ values, reloadPage }) {
                 email,
                 telefono,
             },
-            users_id: user ? user.id : null
+            users_id: user ? user.id_user : null
         };
         const medidasContraFuegoDescriptions =
             values.description.medidas_contra_fuego.map(
@@ -75,10 +75,9 @@ export default function ClientSummary({ values, reloadPage }) {
                 (medida) => medida.description
             );
         const medidasContraRoboText = medidasContraRoboDescriptions.join(", ");
-        console.log(values.description.medidas_contra_fuego);
         const sendCotization = {
             method: "POST",
-            baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas.id}`,
+            baseURL: `${process.env.REACT_APP_URI_API}/product/postOrdersBack/${pas?.id}`,
             data: {
                 values: {
                     ...values,
@@ -90,10 +89,6 @@ export default function ClientSummary({ values, reloadPage }) {
                 },
             },
         };
-        console.log(
-            "medidas_contra_fuego después de la asignación:",
-            sendCotization.data.values.description.medidas_contra_fuego
-        );
         try {
             const res = await axios(sendCotization);
             if (res) {

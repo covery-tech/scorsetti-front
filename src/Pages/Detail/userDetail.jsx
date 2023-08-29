@@ -9,19 +9,19 @@ import AlertNoPas from "../../components/AlertNoPas/AlertNoPas";
 import useUser from "../../components/hooks/UseUser";
 
 export const UserDetail = () => {
-  const { userId } = useParams();
+  const { route } = useParams();
   const [user, setUser] = useState([]);
-  const {jwt} = useUser()
+  const {jwt,pas} = useUser()
   const [image, setImage] = useState("")
   const URLSERVER = process.env.REACT_APP_URI_API + ""
   useEffect(() => {
     const config = {
       method: "GET",
-      baseURL: `${URLSERVER}/user/getPasByRoute/${userId}`,
+      baseURL: `${URLSERVER}/user/getPasById/${userId}`,
     };
     const config2 = {
       method: "get",
-      baseURL: `${URLSERVER}/user/imageLg/${userId}`,
+      baseURL: `${URLSERVER}/user/imageLg/${pas?.id}`,
       headers:{token:jwt}
   };
     axios(config).then((res) => {
@@ -31,7 +31,7 @@ export const UserDetail = () => {
           window.sessionStorage.setItem("pas", JSON.stringify(res.data));
         }
         if (res.status === 201) setUser(res.status);
-        if (res.status === 202) setUser(res.status);
+        if (res.status === 202) setUser(res.status);        
       }
     }).catch((err)=>{
       console.log(err)
@@ -50,7 +50,7 @@ export const UserDetail = () => {
         <AlertNoPas message = {"Éste productor no está habilitado"}/>
       ) : (
         <div>
-          <SectionProducts userId={userId} />
+          <SectionProducts userId={pas?.id} />
           {user.description?.length ? (
             <WeInfo description={user.description} image={image || ""} name={user.name}/>
           ) : (

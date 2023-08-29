@@ -11,40 +11,27 @@ export default function SectionProducts({ userId }) {
   const [userPas, setUserPas] = useState([]);
   const { getRoute } = useUser();
   useEffect(() => {
-    if (userId === undefined) {
-      const config = {
-        method: "GET",
-        baseURL: process.env.REACT_APP_URI_API + `/product/getProductCard`,
-      };
-      axios(config).then((res) => {
-        if (res.data) {
-          setUserPas(res.data);
-        }
-      }).catch((err) => {
-        console.error(err);
-      });
-    } else {
-      const config2 = {
-        method: "GET",
-        baseURL: process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
-      };
-      axios(config2).then((res) => {
-        getRoute(userId)
+    const config2 = {
+      method: "GET",
+      baseURL:
+        process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
+    };
+    axios(config2)
+      .then((res) => {
+        getRoute(userId);
         setUserPas(res.data);
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.error(err);
       });
-    }
-  }, [userId]);
+  }, [getRoute, userId]);
   // SWITCH
-  const [clientSection, setClientSection] = useState('Persona');
+  const [clientSection, setClientSection] = useState("Persona");
   const changeClient = () => {
-    (clientSection === 'Persona')
-      ? setClientSection('Empresa')
-      : setClientSection('Persona');
-  }
-  const changeClientToEmpresa = () => (clientSection === 'Persona') && setClientSection('Empresa')
-  const changeClientToPersona = () => (clientSection === 'Empresa') && setClientSection('Persona')
+    clientSection === "Persona"
+      ? setClientSection("Empresa")
+      : setClientSection("Persona");
+  };
   // PUBLICACIÓN DE CARD PRODUCT
   const returnCardProduct = (p, i) => {
     return (
@@ -52,41 +39,55 @@ export default function SectionProducts({ userId }) {
         <ProductCard props={infoProducts[p]} />
       </Link>
     );
-  }
+  };
 
   return (
     <div id="SectionProducts-container" className="container bg-white mt-5 p-5">
       <PrincipalText />
       <ul className="item-selector-content px-0">
         <li className="item-selector">
-          <a className={`buttonChange ${(clientSection==="Persona")&& 'selected'}`} onClick={changeClientToPersona}>Persona</a>
+          <span
+            className={`buttonChange ${
+              clientSection === "Persona" && "selected"
+            }`}
+            onClick={changeClient}
+          >
+            Persona
+          </span>
         </li>
         <li className="item-selector">
-          <a className={`buttonChange ${(clientSection==="Empresa")&& 'selected'}`} onClick={changeClientToEmpresa}>Empresa</a>
+          <span
+            className={`buttonChange ${
+              clientSection === "Empresa" && "selected"
+            }`}
+            onClick={changeClient}
+          >
+            Empresa
+          </span>
         </li>
       </ul>
       <div id="CadsPanelSelected" className="row justify-content-around">
-        {
-          userId ? (
-            <div className="content">
-              {userPas.products?.map((p,i) => {
-
-                if(clientSection === infoProducts[p]?.client){
-                    return <Link to={'producto/' + p} key={i}>
+        {userId ? (
+          <div className="content">
+            {userPas.products?.map((p, i) => {
+              if (clientSection === infoProducts[p]?.client) {
+                return (
+                  <Link to={"producto/" + p} key={i}>
                     <ProductCard props={infoProducts[p]} />
-                </Link>
-                }
-})}
-            </div>
-          ) : (
-            <div className="content">
-              {listProducts.map((p, i) => {
-                if (clientSection === infoProducts[p].client) {
-                  return returnCardProduct(p, i);
-                }
-              })}
-            </div>
-          )}
+                  </Link>
+                );
+              }
+            })}
+          </div>
+        ) : (
+          <div className="content">
+            {listProducts.map((p, i) => {
+              if (clientSection === infoProducts[p].client) {
+                return returnCardProduct(p, i);
+              }
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
