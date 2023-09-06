@@ -34,14 +34,12 @@ ul.item-selector-content{
   font-weight: 500;
 }
 
-a {
-  text-decoration: none;
-}
-a.buttonChange {
+span.buttonChange {
   color: var(--color-gray-medium);
-  margin: 0 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
-a.selected {
+span.selected {
   color: var(--color-gray-dark);
   font-weight: 500;
 }

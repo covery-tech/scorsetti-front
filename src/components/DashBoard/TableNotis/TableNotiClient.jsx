@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useUser from "../../hooks/UseUser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,8 +16,10 @@ export const TableNotiClient = ({
   setNotis,
   page,
   setShowShowMore,
+  deleteNoti
 }) => {
   const { jwt } = useUser();
+  const navigate = useNavigate();
 
   const getNotis = () => {
     const config = {
@@ -47,42 +49,7 @@ export const TableNotiClient = ({
     getNotis();
   }, [page]);
 
-  const deleteNoti = (id) => {
-    const config = {
-      method: "put",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/deleteNotificationClient/${id}`,
-      headers: { token: jwt },
-    };
-    axios(config)
-      .then((e) => {
-        if (e.data) {
-          toast.success("Notificación eliminada", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });          
-          let info = notis.flat();
-          let contador = 0;
-          info.map((noti) => {
-            if (noti.id == id) {
-              //(noti.id);
-              info.splice(contador, 1);
-            }
-            contador++;
-          });
-          //(info);
-          setNotis(info);
-        } else alert("server error");
-      })
-      .catch((e) => {
-        //(e);
-      });
-  };
+ 
   return (
     <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
       {loading ? (
@@ -103,7 +70,7 @@ export const TableNotiClient = ({
                   <td>
                     <strong
                       style={{ color: "#dc3545", cursor: "pointer" }}
-                      onClick={() => deleteNoti(e?.id)}
+                      onClick={() => deleteNoti(e?.id, "notification_client")}
                     >
                       Eliminar
                     </strong>

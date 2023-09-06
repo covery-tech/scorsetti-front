@@ -1,12 +1,12 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { UserMenu } from "../UserConfig/UserMenu";
 import useUser from "../hooks/UseUser";
 
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const {pas} = useUser()
+  const { pas } = useUser();
   const handleNavToggle = () => {
     setIsNavOpen(!isNavOpen);
   };
@@ -16,13 +16,13 @@ export default function Navbar() {
       <div className="container-fluid">
         <div>
           {
-            !pas ? 
+            !pas?.route?.length  ? 
             <Link  to="/" className="navbar-brand">
               <img src="/logo-scorsetti.png" alt="#" />
               {/* logo mobile */}
             </Link>
             :
-            <Link  to={`/usuario_pas/${pas.id}`} className="navbar-brand">
+            <Link  to={`/${pas.route}`} className="navbar-brand">
               <img src="/logo-scorsetti.png" alt="#" />
               {/* logo mobile */}
             </Link>
@@ -46,35 +46,35 @@ export default function Navbar() {
           <ul className="navbar-nav ms-auto mb-lg-0 p-2">
             <li className="nav-item">
             {
-              !pas ?
+              !pas?.route?.length ?
               <Link to="/" className="nav-link active">
                 Inicio
               </Link>
-            : <Link to={`/usuario_pas/${pas.id}`}className="nav-link active">
+            : <Link to={`/${pas.route}`}className="nav-link active">
                 Inicio
               </Link>
             } 
             </li>
             <li className="nav-item">
             {
-              !pas ?
+              !pas?.route?.length ?
               <a href="/#quienes-somos" className="nav-link">
                 ¿Quiénes somos?
               </a>
               :
-              <a href={`/usuario_pas/${pas.id}/#quienes-somos`} className="nav-link">
+              <a href={`/${pas.route}/#quienes-somos`} className="nav-link">
                 ¿Quiénes somos?
               </a>
             }
             </li>
             <li className="nav-item">
             {
-              !pas ?
+              !pas?.route?.length ?
               <a href="/#contacto" className="nav-link">
                 Contacto y Ubicación
               </a>
               :
-              <a href={`/usuario_pas/${pas.id}/#contacto`} className="nav-link">
+              <a href={`/${pas.route}/#contacto`} className="nav-link">
               Contacto y Ubicación
               </a>
             }
