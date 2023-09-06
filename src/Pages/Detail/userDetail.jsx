@@ -41,7 +41,7 @@ export const UserDetail = () => {
     }).catch((err)=>{
       console.log(err)
     })
-  }, []);
+  }, [setUser, setImage, URLSERVER, userId, jwt]);
   return (
     <div>
       {user === 201 ? (
