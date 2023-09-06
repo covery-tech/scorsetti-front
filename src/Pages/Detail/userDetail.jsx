@@ -9,7 +9,7 @@ import AlertNoPas from "../../components/AlertNoPas/AlertNoPas";
 import useUser from "../../components/hooks/UseUser";
 
 export const UserDetail = () => {
-  const { route } = useParams();
+  const { userId } = useParams();
   const [user, setUser] = useState([]);
   const {jwt,pas} = useUser()
   const [image, setImage] = useState("")
@@ -41,7 +41,7 @@ export const UserDetail = () => {
     }).catch((err)=>{
       console.log(err)
     })
-  }, []);
+  }, [setUser, setImage, URLSERVER, userId, jwt, pas?.id]);
   return (
     <div>
       {user === 201 ? (
