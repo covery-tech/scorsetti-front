@@ -20,10 +20,11 @@ export default function SectionProducts({ userId }) {
       axios(config2).then((res) => {
         getRoute(userId)
         setUserPas(res.data);
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.error(err);
       });
-  }, [userId]);
+  }, [getRoute, userId]);
 
   // SWITCH
   const [clientSection, setClientSection] = useState("Persona");
@@ -32,7 +33,6 @@ export default function SectionProducts({ userId }) {
       ? setClientSection("Empresa")
       : setClientSection("Persona");
   };
-
   // PUBLICACIÓN DE CARD PRODUCT
   const ProductCardComponent = (p, i) => {
     return (

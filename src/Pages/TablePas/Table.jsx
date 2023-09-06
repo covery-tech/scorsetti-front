@@ -82,9 +82,9 @@ export const TablePas = () => {
           :
           pas?.length ? (
           <tbody>
-            {pas.map((e) => (
+            {pas.map((e,i) => (
               
-                <tr>
+                <tr key={i}>
                   <td>{e?.name}</td>
                   <td>{e?.last_name}</td>
                   <td>{e?.email}</td>

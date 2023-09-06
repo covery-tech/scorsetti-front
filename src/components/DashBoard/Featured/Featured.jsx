@@ -6,7 +6,6 @@ import {CircularProgressbar} from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 
 export const Featured = ({amount}) => {
-  console.log(amount)
   return (
     <div className='featureds'>
       <div className="top">
