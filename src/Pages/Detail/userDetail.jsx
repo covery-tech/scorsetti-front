@@ -52,7 +52,6 @@ export const UserDetail = () => {
         <div>
           <SectionProducts userId={pas?.id} />
           {user.description?.length ? (
-            
             <WeInfo description={user.description} image={image || ""} name={user.name}/>
           ) : (
             <></>
