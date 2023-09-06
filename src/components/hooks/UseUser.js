@@ -8,6 +8,7 @@ import axios from 'axios'
 export default function useUser() {
     const {jwt,setJWT,user,setUser,tokenPas,setTokenPas,site, setSite,route,setRoute,pas,setPas} = useContext(Context)
     const login = useCallback( async ({email,password})=>{
+      try{
         loginService({email,password}).then(res=>{
           if(!res) return
           window.sessionStorage.setItem("jwt",res?.token)
@@ -15,6 +16,9 @@ export default function useUser() {
           setJWT(res.token)
           setUser(res.user)
         })
+      }catch(err){
+        console.log(err)
+      }
     },[setJWT])
 
     useEffect(()=>{

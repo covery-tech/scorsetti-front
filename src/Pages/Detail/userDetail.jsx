@@ -17,7 +17,7 @@ export const UserDetail = () => {
   useEffect(() => {
     const config = {
       method: "GET",
-      baseURL: `${URLSERVER}/user/getPasByRoute/${route}`,
+      baseURL: `${URLSERVER}/user/getPasById/${userId}`,
     };
     const config2 = {
       method: "get",

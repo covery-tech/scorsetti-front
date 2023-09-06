@@ -36,8 +36,15 @@ export default function ContainerRegister() {
                     password: values.password,
                   })
                   .then((res) => {
-                    if (res.status === 201) alert(res.data);
-                    if (res.status === 202) alert(res.data);
+                    if (res.status === (201 || 202)) return toast.error(res.data.data ,{
+                      position: "bottom-center",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light"});
                     else navigate("/ingresar");
                   });
               } catch (err) {

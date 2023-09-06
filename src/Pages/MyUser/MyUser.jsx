@@ -22,7 +22,7 @@ export function MyUser() {
         };
         axios(config)
             .then((e) => {
-                e.data ? setImage(e.data) : setImage(image);
+                e.data ? setImage(e.data.data) : setImage(image);
             })
             .catch((e) => setImage(image));
 
@@ -198,7 +198,7 @@ export function MyUser() {
                     <></>
                 )}
 
-                {users.password ? (
+                {!users ? (
                     <div className="contentForm">
                         <Formik
                             initialValues={users}
