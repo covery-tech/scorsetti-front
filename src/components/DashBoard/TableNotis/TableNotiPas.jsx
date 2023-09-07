@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useUser from "../../hooks/UseUser";
+import useUser from "../../../hooks/UseUser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

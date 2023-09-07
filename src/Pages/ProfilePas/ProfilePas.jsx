@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import useUser from "../../components/hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 import { TableProductsAdmin } from "../../components/DashBoard/TableProducts/TableProductsAdmin";
 import axios from "axios";
 import { useParams } from "react-router-dom";

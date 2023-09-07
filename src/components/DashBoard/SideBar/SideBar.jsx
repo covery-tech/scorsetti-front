@@ -1,6 +1,6 @@
 import React from 'react'
 import "./SideBar.css"
-import useUser from "../../hooks/UseUser" 
+import useUser from "../../../hooks/UseUser" 
 import { SideBarPas } from './SideBarPas'
 import { SideBarAdmin } from './SideBarAdmin'
 import { SideBarClient } from './SideBarClient'

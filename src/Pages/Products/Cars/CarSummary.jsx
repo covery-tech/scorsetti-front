@@ -1,5 +1,5 @@
 import axios from "axios";
-import useUser from "../../../components/hooks/UseUser";
+import useUser from "../../../hooks/UseUser";
 import StyledText from "../../../components/StyledText/StyledText";
 import SummaryCard from "../../../components/ClientSummary/SummaryCard";
 import ClientSummary from "../../../components/ClientSummary/ClientSummary";

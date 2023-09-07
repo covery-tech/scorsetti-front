@@ -1,6 +1,6 @@
 import { useState } from "react";
-import onChange from "../defaultFunctions/onChange";
-import reloadPage from "../defaultFunctions/reloadPage";
+import onChange from "../../../utils/onChangeInput";
+import reloadPage from "../../../utils/reloadPage";
 import Validate from "./functions/validate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "./info";
@@ -105,12 +105,16 @@ export default function PersonalAccidentsContainer() {
   return (
     <Form>
       {(instance === 1 || instance === 2) && (
-        <div className="img-container tc">
+        <div className="img-container w-100 w-30-l tc">
           <FontAwesomeIcon className="img" icon={icon} />
           <h1>Accidente personal</h1>
         </div>
       )}
-      <div className={instance === 3 ? "summary-container" : "form-container"}>
+      <div
+        className={`${
+          instance === 3 ? "summary-container" : "form-container"
+        } w-100`}
+      >
         {(instance === 1 || instance === 2) && (
           <p className="mb3">
             Campos requeridos* ( Rellene los campos en órden →)

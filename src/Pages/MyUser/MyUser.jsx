@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import useUser from "../../components/hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 import image from "./img/userIMG.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validate from "./functions/validate";
@@ -21,7 +21,7 @@ export function MyUser() {
         };
         axios(config)
             .then((e) => {
-                e.data ? setImage(e.data) : setImage(image);
+                e.data ? setImage(e.data.data) : setImage(image);
             })
             .catch((e) => setImage(image));
 
@@ -197,7 +197,7 @@ export function MyUser() {
                     <></>
                 )}
 
-                {users.password ? (
+                {!users ? (
                     <div className="contentForm">
                         <Formik
                             initialValues={users}

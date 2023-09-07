@@ -3,7 +3,7 @@ import axios from "axios";
 import Validate from "./Validate";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 import PrincipalText from "../../components/Principal-Text/Principaltext";
 
 export default function Register() {
@@ -36,12 +36,21 @@ export default function Register() {
                     password: values.password,
                   })
                   .then((res) => {
-                    if (res.status === 201) alert(res.data);
-                    if (res.status === 202) alert(res.data);
+                    if (res.status === (201 || 202))
+                      return toast.error(res.data.data, {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                      });
                     else navigate("/ingresar");
                   });
               } catch (err) {
-                toast.error( err.data.respose, {
+                toast.error(err.data.respose, {
                   position: "bottom-center",
                   autoClose: 5000,
                   hideProgressBar: false,

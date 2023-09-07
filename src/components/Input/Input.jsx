@@ -1,27 +1,34 @@
-import onClickCheckbox from "../../Pages/Products/defaultFunctions/onClickCheckbox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import onClickCheckbox from "../../utils/onClickCheckboxInput";
 
 export default function Input({
   placeholder,
   type,
   name,
   onChange,
+  onClick,
   value,
   values,
   setValues,
   errors,
   setErrors,
   showErrors,
+  showPassword,
   classes,
   styles,
   options,
   validate,
-  instance
+  instance,
 }) {
   return (
     <>
       {type === "select" ? (
-        <div style={styles} className="select-container">
+        <div
+          style={styles}
+          className={`select-container w-100 ${classes ? classes : ""}`}
+        >
           <select
             name={name}
             onChange={(e) =>
@@ -45,7 +52,10 @@ export default function Input({
           )}
         </div>
       ) : type === "checkbox" ? (
-        <div className={`flex checkbox-container ${classes}`} style={styles}>
+        <div
+          className={`flex checkbox-container ${classes ? classes : ""}`}
+          style={styles}
+        >
           <input
             type={type}
             name={name}
@@ -58,7 +68,10 @@ export default function Input({
           <label>{placeholder}</label>
         </div>
       ) : (
-        <div className={`flex input-container ${classes}`} style={styles}>
+        <div
+          className={`flex input-container w-100 ${classes ? classes : ""}`}
+          style={styles}
+        >
           {type === "date" && <label>{placeholder}</label>}
           <input
             type={type}
@@ -69,6 +82,11 @@ export default function Input({
             placeholder={placeholder}
             value={values[name]}
           />
+          {name === "password" && (
+            <span onClick={onClick}>
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </span>
+          )}
           {showErrors && errors[name] && (
             <p className="error-message" style={{ marginTop: "0.5rem" }}>
               {errors[name]}

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUser,faCircleUser,faCreditCard} from "@fortawesome/free-regular-svg-icons"
 import {faShop,faBell,faSignal, faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons"
 import axios from 'axios'
-import useUser from '../../hooks/UseUser'
+import useUser from '../../../hooks/UseUser'
 import { Link } from 'react-router-dom'
 export const SideBarPas = ({logout,updateSite}) => {
     const {jwt} = useUser()

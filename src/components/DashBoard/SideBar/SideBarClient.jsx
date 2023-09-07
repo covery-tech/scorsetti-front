@@ -10,7 +10,7 @@ import {
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import useUser from "../../hooks/UseUser";
+import useUser from "../../../hooks/UseUser";
 import { Link } from "react-router-dom";
 export const SideBarClient = ({ logout, updateSite }) => {
   const { jwt } = useUser();

@@ -5,7 +5,7 @@ import { infoProducts, listProducts } from "./products";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./sectionProducts.css";
-import useUser from "../hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 import Container from "../Container/Container";
 
 export default function SectionProducts({ userId }) {

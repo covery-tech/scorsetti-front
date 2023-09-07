@@ -1,5 +1,5 @@
 import React from 'react'
-import useUser from '../../hooks/UseUser'
+import useUser from '../../../hooks/UseUser'
 import axios from 'axios'
 import { DataTablePas } from './DataTablePas'
 

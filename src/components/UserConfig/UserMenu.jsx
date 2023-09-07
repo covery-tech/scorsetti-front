@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Link } from "react-router-dom";
-import useUser from "../hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 import "./UserMenu.css";
 import { Icon } from "@iconify/react";
 

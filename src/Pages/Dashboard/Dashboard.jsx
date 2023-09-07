@@ -4,7 +4,7 @@ import { Featured } from '../../components/DashBoard/Featured/Featured'
 import { SideBar } from '../../components/DashBoard/SideBar/SideBar'
 import { Widget } from '../../components/DashBoard/Widget/widget'
 import "./dash.css"
-import useUser from '../../components/hooks/UseUser'
+import useUser from '../../hooks/UseUser'
 import { TableClient } from '../../components/DashBoard/TableClient/TableClient'
 import { TableProducts } from '../../components/DashBoard/TableProducts/TableProducts'
 import axios from 'axios'

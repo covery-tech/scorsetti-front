@@ -65,13 +65,17 @@ input[type="number"] {
 
 /* Buttons */
 .button {
-  color: #fff;
+  color: var(--color-first-medium);
   padding: 0.5rem;
   border: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 .main-button {
   background-color: var(--color-first-medium);
+  color: #fff;
 }
 .back-button {
   background-color: var(--color-gray-medium);
+  color: #fff;
 }

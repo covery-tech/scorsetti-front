@@ -101,7 +101,7 @@ export default function HomeBasicInfo({
             setErrors={setErrors}
             showErrors={showErrors}
             styles={{
-              marginRight: "2%",
+              marginRight: "0.5rem",
               marginBottom: "2rem",
             }}
             type={"select"}
@@ -148,14 +148,16 @@ export default function HomeBasicInfo({
                     styles={{
                       marginRight: "0.5rem",
                       marginBottom: "2rem",
-                      width: "20%",
                     }}
+                    classes={"w-20"}
                     type={"checkbox"}
                     name={"medidas_contra_fuego"}
                     validate={Validate}
                   />
                 )
             )}
+          </div>
+          <div className="input-couple">
             <Input
               placeholder={"Otras medidas"}
               type={"text"}
@@ -188,6 +190,7 @@ export default function HomeBasicInfo({
                       marginRight: "0.5rem",
                       marginBottom: "2rem",
                     }}
+                    classes={"w-20"}
                     type={"checkbox"}
                     name={"medidas_contra_robos"}
                     validate={Validate}
@@ -212,6 +215,7 @@ export default function HomeBasicInfo({
                       marginRight: "0.5rem",
                       marginBottom: "2rem",
                     }}
+                    classes={"w-20"}
                     type={"checkbox"}
                     name={"medidas_contra_robos"}
                     validate={Validate}
@@ -227,9 +231,6 @@ export default function HomeBasicInfo({
             values={values}
             setValues={setValues}
             errors={errors}
-            styles={{
-              width: "100%",
-            }}
             setErrors={setErrors}
             showErrors={showErrors}
             validate={Validate}

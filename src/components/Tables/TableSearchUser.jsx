@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Icon } from "@iconify/react";
-import useUser from '../hooks/UseUser';
+import useUser from '../../hooks/UseUser';
 import { DataTableSearch } from './DataTableSearch';
 
 

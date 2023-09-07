@@ -3,7 +3,7 @@ import "./index.css";
 import ClientSummary from "../../../components/ClientSummary/ClientSummary";
 import SummaryCard from "../../../components/ClientSummary/SummaryCard";
 import StyledText from "../../../components/StyledText/StyledText";
-import useUser from "../../../components/hooks/UseUser";
+import useUser from "../../../hooks/UseUser";
 
 export default function MotorcycleSummary({ values, reloadPage }) {
   const {

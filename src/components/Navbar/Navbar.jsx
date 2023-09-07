@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { UserMenu } from "../UserConfig/UserMenu";
-import useUser from "../hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 
 export default function Navbar() {
   const { pas } = useUser();

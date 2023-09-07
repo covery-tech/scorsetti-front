@@ -1,6 +1,6 @@
 import axios from "axios";
 import StyledText from "../../../components/StyledText/StyledText";
-import useUser from "../../../components/hooks/UseUser";
+import useUser from "../../../hooks/UseUser";
 import SummaryCard from "../../../components/ClientSummary/SummaryCard";
 import ClientSummary from "../../../components/ClientSummary/ClientSummary";
 import { toast } from "react-toastify";

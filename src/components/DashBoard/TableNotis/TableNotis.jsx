@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import useUser from '../../hooks/UseUser'
+import useUser from '../../../hooks/UseUser'
 import { TableNotisAdmin } from './TableNotisAdmin'
 import { TableNotiPas } from './TableNotiPas'
 import { TableNotiClient } from './TableNotiClient'

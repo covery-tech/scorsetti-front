@@ -104,6 +104,7 @@ export default function MotorcycleBasicInfo({
               marginBottom: "2rem",
               marginRight: "0.5rem",
             }}
+            classes={"w-50-l"}
             type={"select"}
             name={"vigencia"}
             options={validity}
@@ -122,8 +123,8 @@ export default function MotorcycleBasicInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "20%",
             }}
+            classes={"w-20"}
             type={"checkbox"}
             name={"cero_km"}
             validate={Validate}

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import useUser from "../../../components/hooks/UseUser";
+import useUser from "../../../hooks/UseUser";
 import { useParams } from "react-router-dom";
 
 export const MpButton = ({

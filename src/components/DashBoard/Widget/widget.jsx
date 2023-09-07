@@ -3,7 +3,7 @@ import "./widget.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUser,faCreditCard} from "@fortawesome/free-regular-svg-icons"
 import {faArrowTrendUp,faSignal} from "@fortawesome/free-solid-svg-icons"
-import useUser from '../../hooks/UseUser'
+import useUser from '../../../hooks/UseUser'
 export const Widget = ({type,amount}) => {
     let data;
     const {updateSite} = useUser()

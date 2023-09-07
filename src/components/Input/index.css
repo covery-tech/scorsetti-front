@@ -2,7 +2,6 @@
   border: 1px solid rgb(201, 201, 201);
   padding: 0.5rem;
   justify-content: space-between;
-  width: 100%;
   position: relative;
   margin-bottom: 2rem;
 }
@@ -15,12 +14,10 @@
   border: 1px solid rgb(201, 201, 201);
   padding: 0.5rem;
   justify-content: space-between;
-  width: 100%;
   position: relative;
 }
 .checkbox-container {
   justify-content: flex-start;
-  width: 100%;
   position: relative;
   margin-bottom: 2rem;
 }
@@ -50,12 +47,6 @@ select {
 }
 
 @media screen and (min-width: 60em) {
-  .input-container {
-    width: 50%;
-  }
-  .select-container {
-    width: 50%;
-  }
   input,
   select {
     border: none;

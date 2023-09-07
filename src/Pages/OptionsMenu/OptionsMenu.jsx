@@ -1,9 +1,9 @@
-import OptionsAdmin from "../../components/OptionsAdmin/OptionsAdmin";
+// import OptionsAdmin from "../../components/OptionsAdmin/OptionsAdmin";
 
 export default function Menu() {
   return (
     <div>
-      <OptionsAdmin />
+      {/* <OptionsAdmin /> */}
     </div>
   );
 }
