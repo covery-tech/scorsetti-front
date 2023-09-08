@@ -1,174 +1,131 @@
 // import { useState } from "react";
-import axios from "axios";
-import Validate from "./Validate";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
-import PrincipalText from "../../components/Principal-Text/Principaltext";
+import Input from "../../components/Input/Input";
+import Form from "../../components/FormContainer/FormContainer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import StyledText from "../../components/StyledText/StyledText";
+import onChange from "../../utils/onChangeInput";
+import Validate from "../Login/loginUtils/validate";
+import registerSession from "./registerUtils/register-session";
+import togglePassword from "../Login/loginUtils/toggle-password";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [values, setValues] = useState({
+    name: "",
+    lastName: "",
+    date: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [showErrors, setShowErrors] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <section className="services" id="services">
-      <div className="container contenedor bg-white rounded-4 p-5 mt-5 text-center justify-content-center">
-        <PrincipalText />
-        <h4 className="text-center">Registre su usuario</h4>
-        <div className="FormContainer">
-          <Formik
-            initialValues={{
-              name: "",
-              lastname: "",
-              date: "",
-              email: "",
-              password: "",
-            }}
-            validate={Validate}
-            onSubmit={(values) => {
-              const dateString = values.date.toString();
-              try {
-                axios
-                  .post(`${process.env.REACT_APP_URI_API}/user/postUser`, {
-                    name: values.name,
-                    lastName: values.lastname,
-                    date: dateString,
-                    email: values.email,
-                    password: values.password,
-                  })
-                  .then((res) => {
-                    if (res.status === (201 || 202))
-                      return toast.error(res.data.data, {
-                        position: "bottom-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                      });
-                    else navigate("/ingresar");
-                  });
-              } catch (err) {
-                toast.error(err.data.respose, {
-                  position: "bottom-center",
-                  autoClose: 5000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                });
-              }
-            }}
-          >
-            {({ errors }) => (
-              <Form className="form-group p-5 row">
-                <div className="col-4">
-                  <label className="mt-2" htmlFor="name">
-                    Nombre/s
-                  </label>
-                  <Field
-                    className="form-control mt-2"
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Nombre"
-                  />
-                  <ErrorMessage
-                    name="name"
-                    component={() => (
-                      <div className="errorPC"> {errors.name} </div>
-                    )}
-                  />
-                  <label className="mt-2" htmlFor="lastname">
-                    Apellido
-                  </label>
-                  <Field
-                    className="form-control mt-2"
-                    type="text"
-                    id="lastname"
-                    name="lastname"
-                    placeholder="Apellido"
-                  />
-                  <ErrorMessage
-                    name="lastname"
-                    component={() => (
-                      <div className="errorPC"> {errors.lastname} </div>
-                    )}
-                  />
-                </div>
-                <div className="col-4">
-                  <label className="mt-2" htmlFor="date">
-                    Fecha de nacimiento
-                  </label>
-                  <Field
-                    className="form-control mt-2"
-                    type="date"
-                    id="date"
-                    name="date"
-                    label="Fecha de nacimiento"
-                    placeholder="Fecha de nacimiento *"
-                    required="required"
-                  />
-                  {/* Manejar el error de datepicker */}
-                  {/* <ErrorMessage
-                    name="username"
-                    component={() => (
-                      <div className="errorPC"> {errors.username} </div>
-                    )}
-                  /> */}
-                  <label className="mt-2" htmlFor="email">
-                    e-mail
-                  </label>
-                  <Field
-                    className="form-control  mt-2"
-                    type="text"
-                    id="email"
-                    name="email"
-                    placeholder="e-mail *"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component={() => (
-                      <div className="errorPC"> {errors.email} </div>
-                    )}
-                  />{" "}
-                  <button className="btn btn-primary mt-4" type="submit">
-                    Crear usuario
-                  </button>
-                </div>
-
-                <div className="col-4">
-                  <label className="mt-2" htmlFor="password">
-                    Contraseña
-                  </label>
-                  <Field
-                    className="form-control  mt-2"
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Ejemplo123%"
-                  />
-                  <ErrorMessage
-                    name="username"
-                    component={() => (
-                      <div className="errorMOB"> {errors.username} </div>
-                    )}
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component={() => (
-                      <div className="errorMOB"> {errors.password} </div>
-                    )}
-                  />
-                </div>
-              </Form>
-            )}
-          </Formik>
+    <Form>
+      <div className="form-container w-100 w-60-l">
+      <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          <FontAwesomeIcon className="img mr2" icon={faPen} />
+          Registro
+        </StyledText>
+          <div className="input-couple">
+            <Input
+              placeholder={"Nombre/s *"}
+              onChange={onChange}
+              values={values}
+              setValues={setValues}
+              errors={errors}
+              setErrors={setErrors}
+              showErrors={showErrors}
+              styles={{
+                marginBottom: "2rem",
+              }}
+              type={"text"}
+              name={"name"}
+              validate={Validate}
+            />
+          </div>
+          <div className="input-couple">
+            <Input
+              placeholder={"Apellido/s *"}
+              onChange={onChange}
+              values={values}
+              setValues={setValues}
+              errors={errors}
+              setErrors={setErrors}
+              showErrors={showErrors}
+              styles={{
+                marginBottom: "2rem",
+              }}
+              type={"text"}
+              name={"lastName"}
+              validate={Validate}
+            />
+          </div>
+          <div className="input-couple">
+            <Input
+              placeholder={"Fecha de nacimiento *"}
+              onChange={onChange}
+              values={values}
+              setValues={setValues}
+              errors={errors}
+              setErrors={setErrors}
+              showErrors={showErrors}
+              styles={{
+                marginBottom: "2rem",
+                marginTop: "1rem",
+              }}
+              type={"date"}
+              name={"date"}
+              validate={Validate}
+            />
+          </div>
+          <div className="input-couple">
+            <Input
+              placeholder={"E-mail *"}
+              onChange={onChange}
+              values={values}
+              setValues={setValues}
+              errors={errors}
+              setErrors={setErrors}
+              showErrors={showErrors}
+              styles={{
+                marginBottom: "2rem",
+              }}
+              type={"email"}
+              name={"email"}
+              validate={Validate}
+            />
+          </div>
+          <div className="input-couple">
+            <Input
+              placeholder={"Contraseña *"}
+              onChange={onChange}
+              onClick={() => togglePassword({ setShowPassword, showPassword })}
+              showPassword={showPassword}
+              values={values}
+              setValues={setValues}
+              errors={errors}
+              setErrors={setErrors}
+              showErrors={showErrors}
+              styles={{
+                marginBottom: "2rem",
+              }}
+              type={showPassword ? "text" : "password"}
+              name={"password"}
+              validate={Validate}
+            />
+          </div>
+          <div className="tc">
+          <button  className="button main-button" onClick={(e) =>
+              registerSession({ e, values, errors, setShowErrors })}>
+              Crear Usuario
+          </button>
         </div>
       </div>
-    </section>
+    </Form>
   );
 }

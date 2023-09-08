@@ -46,7 +46,7 @@ export default function Input({
             ))}
           </select>
           {showErrors && errors[name] && (
-            <p className="error-message" style={{ marginTop: "0.5rem" }}>
+            <p className="error-message" style={{ marginTop: "2rem" }}>
               {errors[name]}
             </p>
           )}
@@ -88,7 +88,7 @@ export default function Input({
             </span>
           )}
           {showErrors && errors[name] && (
-            <p className="error-message" style={{ marginTop: "0.5rem" }}>
+            <p className="error-message" style={{ marginTop: "2rem" }}>
               {errors[name]}
             </p>
           )}
