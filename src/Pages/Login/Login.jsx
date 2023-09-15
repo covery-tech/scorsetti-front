@@ -24,7 +24,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      !pas ? navigate("/") : navigate(`/${pas.route}`)
+      !pas ? navigate("/") : navigate(`/${pas.route}`);
     }
   }, [isLoggedIn, navigate, pas]);
 
@@ -71,18 +71,16 @@ export default function Login() {
             validate={Validate}
           />
         </div>
-        <div className="tc">
+        <div className="flex flex-column items-center">
           <button
-            className="button main-button"
+            className="button main-button w-50"
             onClick={(e) =>
               initSession({ e, values, errors, setShowErrors, login })
             }
           >
             <b>Acceder</b>
           </button>
-        </div>
-        <div className="tc">
-          <div className="w-100">
+          <span className="fst-italic pt2">
             <button
               href="#"
               onClick={() => navigate("/ingresar")}
@@ -90,12 +88,13 @@ export default function Login() {
             >
               Olvidaste tu contraseña?
             </button>
-            <br />
-            <span className="fst-italic">¿No tenés cuenta? </span>
+          </span>
+          <span className="fst-italic">
+            ¿No tenés cuenta?{" "}
             <button className="button" onClick={() => navigate("/registro")}>
               Crear Usuario
             </button>
-          </div>
+          </span>
         </div>
       </div>
     </Form>

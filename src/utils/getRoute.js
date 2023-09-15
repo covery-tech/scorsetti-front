@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function getRoute(id){
+export default function route(id){
     const config = {
         method: "get",
         baseURL: `${process.env.REACT_APP_URI_API}/user/pasRoutes/${id}`,

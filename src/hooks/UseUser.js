@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect } from "react";
 import Context from "../components/Context/userContext";
 import loginService from "../utils/getUser";
 import routeService from "../utils/getRoute";
+import axios from "axios";
 
 export default function useUser() {
   const {
@@ -10,7 +11,7 @@ export default function useUser() {
     user,
     setUser,
     tokenPas,
-    // setTokenPas,
+    setTokenPas,
     site,
     setSite,
     route,
@@ -18,7 +19,7 @@ export default function useUser() {
     pas,
     setPas,
   } = useContext(Context);
-
+  
   const login = useCallback(
     async ({ email, password }) => {
       try {
@@ -39,7 +40,7 @@ export default function useUser() {
   useEffect(() => {
     let data = JSON?.parse(window.sessionStorage.getItem("pas"));
     setPas(data);
-  }, [setPas]);
+  }, []);
 
   const getRoute = useCallback(
     (id) => {
@@ -56,29 +57,31 @@ export default function useUser() {
     [setRoute]
   );
 
-  //   const getTokenPasLibra = ()=>{
-  //       const config = {
-  //         method: "POST",
-  //         baseURL: `${process.env.REACT_APP_URI_API}/libra/token`,
-  //         data: {
-  //           formData:{
-  //             username:`${process.env.REACT_APP_USER_LIBRA}`,
-  //             password:`${process.env.REACT_APP_PASSWORD_LIBRA}`,
-  //             grant_type:"password"
-  //           }
-  //         },
-  //       }
-  //       axios(config).then(resp=>{
-  //         //(resp)
-  //         window.sessionStorage.setItem("tokenPas",resp.data.access_token)
-  //         setTokenPas(resp.data.access_token)
-  //         return
-  //       }).catch(err=>{
-  //         //(err)
-  //         alert("server error")
-  //         return
-  //       })
-  //     }
+  const getTokenPasLibra = () => {
+    const config = {
+      method: "POST",
+      baseURL: `${process.env.REACT_APP_URI_API}/libra/token`,
+      data: {
+        formData: {
+          username: `${process.env.REACT_APP_USER_LIBRA}`,
+          password: `${process.env.REACT_APP_PASSWORD_LIBRA}`,
+          grant_type: "password",
+        },
+      },
+    };
+    axios(config)
+      .then((resp) => {
+        //(resp)
+        window.sessionStorage.setItem("tokenPas", resp.data.access_token);
+        setTokenPas(resp.data.access_token);
+        return;
+      })
+      .catch((err) => {
+        //(err)
+        alert("server error");
+        return;
+      });
+  };
 
   const updateSite = (value) => {
     setSite(value);
@@ -89,7 +92,7 @@ export default function useUser() {
     window.sessionStorage.removeItem("user");
     setJWT(null);
     setUser(null);
-  }, [setJWT, setUser]);
+  }, [setJWT]);
 
   return {
     isLoggedIn: Boolean(jwt),
@@ -97,7 +100,7 @@ export default function useUser() {
     logout,
     user,
     jwt,
-    // getTokenPasLibra,
+    getTokenPasLibra,
     tokenPas,
     updateSite,
     site,

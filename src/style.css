@@ -74,6 +74,12 @@ input[type="number"] {
 .main-button {
   background-color: var(--color-first-medium);
   color: #fff;
+  transition: all .2s;
+}
+.main-button:hover {
+  background-color: var(--color-first-light-one);
+  color: #fff;
+  box-shadow: 1px 4px 8px var(--color-gray-dark);
 }
 .back-button {
   background-color: var(--color-gray-medium);
