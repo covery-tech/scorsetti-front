@@ -1,9 +1,0 @@
-.list-drop {
-    position: absolute !important;    
-    
-    top: 60px !important;
-    right: 3.3vw !important;
-}
-.dropdown-item {
-    border-radius: 0.5rem;
-}

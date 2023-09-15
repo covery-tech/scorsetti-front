@@ -68,7 +68,7 @@ export default function Navbar() {
             </a>
           )}
         </span>
-        <span className="nav-item desk-item">
+        <span className="nav-item">
           <UserMenu />
         </span>
       </div>
