@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="App">
       <Navbar />
-      <SectionProducts />
+      <SectionProducts/>
       <WeInfo description={description.description}
         name={description.name}
       />

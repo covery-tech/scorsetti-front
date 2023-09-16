@@ -9,7 +9,7 @@ import AlertNoPas from "../../components/AlertNoPas/AlertNoPas";
 import useUser from "../../components/hooks/UseUser";
 
 export const UserDetail = () => {
-  const { userId } = useParams();
+  const {route} = useParams();
   const [user, setUser] = useState([]);
   const {jwt,pas} = useUser()
   const [image, setImage] = useState("")
@@ -17,7 +17,7 @@ export const UserDetail = () => {
   useEffect(() => {
     const config = {
       method: "GET",
-      baseURL: `${URLSERVER}/user/getPasById/${userId}`,
+      baseURL: `${URLSERVER}/user/getPasByRoute/${route}`,
     };
     const config2 = {
       method: "get",
@@ -41,7 +41,7 @@ export const UserDetail = () => {
     }).catch((err)=>{
       console.log(err)
     })
-  }, [setUser, setImage, URLSERVER, userId, jwt, pas?.id]);
+  }, [setUser, setImage, URLSERVER, route, jwt, pas?.id]);
   return (
     <div>
       {user === 201 ? (
@@ -50,7 +50,7 @@ export const UserDetail = () => {
         <AlertNoPas message = {"Éste productor no está habilitado"}/>
       ) : (
         <div>
-          <SectionProducts userId={pas?.id} />
+          <SectionProducts route={pas?.id} />
           {user.description?.length ? (
             <WeInfo description={user.description} image={image || ""} name={user.name}/>
           ) : (

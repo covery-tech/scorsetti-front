@@ -10,7 +10,14 @@ import { toast } from "react-toastify";
 import "./style.css";
 export function MyUser() {
     const { jwt } = useUser();
-    const [users, setUser] = useState({});
+    const [users, setUser] = useState({
+        phone_number: '',
+        province: '',
+        city: '',
+        street_name: '',
+        postal_code: '',
+        password: '',
+    });
     const [image2, setImage] = useState(image);
     const [image3, setImage3] = useState("");
 
@@ -32,7 +39,7 @@ export function MyUser() {
             headers: { token: jwt },
         };
         axios(config2).then((e) => {
-            setUser(e.data);
+            setUser(e.data.data);
         });
     }, []);
 
@@ -201,7 +208,7 @@ export function MyUser() {
                 {!users ? (
                     <div className="contentForm">
                         <Formik
-                            initialValues={users}
+                            initialValues={{users}}
                             validate={Validate}
                             onSubmit={(values) => {
                                 handleSubmit(values);
@@ -225,7 +232,7 @@ export function MyUser() {
                                     <ErrorMessage
                                         name="phone_number"
                                         component={() => (
-                                            <div> {errors.phone_number} </div>
+                                            <div> {errors?.phone_number} </div>
                                         )}
                                     />
                                     <label
