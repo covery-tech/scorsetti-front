@@ -121,7 +121,6 @@ export function MyUser() {
 //     setImage(event?.target?.files[0]);
 //     setImage3(URL.createObjectURL(event?.target?.files[0]));
 //   };
-
   return (
     <div className="container bg-white rounded-5 mt-5 p-5 justify-content-center text-center">
       <h1>Actualizar usuario</h1>

@@ -37,7 +37,7 @@ export const UserDetail = () => {
     }).catch((err)=>{
       console.log(err)
     });
-    axios(config2).then(res=>{
+    axios(config2).then( res =>{
       setImage(res.data)
     }).catch((err)=>{
       console.log(err)

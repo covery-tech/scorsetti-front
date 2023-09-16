@@ -36,6 +36,7 @@ export default function SectionProducts({ route }) {
       ? setClientSection("Empresa")
       : setClientSection("Persona");
   };
+  
   // PUBLICACIÓN DE CARD PRODUCT
   const ProductCardComponent = (p, i) => {
     return (
