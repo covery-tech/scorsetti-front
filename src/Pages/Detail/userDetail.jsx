@@ -9,7 +9,7 @@ import AlertNoPas from "../../components/AlertNoPas/AlertNoPas";
 import useUser from "../../hooks/UseUser";
 
 export const UserDetail = () => {
-  const { userId } = useParams();
+  const { route } = useParams();
   const [user, setUser] = useState([]);
   const { jwt, pas } = useUser();
   const [image, setImage] = useState("");
@@ -18,36 +18,32 @@ export const UserDetail = () => {
   useEffect(() => {
     const config = {
       method: "GET",
-      baseURL: `${URLSERVER}/user/getPasByRoute/${userId}`,
+      baseURL: `${URLSERVER}/user/getPasByRoute/${route}`,
     };
     const config2 = {
       method: "get",
-      baseURL: `${URLSERVER}/user/imageLg/${userId}`,
-      headers: { token: jwt },
-    };
-    axios(config)
-      .then((res) => {
-        if (res.data) {
-          if (res.status === 200) {
-            setUser(res.data);
-            window.sessionStorage.setItem("pas", JSON.stringify(res.data));
-          }
-          if (res.status === 201) setUser(res.status);
-          if (res.status === 202) setUser(res.status);
+      baseURL: `${URLSERVER}/user/imageLg/${pas?.id}`,
+      headers:{token:jwt}
+  };
+    axios(config).then((res) => {
+      if (res.data) {
+        if (res.status === 200) {
+          setUser(res.data);
+          window.sessionStorage.setItem("pas", JSON.stringify(res.data));
         }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    axios(config2)
-      .then((res) => {
-        setImage(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [URLSERVER, jwt, userId]);
-
+        if (res.status === 201) setUser(res.status);
+        if (res.status === 202) setUser(res.status);        
+      }
+    }).catch((err)=>{
+      console.log(err)
+    });
+    axios(config2).then(res=>{
+      setImage(res.data)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }, [setUser, setImage, URLSERVER, route, jwt, pas?.id]);
+  
   return (
     <div>
       {user === 201 ? (
@@ -56,7 +52,7 @@ export const UserDetail = () => {
         <AlertNoPas message={"Éste productor no está habilitado"} />
       ) : (
         <div>
-          <SectionProducts userId={pas?.id} />
+          <SectionProducts route={pas?.id} />
           {user.description?.length ? (
             <WeInfo
               description={user.description}

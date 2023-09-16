@@ -123,7 +123,7 @@ export default function Register() {
           <button
             className="button main-button w-50"
             onClick={(e) =>
-              registerSession({ e, values, errors, setShowErrors })
+              registerSession({ e, values, errors, setShowErrors, navigate })
             }
           >
             Crear Usuario

@@ -8,23 +8,26 @@ import "./sectionProducts.css";
 import useUser from "../../hooks/UseUser";
 import Container from "../Container/Container";
 
-export default function SectionProducts({ userId }) {
+export default function SectionProducts({ route }) {
   const [userPas, setUserPas] = useState([]);
   const { getRoute } = useUser();
   useEffect(() => {
+    if (route) {
       const config2 = {
         method: "GET",
         baseURL:
-          process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
+          process.env.REACT_APP_URI_API + `/product/getProductsPas/${route}`,
       };
-      axios(config2).then((res) => {
-        getRoute(userId)
-        setUserPas(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [getRoute, userId]);
+      axios(config2)
+        .then((res) => {
+          getRoute(route);
+          setUserPas(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [getRoute, route]);
 
   // SWITCH
   const [clientSection, setClientSection] = useState("Persona");
@@ -64,9 +67,9 @@ export default function SectionProducts({ userId }) {
         </span>
       </div>
       <div className="flex flex-wrap justify-center">
-        {userId ? (
+        {route ? (
           <>
-            {userPas.products?.map((p, i) => {
+            {userPas.products?.forEach((p, i) => {
               if (clientSection === infoProducts[p]?.client) {
                 return ProductCardComponent(p, i);
               }
@@ -74,7 +77,7 @@ export default function SectionProducts({ userId }) {
           </>
         ) : (
           <>
-            {listProducts.map((p, i) => {
+            {listProducts.forEach((p, i) => {
               if (clientSection === infoProducts[p].client) {
                 return ProductCardComponent(p, i);
               }
