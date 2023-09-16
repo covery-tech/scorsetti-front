@@ -7,24 +7,26 @@ import { Link } from "react-router-dom";
 import "./sectionProducts.css";
 import useUser from "../hooks/UseUser";
 
-export default function SectionProducts({ userId }) {
+export default function SectionProducts({ route }) {
   const [userPas, setUserPas] = useState([]);
   const { getRoute } = useUser();
   useEffect(() => {
-    const config2 = {
-      method: "GET",
-      baseURL:
-        process.env.REACT_APP_URI_API + `/product/getProductsPas/${userId}`,
-    };
-    axios(config2)
-      .then((res) => {
-        getRoute(userId);
-        setUserPas(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [getRoute, userId]);
+    if(route) {
+      const config2 = {
+        method: "GET",
+        baseURL:
+          process.env.REACT_APP_URI_API + `/product/getProductsPas/${route}`,
+      };
+      axios(config2)
+        .then((res) => {
+          getRoute(route);
+          setUserPas(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [getRoute, route]);
   // SWITCH
   const [clientSection, setClientSection] = useState("Persona");
   const changeClient = () => {
@@ -67,7 +69,7 @@ export default function SectionProducts({ userId }) {
         </li>
       </ul>
       <div id="CadsPanelSelected" className="row justify-content-around">
-        {userId ? (
+        {route ? (
           <div className="content">
             {userPas.products?.map((p, i) => {
               if (clientSection === infoProducts[p]?.client) {
