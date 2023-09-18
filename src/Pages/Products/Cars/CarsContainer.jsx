@@ -107,7 +107,7 @@ export default function CarsContainer() {
   };
 
   return (
-    <Form>
+    <Form principalText>
       {(instance === 1 || instance === 2) && (
         <div className="img-container w-100 w-30-l tc">
           <FontAwesomeIcon className="img" icon={icon} />

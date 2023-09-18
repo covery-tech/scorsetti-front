@@ -9,7 +9,7 @@ import Input from "../../components/Input/Input";
 import onChange from "../../utils/onChangeInput";
 import Validate from "./loginUtils/validate";
 import initSession from "./loginUtils/init-session";
-import togglePassword from "./loginUtils/toggle-password";
+import togglePassword from "../../utils/toggle-password";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function Login() {
   }, [isLoggedIn, navigate, pas]);
 
   return (
-    <Form>
+    <Form principalText>
       <div className="form-container w-100 w-60-l">
         <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
           <FontAwesomeIcon className="img mr2" icon={faRightToBracket} />

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Container from '../../components/Container/Container'
 import { Charts } from '../../components/DashBoard/Charts/Charts'
 import { Featured } from '../../components/DashBoard/Featured/Featured'
 import { SideBar } from '../../components/DashBoard/SideBar/SideBar'
@@ -60,9 +61,9 @@ export const Dashboard = () => {
   },[])
 
   return (
-    <div className='sidebar_home'>
+    <div className='flex'>
         <SideBar/>
-        <div className='homeContainer'>
+        <Container>
           {
             site === "panel" ?<>
               <div className="widgets">
@@ -95,7 +96,7 @@ export const Dashboard = () => {
           }
           
           
-        </div>
+        </Container>
     </div>
   )
 }

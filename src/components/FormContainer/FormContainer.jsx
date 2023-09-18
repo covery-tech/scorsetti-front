@@ -2,10 +2,10 @@ import "./index.css";
 import Container from "../Container/Container";
 import PrincipalText from "../Principal-Text/Principaltext";
 
-export default function Form({ children }) {
+export default function Form({ children, principalText }) {
   return (
     <Container>
-      <PrincipalText />
+      {principalText && <PrincipalText />}
       <div className="flex flex-forms-direction justify-around">{children}</div>
       {/* {showModal && (
         <ModalPortal onClose={handleCloseModal}>

@@ -7,7 +7,7 @@ import { SideBarClient } from './SideBarClient'
 export const SideBar = () => {
     const {logout,updateSite,user} = useUser()
   return (
-      <div className="sidebar">
+      <div className="sidebar pa2">
         <div className="top">
         {
             user.type === "pas" ?<span className="titleSide" onClick={()=>updateSite("panel")}>Panel de Pas</span>:<></>

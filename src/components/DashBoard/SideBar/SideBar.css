@@ -8,10 +8,7 @@
 
 .sidebar {
     background-color: #fff;
-    border-radius: 0 0 5px 0;
-    flex: 1;
-    border-right: .5px solid --color-first-medium;
-    min-height: 100vh;
+    max-width: 20%;
 }
 
 .bar {

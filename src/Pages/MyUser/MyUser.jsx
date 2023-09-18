@@ -1,24 +1,35 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import useUser from "../../components/hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 import image from "./img/userIMG.png";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import Validate from "./functions/validate";
+import Form from "../../components/FormContainer/FormContainer";
+import Validate from "./functions/Validate";
 import { toast } from "react-toastify";
 import "./style.css";
+import StyledText from "../../components/StyledText/StyledText";
+import Input from "../../components/Input/Input";
+import onChange from "../../utils/onChangeInput";
+import togglePassword from "../../utils/toggle-password";
 export function MyUser() {
   const { jwt } = useUser();
-  const [users, setUser] = useState({
+  const [userData, setUserData] = useState({
     phone_number: "",
     province: "",
     city: "",
     street_name: "",
     postal_code: "",
     password: "",
+    description: "",
+    route: "",
+    coords: "",
   });
+  const [errors, setErrors] = useState({});
+  const [showErrors, setShowErrors] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [image2, setImage] = useState(image);
   const [image3, setImage3] = useState("");
+  const [loadingData, setLoadingData] = useState(false);
 
   useEffect(() => {
     const config = {
@@ -26,9 +37,11 @@ export function MyUser() {
       baseURL: `${process.env.REACT_APP_URI_API}/user/image`,
       headers: { token: jwt },
     };
+    setLoadingData(true);
     axios(config)
       .then((e) => {
         e.data ? setImage(e.data.data) : setImage(image);
+        setLoadingData(false);
       })
       .catch((e) => setImage(image));
 
@@ -37,325 +50,365 @@ export function MyUser() {
       baseURL: `${process.env.REACT_APP_URI_API}/user/myPersonalData`,
       headers: { token: jwt },
     };
+
+    setLoadingData(true);
     axios(config2).then((e) => {
-      setUser(e.data.data);
+      setUserData(e.data);
+      setLoadingData(false);
     });
   }, []);
 
-  const handleSubmit = (event) => {
-    const formData = new FormData();
-    formData.append("image", image2);
-    const config = {
-      method: "put",
-      baseURL: `${process.env.REACT_APP_URI_API}/user/updateUserInfo`,
-      headers: { token: jwt },
-      data: {
-        users: event,
-      },
-    };
-    const config2 = {
-      method: "post",
-      baseURL: `${process.env.REACT_APP_URI_API}/image/image`,
-      headers: { token: jwt },
-      data: formData,
-    };
-    setTimeout(() => {
-      axios(config)
-        .then((e) => {
-          if (e.data) {
-            toast.success("Datos de usuario actualizados", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-          } else {
-            toast.warning("La ruta ya está utilizada, intenta con otra", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-            return;
-          }
-        })
-        .catch((error) => {
-          console.log(
-            "Error en la petición para actualizar información del usuario:",
-            error
-          );
-        });
+  const handleSubmit = (user) => {
+    if (!loadingData) {
+      let canUpdatePassword = true;
+      let canUpdatePAS = true;
 
-      if (image2) {
-        axios(config2)
-          .then((e) => {
-            toast.success("La imagen ha sido actualizada con éxito", {
-              position: "bottom-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-          })
-          .catch((error) => {
-            console.log(
-              "Error en la petición para actualizar la imagen:",
-              error
-            );
-          });
+      if (user.phone_number !== "" && !/^[a-zA-Z0-9-]+$/.test(user.route))
+        canUpdatePAS = false;
+      if (
+        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!%*?&])([A-Za-z\d$@$!%*?&]|[^]){8,15}$/.test(
+          user.password
+        )
+      )
+        canUpdatePassword = false;
+
+      let errors = {};
+      if (user.type === "pas") {
+        if (!canUpdatePAS) {
+          errors = {
+            phone_number: "Campo requerido",
+            route: "Campo requerido",
+          };
+        }
       }
-    }, 1000);
+      if (user.password !== "") {
+        if (!canUpdatePassword) {
+          errors = {
+            password:
+              "→ 8 a 15 carac. - Una letra mayúsc. - Un dígito - Sin espacios - Un caractér especial.",
+          };
+        }
+      }
+
+      if (Object.keys(errors).length === 0) {
+        const formData = new FormData();
+        formData.append("image", image2);
+        const config = {
+          method: "put",
+          baseURL: `${process.env.REACT_APP_URI_API}/user/updateUserInfo`,
+          headers: { token: jwt },
+          data: {
+            users: user,
+          },
+        };
+        const config2 = {
+          method: "post",
+          baseURL: `${process.env.REACT_APP_URI_API}/image/image`,
+          headers: { token: jwt },
+          data: formData,
+        };
+        setTimeout(() => {
+          axios(config)
+            .then((e) => {
+              if (e.data) {
+                toast.success("Datos de usuario actualizados", {
+                  position: "bottom-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
+              } else {
+                toast.warning("La ruta ya está utilizada, intenta con otra", {
+                  position: "bottom-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
+                return;
+              }
+            })
+            .catch((error) => {
+              console.log(
+                "Error en la petición para actualizar información del usuario:",
+                error
+              );
+            });
+
+          if (image2) {
+            axios(config2)
+              .then((e) => {
+                toast.success("La imagen ha sido actualizada con éxito", {
+                  position: "bottom-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
+              })
+              .catch((error) => {
+                console.log(
+                  "Error en la petición para actualizar la imagen:",
+                  error
+                );
+              });
+          }
+        }, 1000);
+      } else {
+        setErrors(errors);
+        setShowErrors(!showErrors);
+      }
+    }
   };
-//   const handleFileChange = (event) => {
-//     setImage(event?.target?.files[0]);
-//     setImage3(URL.createObjectURL(event?.target?.files[0]));
-//   };
+
   return (
-    <div className="container bg-white rounded-5 mt-5 p-5 justify-content-center text-center">
-      <h1>Actualizar usuario</h1>
-      <div className="contentInfo">
-        {users?.type === "pas" ? (
-          <div className="contentImage">
-            <div>
-              {users.image ? (
-                <img
-                  id="img"
-                  src={
-                    image3
-                    // ? image3
-                    // : `http://localhost:3001/${users.image}`
-                  }
-                  alt={users?.name}
-                  style={{
-                    borderRadius: 10,
-                    display: "block",
-                    maxHeight: 250,
-                    marginTop: 50,
-                    maxWidth: 300,
-                  }}
-                  className="border"
-                />
-              ) : (
-                <img
-                  id="img"
-                  src={image}
-                  alt={users?.name}
-                  style={{
-                    borderRadius: 10,
-                    display: "block",
-                    maxHeight: 250,
-                    marginTop: 50,
-                    maxWidth: 300,
-                  }}
-                  className="border"
-                />
-              )}
-            </div>
-            <div>
-              <div
-                style={{
-                  backgroundColor: "#ff8725",
-                  opacity: 1,
-                  position: "relative",
-                  width: 170,
-                  height: 30,
-                  borderRadius: 5,
-                  display: "block",
-                  padding: 5,
+      <div className="form-container w-100">
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          Actualizar usuario
+        </StyledText>
+        <div className="input-couple">
+          <Input
+            placeholder={"Número de teléfono *"}
+            onChange={onChange}
+            values={userData}
+            setValues={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            styles={{
+              marginBottom: "2rem",
+            }}
+            type={"number"}
+            name={"phone_number"}
+            validate={Validate}
+          />
+          <Input
+            placeholder={"Provincia *"}
+            onChange={onChange}
+            values={userData}
+            setValues={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            styles={{
+              marginBottom: "2rem",
+            }}
+            type={"text"}
+            name={"province"}
+            validate={Validate}
+          />
+        </div>
+        <div className="input-couple">
+          <Input
+            placeholder={"Ciudad *"}
+            onChange={onChange}
+            values={userData}
+            setValues={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            styles={{
+              marginBottom: "2rem",
+            }}
+            type={"text"}
+            name={"city"}
+            validate={Validate}
+          />
+          <Input
+            placeholder={"Calle *"}
+            onChange={onChange}
+            values={userData}
+            setValues={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            styles={{
+              marginBottom: "2rem",
+            }}
+            type={"text"}
+            name={"street_name"}
+            validate={Validate}
+          />
+        </div>
+        <div className="input-couple">
+          <Input
+            placeholder={"Código postal *"}
+            onChange={onChange}
+            values={userData}
+            setValues={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            styles={{
+              marginBottom: "2rem",
+            }}
+            type={"text"}
+            name={"postal_code"}
+            validate={Validate}
+          />
+          <Input
+            placeholder={"Contraseña *"}
+            onChange={onChange}
+            onClick={() => togglePassword({ setShowPassword, showPassword })}
+            showPassword={showPassword}
+            values={userData}
+            setValues={setUserData}
+            errors={errors}
+            setErrors={setErrors}
+            showErrors={showErrors}
+            styles={{
+              marginBottom: "2rem",
+            }}
+            type={showPassword ? "text" : "password"}
+            name={"password"}
+            validate={Validate}
+          />
+        </div>
+        {userData?.type === "pas" && (
+          <div>
+            <div className="input-couple">
+              <Input
+                placeholder={"Descripción *"}
+                onChange={onChange}
+                values={userData}
+                setValues={setUserData}
+                errors={errors}
+                setErrors={setErrors}
+                showErrors={showErrors}
+                styles={{
+                  marginBottom: "2rem",
                 }}
-                className="mt-4 mb-4"
-              >
-                <label>Seleccionar archivo</label>
-                <input
-                  type="file"
-                  // onChange={(e) => handleFileChange(e)}
+                type={"textarea"}
+                name={"description"}
+                validate={Validate}
+                rows="5"
+                cols="50"
+              />
+            </div>
+            <div className="input-couple">
+              <Input
+                placeholder={"Coordenadas *"}
+                onChange={onChange}
+                values={userData}
+                setValues={setUserData}
+                errors={errors}
+                setErrors={setErrors}
+                showErrors={showErrors}
+                styles={{
+                  marginBottom: "2rem",
+                }}
+                type={"text"}
+                name={"coords"}
+                validate={Validate}
+              />
+            </div>
+            <span className="mb2">
+              Ej.: scorsetti.emititupoliza.com/<b>productor1</b>
+            </span>
+            <div className="input-couple">
+              <Input
+                onChange={onChange}
+                values={userData}
+                setValues={setUserData}
+                errors={errors}
+                setErrors={setErrors}
+                showErrors={showErrors}
+                styles={{
+                  marginBottom: "2rem",
+                }}
+                type={"text"}
+                name={"route"}
+                validate={Validate}
+                placeholder={"Ruta"}
+              />
+            </div>
+            <div className="contentImage">
+              <div>
+                {userData.image ? (
+                  <img
+                    id="img"
+                    src={
+                      image3
+                      // ? image3
+                      // : `http://localhost:3001/${users.image}`
+                    }
+                    alt={userData?.name}
+                    style={{
+                      borderRadius: 10,
+                      display: "block",
+                      maxHeight: 250,
+                      marginTop: 50,
+                      maxWidth: 300,
+                    }}
+                    className="border"
+                  />
+                ) : (
+                  <img
+                    id="img"
+                    src={image}
+                    alt={userData?.name}
+                    style={{
+                      borderRadius: 10,
+                      display: "block",
+                      maxHeight: 250,
+                      marginTop: 50,
+                      maxWidth: 300,
+                    }}
+                    className="border"
+                  />
+                )}
+              </div>
+              <div>
+                <div
                   style={{
-                    position: "absolute",
-                    opacity: 0,
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
+                    backgroundColor: "#ff8725",
+                    opacity: 1,
+                    position: "relative",
                     width: 170,
+                    height: 30,
+                    borderRadius: 5,
+                    display: "block",
+                    padding: 5,
                   }}
-                ></input>
+                  className="mt-4 mb-4"
+                >
+                  <label>Seleccionar archivo</label>
+                  <input
+                    type="file"
+                    // onChange={(e) => handleFileChange(e)}
+                    style={{
+                      position: "absolute",
+                      opacity: 0,
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      width: 170,
+                    }}
+                  ></input>
+                </div>
               </div>
             </div>
           </div>
-        ) : (
-          <></>
         )}
-
-        {!users ? (
-          <div className="contentForm">
-            <Formik
-              initialValues={{ users }}
-              validate={Validate}
-              onSubmit={(values) => {
-                handleSubmit(values);
-              }}
-            >
-              {({ errors }) => (
-                <Form className="form">
-                  <label htmlFor="risk_location" className="mt-3 mb-2">
-                    Numero de celular
-                  </label>
-                  <Field
-                    id="phone_number"
-                    name="phone_number"
-                    type="text"
-                    className="form-control mt-2"
-                  />
-                  <br />
-                  <ErrorMessage
-                    name="phone_number"
-                    component={() => <div> {errors?.phone_number} </div>}
-                  />
-                  <label htmlFor="risk_location" className="mt-3 mb-2">
-                    Provincia
-                  </label>
-                  <Field
-                    id="province"
-                    name="province"
-                    type="text"
-                    className="form-control mt-2"
-                  />
-                  <br />
-                  <ErrorMessage
-                    name="province"
-                    component={() => <div> {errors.province} </div>}
-                  />
-                  <label htmlFor="risk_location" className="mt-3 mb-2">
-                    Ciudad
-                  </label>
-                  <Field
-                    id="city"
-                    name="city"
-                    type="text"
-                    className="form-control mt-2"
-                  />
-                  <br />
-                  <ErrorMessage
-                    name="city"
-                    component={() => <div> {errors.city} </div>}
-                  />
-                  <label htmlFor="street_name" className="mt-3 mb-2">
-                    Calle
-                  </label>
-                  <Field
-                    id="street_name"
-                    name="street_name"
-                    type="text"
-                    className="form-control mt-2"
-                  />
-                  <br />
-                  <ErrorMessage
-                    name="street_name"
-                    component={() => <div> {errors.street_name} </div>}
-                  />
-                  <label htmlFor="postal_code" className="mt-3 mb-2">
-                    Codigo postal
-                  </label>
-                  <Field
-                    id="postal_code"
-                    name="postal_code"
-                    type="text"
-                    className="form-control mt-2"
-                  />
-                  <br />
-                  <ErrorMessage
-                    name="postal_code"
-                    component={() => <div> {errors.postal_code} </div>}
-                  />
-
-                  {users?.type === "pas" ? (
-                    <div>
-                      <label htmlFor="description" className="mt-3 mb-2">
-                        Descripcion
-                      </label>
-                      <Field
-                        id="description"
-                        name="description"
-                        as="textarea"
-                        className="form-control mt-2"
-                        rows={4}
-                        maxLength={255}
-                        style={{ resize: "none" }}
-                        placeholder="Escribe tu descripcin aquí (máximo 255 caracteres)"
-                      />
-                      <br />
-                      <ErrorMessage
-                        name="description"
-                        component={() => <div> {errors.description} </div>}
-                      />
-                      <label htmlFor="Coordenadas" className="mt-3 mb-2">
-                        Coordenadas
-                      </label>
-                      <Field
-                        id="coords"
-                        name="coords"
-                        type="text"
-                        className="form-control mt-2"
-                      />
-                      <br />
-                      <ErrorMessage
-                        name="coords"
-                        component={() => <div> {errors.coords} </div>}
-                      />
-                      <label htmlFor="route" className="mt-3 mb-2">
-                        Ruta ej.: scorsetti.emitiupoliza.com/ -{" "}
-                        <b>productor1</b> -
-                      </label>
-                      <Field
-                        id="route"
-                        name="route"
-                        type="text"
-                        className="form-control mt-2"
-                      />
-                      <ErrorMessage
-                        name="description"
-                        component={() => <div> {errors.route} </div>}
-                      />
-                    </div>
-                  ) : (
-                    <></>
-                  )}
-                  <label htmlFor="password" className="mt-3 mb-2">
-                    Contraseña
-                  </label>
-                  <Field
-                    id="password"
-                    name="password"
-                    type="text"
-                    className="form-control mt-2"
-                  />
-                  <br />
-                  <ErrorMessage
-                    name="route"
-                    component={() => <div> {errors.password} </div>}
-                  />
-                  <button className="btn btn-warning mt-2" type="submit">
-                    Actualizar
-                  </button>
-                </Form>
-              )}
-            </Formik>
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className="flex justify-center items-center pt4">
+          <button
+            className="button main-button"
+            onClick={() => handleSubmit(userData)}
+          >
+            <b>Actualizar</b>
+          </button>
+        </div>
       </div>
-    </div>
   );
 }

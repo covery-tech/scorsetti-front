@@ -21,10 +21,40 @@ export default function Input({
   options,
   validate,
   instance,
+  rows,
+  cols
 }) {
   return (
     <>
-      {type === "select" ? (
+      {type === "textarea" ? (
+        <div
+          className={`flex input-container w-100 ${classes ? classes : ""}`}
+          style={styles}
+        >
+          <textarea
+            name={name}
+            onChange={(e) => {
+              onChange({
+                e,
+                values,
+                setValues,
+                setErrors,
+                validate,
+                instance,
+              });
+            }}
+            placeholder={placeholder}
+            value={values[name]}
+            rows={rows}
+            cols={cols}
+          />
+          {showErrors && errors[name] && (
+            <p className="error-message" style={{ marginTop: "2rem" }}>
+              {errors[name]}
+            </p>
+          )}
+        </div>
+      ) : type === "select" ? (
         <div
           style={styles}
           className={`select-container w-100 ${classes ? classes : ""}`}

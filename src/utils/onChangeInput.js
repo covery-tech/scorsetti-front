@@ -1,5 +1,3 @@
-import capitalizeFirstLetter from "./capitalize-first-letter";
-
 export default function onChange({
   e,
   values,
@@ -11,12 +9,12 @@ export default function onChange({
   e.preventDefault();
   setValues({
       ...values,
-      [e.target.name]: capitalizeFirstLetter(e.target.value),
+      [e.target.name]: e.target.value,
     });
   setErrors(
     validate({
       ...values,
-      [e.target.name]: capitalizeFirstLetter(e.target.value),
+      [e.target.name]: e.target.value,
     }, instance)
   );
 }

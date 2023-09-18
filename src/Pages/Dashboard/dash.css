@@ -2,10 +2,6 @@
     display: flex;
 }
 
-.homeContainer {
-    flex: 10;
-}
-
 .widgets,
 .charts {
     display: flex;

@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import Input from "../../components/Input/Input";
 import Form from "../../components/FormContainer/FormContainer";
@@ -9,7 +9,7 @@ import StyledText from "../../components/StyledText/StyledText";
 import onChange from "../../utils/onChangeInput";
 import Validate from "../Login/loginUtils/validate";
 import registerSession from "./registerUtils/register-session";
-import togglePassword from "../Login/loginUtils/toggle-password";
+import togglePassword from "../../utils/toggle-password";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <Form>
+    <Form principalText>
       <div className="form-container w-100 w-60-l">
         <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
           <FontAwesomeIcon className="img mr2" icon={faPen} />

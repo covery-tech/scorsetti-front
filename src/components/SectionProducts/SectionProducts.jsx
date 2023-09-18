@@ -70,7 +70,7 @@ export default function SectionProducts({ route }) {
       <div className="flex flex-wrap justify-center">
         {route ? (
           <>
-            {userPas.products?.forEach((p, i) => {
+            {userPas.products?.map((p, i) => {
               if (clientSection === infoProducts[p]?.client) {
                 return ProductCardComponent(p, i);
               }
@@ -78,7 +78,7 @@ export default function SectionProducts({ route }) {
           </>
         ) : (
           <>
-            {listProducts.forEach((p, i) => {
+            {listProducts.map((p, i) => {
               if (clientSection === infoProducts[p].client) {
                 return ProductCardComponent(p, i);
               }
