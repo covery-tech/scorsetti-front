@@ -5,8 +5,10 @@ import {faShop,faBell,faSignal, faArrowRightFromBracket} from "@fortawesome/free
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 export const SideBarAdmin = ({logout,updateSite}) => {
-    const [notis,setNotis] = useState(0)
+    const [notis,setNotis] = useState(0);
+    const [screen,setScreen] = useState(0);
     useEffect(()=>{
+        setScreen(window.screen.width);
         const config = {
             method:"get",
             baseURL:`${process.env.REACT_APP_URI_API}/product/getCountNotis`,
@@ -19,7 +21,7 @@ export const SideBarAdmin = ({logout,updateSite}) => {
   return (
     <>
     <ul>
-        <p className='centerP'>Listas</p>
+        <p className='centerP text'>Listas</p>
         <li onClick={()=>updateSite("usuariosPas")}>
             <FontAwesomeIcon icon={faUser} />
             <div className='text'>Usuarios Pas</div>
@@ -32,7 +34,7 @@ export const SideBarAdmin = ({logout,updateSite}) => {
             <FontAwesomeIcon icon={faShop} />
             <div className='text'>Ordenes del Mercado</div>
         </li>
-        <p className='centerP'>Útil</p>
+        <p className='centerP text'>Útil</p>
         <li  onClick={()=>updateSite("notificaciones")} style={{position:"relative"}}>
             {
             notis ? <div style={{backgroundColor:"#dc3545",height:"12px",minWidth:10,position:"absolute",borderRadius:"100%",left:"12px",fontSize:10,top:"4px",textAlign:"center"}}>{(notis<10) ? notis : "+10" }</div>
@@ -45,15 +47,19 @@ export const SideBarAdmin = ({logout,updateSite}) => {
             <FontAwesomeIcon icon={faSignal} />
             <div className='text'>Estadísticas</div>
         </li>
-        <p className='centerP'>Usuario</p>
+        <p className='centerP text'>Usuario</p>
         <li onClick={() => updateSite("profile")}>
             <FontAwesomeIcon icon={faCircleUser} />
             <div className='text'>Perfil</div>
         </li>
-        <li onClick={logout}>
+        {
+            screen > 768 ? 
+            <li onClick={logout}>
             <FontAwesomeIcon icon={faArrowRightFromBracket}/>
-            <div className='text'>Cerrar Sesión</div>
-        </li>
+            <div>Cerrar Sesión</div>
+            </li> :
+            <></>
+        }
     </ul>
     </>
   )

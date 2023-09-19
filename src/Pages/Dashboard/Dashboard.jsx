@@ -61,7 +61,7 @@ export const Dashboard = () => {
   },[])
 
   return (
-    <div className='flex'>
+    <div className='flex sidebar_position'>
         <SideBar/>
         <Container>
           {

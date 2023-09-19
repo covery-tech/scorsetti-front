@@ -2,6 +2,10 @@
   width: 18rem;
 }
 
+.margin {
+  margin-bottom: 5em;
+}
+
 a {
   text-decoration: none;
 }
@@ -39,3 +43,9 @@ a {
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 48em) {
+  .margin {
+    margin-bottom: 0;
+  }
+} 

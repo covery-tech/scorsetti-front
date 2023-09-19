@@ -4,7 +4,7 @@ import { useState } from "react";
 import useUser from "../../hooks/UseUser";
 import image from "./img/userIMG.png";
 import Form from "../../components/FormContainer/FormContainer";
-import Validate from "./functions/Validate";
+import Validate from "./functions/validate";
 import { toast } from "react-toastify";
 import "./style.css";
 import StyledText from "../../components/StyledText/StyledText";

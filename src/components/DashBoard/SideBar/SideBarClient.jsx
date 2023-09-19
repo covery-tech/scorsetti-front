@@ -15,7 +15,9 @@ import { Link } from "react-router-dom";
 export const SideBarClient = ({ logout, updateSite }) => {
   const { jwt } = useUser();
   const [notis, setNotis] = useState(0);
+  const [screen,setScreen] = useState(0);
   useEffect(() => {
+    setScreen(window.screen.width);
     const config = {
       method: "get",
       baseURL: `${process.env.REACT_APP_URI_API}/product/getCountNotisPas`,
@@ -70,11 +72,14 @@ export const SideBarClient = ({ logout, updateSite }) => {
           <FontAwesomeIcon icon={faCircleUser} />
           <div className='text'>Perfil</div>
         </li>
-
-        <li onClick={logout}>
-          <FontAwesomeIcon icon={faArrowRightFromBracket} />
-          <div className='text'>Cerrar Sesión</div>
-        </li>
+        {
+            screen > 768 ? 
+            <li onClick={logout}>
+            <FontAwesomeIcon icon={faArrowRightFromBracket}/>
+            <div>Cerrar Sesión</div>
+            </li> :
+            <></>
+        }
       </ul>
     </>
   );

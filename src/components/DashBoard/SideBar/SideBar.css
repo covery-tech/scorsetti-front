@@ -52,7 +52,7 @@
 .centerP {
     font-size: 17px;
     font-weight: bold;
-    color: #999;
+    color: var(--color-gray-medium);
     margin-top: 15px;
     margin-bottom: 5px;
 }
@@ -77,14 +77,24 @@
     color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
     .sidebar{
-        width: 40%;        
+        max-width: 100%;        
     }
     .text {
         display: none;
     }
     .centerP{
         padding: 0 10px 0 0 ;
+    }
+    .sidebar .center ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .center ul li {
+        padding-right: 8px;
+    }
+    .center ul li svg {
+        margin-right: 0px;
     }
 }

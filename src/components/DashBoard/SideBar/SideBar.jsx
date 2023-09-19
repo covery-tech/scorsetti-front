@@ -10,16 +10,16 @@ export const SideBar = () => {
       <div className="sidebar pa2">
         <div className="top">
         {
-            user.type === "pas" ?<span className="titleSide" onClick={()=>updateSite("panel")}>Panel de Pas</span>:<></>
+            user.type === "pas" ?<span className="titleSide justify-center" onClick={()=>updateSite("panel")}>Panel de Pas</span>:<></>
         }
         {
-            user.type === "admin" ?<span className="titleSide" onClick={()=>updateSite("panel")}>Panel de admin</span>:<></>
+            user.type === "admin" ?<span className="titleSide justify-center" onClick={()=>updateSite("panel")}>Panel de admin</span>:<></>
         }
         {
-            user.type === "superadmin" ?<span className="titleSide" onClick={()=>updateSite("panel")}>Panel de superadmin</span>:<></>
+            user.type === "superadmin" ?<span className="titleSide justify-center" onClick={()=>updateSite("panel")}>Panel de superadmin</span>:<></>
         }
         {
-            user.type === "client" ?<span className="titleSide" onClick={()=>updateSite("profile")}>Panel de cliente</span>:<></>
+            user.type === "client" ?<span className="titleSide justify-center" onClick={()=>updateSite("profile")}>Panel de cliente</span>:<></>
         }
         </div>
         <hr />
