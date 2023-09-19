@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import useUser from "../../hooks/UseUser";
 import image from "./img/userIMG.png";
-import Form from "../../components/FormContainer/FormContainer";
-import Validate from "./functions/validate";
+import Validate from "./functions/Validate";
 import { toast } from "react-toastify";
 import "./style.css";
 import StyledText from "../../components/StyledText/StyledText";
@@ -187,6 +186,7 @@ export function MyUser() {
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
+              marginRight: "0.5rem",
             }}
             type={"number"}
             name={"phone_number"}
@@ -219,6 +219,7 @@ export function MyUser() {
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
+              marginRight: "0.5rem",
             }}
             type={"text"}
             name={"city"}
@@ -251,6 +252,7 @@ export function MyUser() {
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
+              marginRight: "0.5rem",
             }}
             type={"text"}
             name={"postal_code"}

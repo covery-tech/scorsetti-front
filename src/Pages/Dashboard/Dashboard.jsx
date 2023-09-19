@@ -15,6 +15,7 @@ import {TableSearchUser} from "../../components/Tables/TableSearchUser"
 import { MyUser } from '../MyUser/MyUser'
 import OrdersTableAll from '../../components/DashBoard/TableOrders/TableAllOrders'
 import OrdersTableAllClient from '../../components/DashBoard/TableOrders/TableAllOrdersClient'
+import DashboardContainer from '../../components/DashboardContainer/DashboardContainer'
 export const Dashboard = () => {
   const {site,jwt} = useUser()
   const [clients,setClients] = useState()
@@ -63,7 +64,7 @@ export const Dashboard = () => {
   return (
     <div className='flex sidebar_position'>
         <SideBar/>
-        <Container>
+        <DashboardContainer>
           {
             site === "panel" ?<>
               <div className="widgets">
@@ -96,7 +97,7 @@ export const Dashboard = () => {
           }
           
           
-        </Container>
+        </DashboardContainer>
     </div>
   )
 }

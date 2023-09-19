@@ -14,7 +14,7 @@
 }
 
 
-@media (max-width: 48em) {
+@media (max-width: 60em) {
     .sidebar_position {
         display: inline;    
     }

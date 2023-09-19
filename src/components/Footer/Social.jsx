@@ -1,6 +1,6 @@
 export default function Social() {
   return (
-    <div className="flex flex-column tc mv2 w-100">
+    <div className="flex flex-column tc mb2 mt5 w-100">
       <div className="flex justify-center items-center mb2">
         <span className="social-item">
           <a
