@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useUser from "../../hooks/UseUser";
-import { TableProductsAdmin } from "../../components/DashboardComponents/TableProducts/TableProductsAdmin";
+import { TableProductsAdmin } from "../../components/DashboardComponents/Tables/TableProducts/TableProductsAdmin";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import PrincipalText from "../../components/Principal-Text/Principaltext";

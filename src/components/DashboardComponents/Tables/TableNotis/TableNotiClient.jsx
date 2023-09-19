@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import useUser from "../../../hooks/UseUser";
-import { toast } from "react-toastify";
+import useUser from "../../../../hooks/UseUser";
 import "react-toastify/dist/ReactToastify.css";
 
-export const TableNotiPas = ({
+export const TableNotiClient = ({
   notis,
   setPage,
   loading,
@@ -23,7 +21,7 @@ export const TableNotiPas = ({
   const getNotis = () => {
     const config = {
       method: "get",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/getNotificationPas/${page}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/getNotificationClient/${page}`,
       headers: { token: jwt },
     };
     axios(config)
@@ -48,8 +46,7 @@ export const TableNotiPas = ({
     getNotis();
   }, [page]);
 
-  
-
+ 
   return (
     <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
       {loading ? (
@@ -70,7 +67,7 @@ export const TableNotiPas = ({
                   <td>
                     <strong
                       style={{ color: "#dc3545", cursor: "pointer" }}
-                      onClick={() => deleteNoti(e?.id, "notification")}
+                      onClick={() => deleteNoti(e?.id, "notification_client")}
                     >
                       Eliminar
                     </strong>

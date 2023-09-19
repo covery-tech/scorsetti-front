@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useUser from "../../../hooks/UseUser";
+import useUser from "../../../../hooks/UseUser";
 import { useParams } from "react-router-dom";
 
 export const TableEditPas = () => {

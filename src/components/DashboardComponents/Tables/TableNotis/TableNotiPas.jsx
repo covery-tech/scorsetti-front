@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useUser from "../../../hooks/UseUser";
-import { toast } from "react-toastify";
+import useUser from "../../../../hooks/UseUser";
 import "react-toastify/dist/ReactToastify.css";
 
-export const TableNotiClient = ({
+export const TableNotiPas = ({
   notis,
   setPage,
   loading,
@@ -19,12 +17,11 @@ export const TableNotiClient = ({
   deleteNoti
 }) => {
   const { jwt } = useUser();
-  const navigate = useNavigate();
 
   const getNotis = () => {
     const config = {
       method: "get",
-      baseURL: `${process.env.REACT_APP_URI_API}/product/getNotificationClient/${page}`,
+      baseURL: `${process.env.REACT_APP_URI_API}/product/getNotificationPas/${page}`,
       headers: { token: jwt },
     };
     axios(config)
@@ -49,7 +46,8 @@ export const TableNotiClient = ({
     getNotis();
   }, [page]);
 
- 
+  
+
   return (
     <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
       {loading ? (
@@ -70,7 +68,7 @@ export const TableNotiClient = ({
                   <td>
                     <strong
                       style={{ color: "#dc3545", cursor: "pointer" }}
-                      onClick={() => deleteNoti(e?.id, "notification_client")}
+                      onClick={() => deleteNoti(e?.id, "notification")}
                     >
                       Eliminar
                     </strong>

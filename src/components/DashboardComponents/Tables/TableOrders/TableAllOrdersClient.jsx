@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./table.css";
 import { Icon } from "@iconify/react";
-import ModalPortal from "../../modal";
-import useUser from "../../../hooks/UseUser";
+import ModalPortal from "../../../modal";
+import useUser from "../../../../hooks/UseUser";
 
 const OrdersTableAllClient = () => {
     const {jwt} = useUser(); 

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import useUser from "../../../hooks/UseUser";
+import useUser from "../../../../hooks/UseUser";
 
 export const TablePas = () => {
   const [pas, setPas] = useState([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import useUser from "../../../hooks/UseUser";
+import useUser from "../../../../hooks/UseUser";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import useUser from '../../../hooks/UseUser'
+import useUser from '../../../../hooks/UseUser'
 import {toast} from 'react-toastify'
 
 export const TableDataSearch = ({e,getAllUser}) => {

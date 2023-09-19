@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Icon } from '@iconify/react'
-import useUser from '../../../hooks/UseUser'
+import useUser from '../../../../hooks/UseUser'
 
 
 

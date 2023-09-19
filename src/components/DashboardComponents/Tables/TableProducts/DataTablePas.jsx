@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import useUser from '../../../hooks/UseUser'
-import ModalPortal from '../../modal'
+import useUser from '../../../../hooks/UseUser'
+import ModalPortal from '../../../modal'
 
 export const DataTablePas = ({e,handleUpdateState,sendNotification}) => {
   const {user} = useUser()
