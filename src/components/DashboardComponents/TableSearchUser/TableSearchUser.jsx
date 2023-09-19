@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Icon } from "@iconify/react";
-import useUser from '../../hooks/UseUser';
-import { DataTableSearch } from './DataTableSearch';
+import useUser from '../../../hooks/UseUser';
+import { TableDataSearch } from '../TableDataSearch/TableDataSearch';
 
 
 export const TableSearchUser = () => {
@@ -80,7 +80,7 @@ export const TableSearchUser = () => {
                 </thead>
                 <tbody>
                 {
-                    users?.map(e=><DataTableSearch e={e} getAllUser={getAllUser}/>)
+                    users?.map(e=><TableDataSearch e={e} getAllUser={getAllUser}/>)
                 }
                 </tbody>
                 </table>

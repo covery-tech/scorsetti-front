@@ -1,9 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Icon } from "@iconify/react";
-import { Link, useParams } from "react-router-dom";
-import useUser from "../../hooks/UseUser";
-import './tableeditpas.css'
+import useUser from "../../../hooks/UseUser";
+import { useParams } from "react-router-dom";
 
 export const TableEditPas = () => {
   const { id } = useParams();
@@ -21,7 +19,6 @@ export const TableEditPas = () => {
   useEffect(() => {
     getPas();
   }, []);
-  //(pas);
 
   const onChangeEnable = (e, idProduct, campo) => {
     let config;

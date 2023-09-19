@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import useUser from '../../hooks/UseUser'
+import useUser from '../../../hooks/UseUser'
 import {toast} from 'react-toastify'
 
-export const DataTableSearch = ({e,getAllUser}) => {
+export const TableDataSearch = ({e,getAllUser}) => {
     const {jwt,user} = useUser()
     const [select, setSelect] = useState(null);
     const handleSelect= (id,element)=>{
