@@ -3,6 +3,15 @@ import React, { useEffect, useState } from "react";
 import useUser from "../../../../hooks/UseUser";
 import { useParams } from "react-router-dom";
 
+
+
+
+// verificar donde funciona esta tabla (y si funciona)
+// verificar donde funciona esta tabla (y si funciona)
+// verificar donde funciona esta tabla (y si funciona)
+
+
+
 export const TableEditPas = () => {
   const { id } = useParams();
   const [pas, setPas] = useState([]);
@@ -45,8 +54,8 @@ export const TableEditPas = () => {
   };
 
   return (
-    <div className="container bg-light rounded-3 m-5 text-center mx-auto">
-      <table className="table table-striped table-fixed">
+    <div className="w-100 h-100 pre">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>Productos</th>

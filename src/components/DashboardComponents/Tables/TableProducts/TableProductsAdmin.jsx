@@ -4,41 +4,39 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export const TableProductsAdmin = ({ products, handleUpdateState }) => {
-
-
-  const {user,jwt} = useUser() 
+  const { user, jwt } = useUser();
   const { userId } = useParams();
   let sendNotification;
-  if(userId){
+  if (userId) {
     //("hola")
-  sendNotification = (description)=>{
-      const config ={
-          method:"post",
-          baseURL: `${process.env.REACT_APP_URI_API}/product/emitNotificationAdmin`,
-          headers:{token:jwt},
-          data:{
-              idAdmin:user.id_user,
-              description,
-              idPas:userId,
-          }
-      }
-      axios(config)
+    sendNotification = (description) => {
+      const config = {
+        method: "post",
+        baseURL: `${process.env.REACT_APP_URI_API}/product/emitNotificationAdmin`,
+        headers: { token: jwt },
+        data: {
+          idAdmin: user.id_user,
+          description,
+          idPas: userId,
+        },
+      };
+      axios(config);
+    };
+  } else {
+    sendNotification = (description) => {};
   }
-}else{
-  sendNotification = (description)=>{} 
-}
 
   return (
     <>
-      <div className="p-4">
-        <table className="table">
+      <div className="w-100 h-100 pre">
+        <table className="table table-striped">
           <thead className="thead-dark">
             <tr>
               <th scope="col">Producto</th>
-              <th scope="col">Acciones</th>              
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
-          {products.map((e,i) => (
+          {products.map((e, i) => (
             <tbody key={i}>
               <tr>
                 <th scope="row">{e.title}</th>
@@ -47,11 +45,12 @@ export const TableProductsAdmin = ({ products, handleUpdateState }) => {
                     <>
                       <button
                         className="btn btn-success w-25 me-4"
-                        onClick={() =>{
-                          handleUpdateState(e.name, "pendiente deshabilitado")
-                          sendNotification(`estado de solicitud de para venta de polizas tipo ${e.name} a deshabilitado`)
-                        }
-                        }
+                        onClick={() => {
+                          handleUpdateState(e.name, "pendiente deshabilitado");
+                          sendNotification(
+                            `estado de solicitud de para venta de polizas tipo ${e.name} a deshabilitado`
+                          );
+                        }}
                       >
                         {e.status}
                       </button>
@@ -76,8 +75,10 @@ export const TableProductsAdmin = ({ products, handleUpdateState }) => {
                       <button
                         className="btn btn-warning w-25 me-4"
                         onClick={() => {
-                          handleUpdateState(e.name, "habilitado")
-                          sendNotification(`estado de solicitud de para venta de polizas tipo ${e.name} a habilitado`)
+                          handleUpdateState(e.name, "habilitado");
+                          sendNotification(
+                            `estado de solicitud de para venta de polizas tipo ${e.name} a habilitado`
+                          );
                         }}
                       >
                         {e.status}

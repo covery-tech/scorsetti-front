@@ -14,7 +14,7 @@ export const TableNotiClient = ({
   setNotis,
   page,
   setShowShowMore,
-  deleteNoti
+  deleteNoti,
 }) => {
   const { jwt } = useUser();
 
@@ -46,54 +46,53 @@ export const TableNotiClient = ({
     getNotis();
   }, [page]);
 
- 
   return (
-    <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
-      {loading ? (
-        <div>Cargando...</div>
-      ) : (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Descripción</th>
-              <th scope="col">Eliminar Notificación</th>
-            </tr>
-          </thead>
-          {notis?.length ? (
-            <tbody>
-              {notis?.map((e) => (
-                <tr key={e?.id}>
-                  <td>{e?.description}</td>
-                  <td>
-                    <strong
-                      style={{ color: "#dc3545", cursor: "pointer" }}
-                      onClick={() => deleteNoti(e?.id, "notification_client")}
-                    >
-                      Eliminar
-                    </strong>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          ) : (
-            <></>
-          )}
-        </table>
-      )}
-      {showShowMore ? (
-        loadingNextPage ? (
-          <strong>cargando...</strong>
+    <div className="w-100 h-100 pre">
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Descripción</th>
+            <th scope="col">Eliminar Notificación</th>
+          </tr>
+        </thead>
+        {notis?.length ? (
+          <tbody>
+            {notis?.map((e) => (
+              <tr key={e?.id}>
+                <td>{e?.description}</td>
+                <td>
+                  <strong
+                    style={{ color: "#dc3545", cursor: "pointer" }}
+                    onClick={() => deleteNoti(e?.id, "notification_client")}
+                  >
+                    Eliminar
+                  </strong>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         ) : (
-          <strong
-            onClick={() => setPage((prev) => prev + 1)}
-            style={{ color: "#0d6efd", cursor: "pointer" }}
-          >
-            mostrar mas resultados
-          </strong>
-        )
-      ) : (
-        <strong>Ops parece que a llegado al final</strong>
-      )}
+          <></>
+        )}
+      </table>
+      <div className="tc mb1 mt3">
+        {showShowMore ? (
+          loadingNextPage ? (
+            <strong>Cargando...</strong>
+          ) : (
+            <strong
+              onClick={() => setPage((prev) => prev + 1)}
+              style={{ color: "#0d6efd", cursor: "pointer" }}
+            >
+              mostrar mas resultados
+            </strong>
+          )
+        ) : (
+          <p style={{ color: "var(--color-first-light-one)" }}>
+            Oops parece que ha llegado al final
+          </p>
+        )}
+      </div>
     </div>
   );
 };

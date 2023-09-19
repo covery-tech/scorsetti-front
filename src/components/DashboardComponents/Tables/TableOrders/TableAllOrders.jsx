@@ -114,7 +114,7 @@ const OrdersTableAll = () => {
   }
 
   return (
-    <div className="container table-data bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
+    <div className="w-100 h-100 pre">
       {ordersData && ordersData.length > 0 ? (
         <div className="table-responsive responsive pt-3">
           <table className="table table-bordered table-striped">

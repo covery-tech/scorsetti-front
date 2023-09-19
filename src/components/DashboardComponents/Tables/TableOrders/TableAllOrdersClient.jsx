@@ -50,7 +50,7 @@ const OrdersTableAllClient = () => {
     };
 
     return (
-        <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
+        <div className="w-100 h-100 pre">
             {ordersData && ordersData.length > 0 ? (
                 <table className="table table-striped">
                     <thead>

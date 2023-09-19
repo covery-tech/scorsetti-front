@@ -35,61 +35,61 @@ export const TableOrders = () => {
   }, [page]);
 
   return (
-    <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
-      {loading ? (
-        <div>Cargando...</div>
-      ) : (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Nombre y Apellido</th>
-              <th scope="col">Telefono</th>
-              <th scope="col">Email</th>
-              <th scope="col">Estado del Pago</th>
-              <th scope="col">Tipo de póliza</th>
-            </tr>
-          </thead>
-          {orders.flat()?.length ? (
-            <tbody>
-              {orders.flat().map((e, i) => (
-                <tr key={i}>
-                  <td>
-                    {e?.name}, {e?.last_name}
-                  </td>
-                  <td>
-                    {e?.phone_number}
-                    <a
-                      href={`https://wa.me/+549${e?.phone_number}`}
-                      target="_blank"
-                    >
-                      <Icon icon="ic:baseline-whatsapp" height="24" />
-                    </a>
-                  </td>
-                  <td>{e?.email}</td>
-                  <td>{e?.status_payment} </td>
-                  <td>{e?.type}</td>
-                </tr>
-              ))}
-            </tbody>
-          ) : (
-            <></>
-          )}
-        </table>
-      )}
-      {showShowMore ? (
-        loadingNextPage ? (
-          <strong>cargando...</strong>
+    <div className="w-100 h-100 pre">
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre y Apellido</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Email</th>
+            <th scope="col">Estado del Pago</th>
+            <th scope="col">Tipo de póliza</th>
+          </tr>
+        </thead>
+        {orders.flat()?.length ? (
+          <tbody>
+            {orders.flat().map((e, i) => (
+              <tr key={i}>
+                <td>
+                  {e?.name}, {e?.last_name}
+                </td>
+                <td>
+                  {e?.phone_number}
+                  <a
+                    href={`https://wa.me/+549${e?.phone_number}`}
+                    target="_blank"
+                  >
+                    <Icon icon="ic:baseline-whatsapp" height="24" />
+                  </a>
+                </td>
+                <td>{e?.email}</td>
+                <td>{e?.status_payment} </td>
+                <td>{e?.type}</td>
+              </tr>
+            ))}
+          </tbody>
         ) : (
-          <strong
-            onClick={() => setPage((prev) => prev + 1)}
-            style={{ color: "#0d6efd", cursor: "pointer" }}
-          >
-            mostrar mas resultados
-          </strong>
-        )
-      ) : (
-        <strong>Ops parece que a llegado al final</strong>
-      )}
+          <></>
+        )}
+      </table>
+      <div className="tc mb1 mt3">
+        {showShowMore ? (
+          loadingNextPage ? (
+            <strong>Cargando...</strong>
+          ) : (
+            <strong
+              onClick={() => setPage((prev) => prev + 1)}
+              style={{ color: "#0d6efd", cursor: "pointer" }}
+            >
+              mostrar mas resultados
+            </strong>
+          )
+        ) : (
+          <p style={{ color: "var(--color-first-light-one)" }}>
+            Oops parece que ha llegado al final
+          </p>
+        )}
+      </div>
     </div>
   );
 };

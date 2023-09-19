@@ -146,7 +146,7 @@ export const TablePas = () => {
             </strong>
           )
         ) : (
-          <strong>Ops parece que ha llegado al final</strong>
+          <p style={{color: "var(--color-first-light-one)"}}>Oops parece que ha llegado al final</p>
         )}
       </div>
     </div>

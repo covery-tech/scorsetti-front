@@ -35,7 +35,7 @@ export const TableProductsClients = () => {
   }, []);
 
   return (
-    <div className="container bg-light rounded-3 m-5 justify-content-center text-center mx-auto">
+    <div className="w-100 h-100 pre">
       <table className="table table-striped">
         <thead>
           <tr>
