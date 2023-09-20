@@ -7,7 +7,7 @@ export default function Navbar() {
   const { pas } = useUser();
 
   return (
-    <nav className="navbar justify-between bg-white flex pv2 ph2 margin">
+    <nav className="navbar justify-between bg-white flex pv2 ph2">
       <div className="w-30-l w-10 logo-desktop">
         {!pas?.route?.length ? (
           <Link to="/" className="navbar-brand">

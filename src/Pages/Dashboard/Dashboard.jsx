@@ -61,7 +61,7 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex justify-center-xl sidebar_position">
+    <div className="flex flex-column flex-row-l justify-center-xl mt4-l">
       <SideBar />
       <DashboardContainer>
         {site === "panel" ? (

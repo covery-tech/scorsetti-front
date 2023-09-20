@@ -15,9 +15,7 @@ import { Link } from "react-router-dom";
 export const SideBarClient = ({ logout, updateSite }) => {
   const { jwt } = useUser();
   const [notis, setNotis] = useState(0);
-  const [screen,setScreen] = useState(0);
   useEffect(() => {
-    setScreen(window.screen.width);
     const config = {
       method: "get",
       baseURL: `${process.env.REACT_APP_URI_API}/product/getCountNotisPas`,
@@ -32,14 +30,14 @@ export const SideBarClient = ({ logout, updateSite }) => {
     <>
       <ul>
         <p className="centerP">Listas</p>
-        <li onClick={() => updateSite("compras")}>
+        <li onClick={() => updateSite("compras")} className='flex'>
           <FontAwesomeIcon icon={faShop} />
           <div className='text'>Mi billetera</div>
         </li>
         <p className="centerP">Útil</p>
         <li
           onClick={() => updateSite("notificaciones")}
-          style={{ position: "relative" }}
+          className='flex relative'
         >
           {notis ? (
             <div
@@ -67,19 +65,15 @@ export const SideBarClient = ({ logout, updateSite }) => {
 
         <li
           onClick={() => updateSite("profile")}
-          style={{ position: "relative" }}
+          className='flex relative'
         >
           <FontAwesomeIcon icon={faCircleUser} />
           <div className='text'>Perfil</div>
         </li>
-        {
-            screen > 768 ? 
-            <li onClick={logout}>
-            <FontAwesomeIcon icon={faArrowRightFromBracket}/>
-            <div>Cerrar Sesión</div>
-            </li> :
-            <></>
-        }
+        <li onClick={logout} className='flex-l dn'>
+          <FontAwesomeIcon icon={faArrowRightFromBracket} />
+          <div>Cerrar Sesión</div>
+        </li>
       </ul>
     </>
   );

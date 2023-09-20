@@ -13,12 +13,6 @@
     padding: 5px 20px;
 }
 
-
-@media (max-width: 60em) {
-    .sidebar_position {
-        display: inline;    
-    }
-}
 @media (min-width: 72em) {
     .justify-center-xl {
         justify-content: center;

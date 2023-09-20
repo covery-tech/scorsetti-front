@@ -58,7 +58,6 @@
 }
 
 .center ul li {
-    display: flex;
     align-items: center;
     padding: 5px;
     cursor: pointer;

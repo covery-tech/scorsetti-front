@@ -8,9 +8,7 @@ import { Link } from 'react-router-dom'
 export const SideBarPas = ({ logout, updateSite }) => {
     const { jwt } = useUser()
     const [notis, setNotis] = useState(0)
-    const [screen,setScreen] = useState(0)
     useEffect(() => {
-        setScreen(window.screen.width);
         const config = {
             method: "get",
             baseURL: `${process.env.REACT_APP_URI_API}/product/getCountNotisPas`,
@@ -25,20 +23,20 @@ export const SideBarPas = ({ logout, updateSite }) => {
         <>
             <ul>
                 <p className='centerP'>Listas</p>
-                <li onClick={() => updateSite("clientes")}>
+                <li onClick={() => updateSite("clientes")} className='flex'>
                     <FontAwesomeIcon icon={faUser} />
                     <div className='text'>Clientes</div>
                 </li>
-                <li onClick={() => updateSite("productos")}>
+                <li onClick={() => updateSite("productos")} className='flex'>
                     <FontAwesomeIcon icon={faShop} />
                     <div className='text'>Productos</div>
                 </li>
-                <li onClick={() => updateSite("ordenes")}>
+                <li onClick={() => updateSite("ordenes")} className='flex'>
                     <FontAwesomeIcon icon={faCreditCard} />
                     <div className='text'>Ordenes</div>
                 </li>
                 <p className='centerP'>Útil</p>
-                <li onClick={() => updateSite("notificaciones")} style={{ position: "relative" }}>
+                <li onClick={() => updateSite("notificaciones")} className='flex relative'>
                     {
                         notis ? <div style={{ backgroundColor: "#dc3545", height: "12px", minWidth: 10, position: "absolute", borderRadius: "100%", left: "12px", fontSize: 10, top: "4px", textAlign: "center" }}>{(notis < 10) ? notis : "+10"}</div>
                             : <></>
@@ -47,23 +45,19 @@ export const SideBarPas = ({ logout, updateSite }) => {
                     <FontAwesomeIcon icon={faBell} />
                     <div className='text'>Notificaciones</div>
                 </li>
-                <li>
+                <li className='flex'>
                     <FontAwesomeIcon icon={faSignal} />
                     <div className='text'>Estadísticas</div>
                 </li>
                 <p className='centerP'>Usuario</p>
-                <li onClick={() => updateSite("profile")}>
+                <li onClick={() => updateSite("profile")} className='flex'>
                     <FontAwesomeIcon icon={faCircleUser} />
                     <div className='text'>Perfil</div>
                 </li>
-                {
-                    screen > 768 ?
-                        <li onClick={logout}>
-                            <FontAwesomeIcon icon={faArrowRightFromBracket} />
-                            <div className='text'>Cerrar Sesión</div>
-                        </li> :
-                        <></>
-                }
+                <li onClick={logout} className='flex-l dn'>
+                    <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                    <div>Cerrar Sesión</div>
+                </li>
             </ul>
         </>
     )
