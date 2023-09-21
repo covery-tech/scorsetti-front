@@ -71,7 +71,7 @@ export const TableSearchUser = () => {
           <th scope="col">Apellido</th>
           <th scope="col">Email</th>
           <th scope="col">Tipo usuario</th>
-          <th scope="col">Actualizar</th>
+          <th scope="col">Cambiar a</th>
           <th style={{ display: "flex" }}>
             <input
               className="form-control m-auto"
