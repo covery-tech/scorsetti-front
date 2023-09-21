@@ -403,7 +403,7 @@ export function MyUser() {
             </div>
           </div>
         )}
-        <div className="flex justify-center items-center pt4">
+        <div className="flex justify-center items-center pt2 pb3">
           <button
             className="button main-button"
             onClick={() => handleSubmit(userData)}
