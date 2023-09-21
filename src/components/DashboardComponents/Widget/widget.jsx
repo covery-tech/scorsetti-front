@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./widget.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUser,faCreditCard} from "@fortawesome/free-regular-svg-icons"
@@ -40,7 +40,7 @@ export const Widget = ({type,amount}) => {
 
 
   return (
-    <div className='widget'>
+    <div className='widget w-third-l ma1'>
         <div className="left">
             <span className='title'>{data.title}</span>
             <span className='counter'>{data.isMoney && "$"}{amount}</span>

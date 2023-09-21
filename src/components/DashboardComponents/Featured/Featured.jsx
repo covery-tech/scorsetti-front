@@ -7,7 +7,7 @@ import "react-circular-progressbar/dist/styles.css"
 
 export const Featured = ({amount}) => {
   return (
-    <div className='featureds'>
+    <div className='featureds w-30-l ma1'>
       <div className="top">
         <h1 className='title'>Ingresos Totales</h1>
         <FontAwesomeIcon icon={faEllipsisVertical} style={{fontSize:"small"}}/>

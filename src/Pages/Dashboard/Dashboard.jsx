@@ -65,17 +65,17 @@ export const Dashboard = () => {
       <SideBar />
       <DashboardContainer>
         {site === "panel" ? (
-          <>
-            <div className="widgets">
+          <div className="overflow-y-scroll overflow-x-hidden h-100">
+            <div className="flex flex-column flex-row-l w-100">
               <Widget type="client" amount={clients} />
               <Widget type="order" amount={orders} />
               <Widget type="balance" amount={amount} />
             </div>
-            <div className="charts">
+            <div className="flex flex-column flex-row-l w-100">
               <Featured amount={dairySales} />
               <Charts />
             </div>
-          </>
+          </div>
         ) : site === "clientes" ? (
           <TableClient />
         ) : site === "productos" ? (

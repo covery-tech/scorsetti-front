@@ -21,10 +21,9 @@ const data = [
   }
 ];
 
-
 export const Charts = () => {
   return (
-    <div className='chart' style={{borderRadius:5,padding:20,backgroundColor:"#fff"}}>
+    <div className='chart w-70-l ma1 ph1' style={{borderRadius:5,padding:20,backgroundColor:"#fff"}}>
       <div className="title">Ultimos 4 Meses (ganancias)</div>
       <ResponsiveContainer width="100%" aspect={2/1}>
       <AreaChart 
