@@ -21,9 +21,16 @@
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: top;
+  vertical-align: center;
   border-top: 1px solid #dee2e6;
   white-space: nowrap;
+  text-align: center;
+}
+
+.table td p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .table thead th {

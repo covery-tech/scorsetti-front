@@ -130,7 +130,7 @@ export default function Register() {
           </button>
           <span className="fst-italic pt2">
             ¿Ya tenés cuenta?{" "}
-            <button className="button" onClick={() => navigate("/ingresar")}>
+            <button className="button button-nohover" onClick={() => navigate("/ingresar")}>
               Iniciar sesión
             </button>
           </span>

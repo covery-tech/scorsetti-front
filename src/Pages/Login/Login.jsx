@@ -84,14 +84,14 @@ export default function Login() {
             <button
               href="#"
               onClick={() => navigate("/ingresar")}
-              className="button"
+              className="button button-nohover"
             >
               Olvidaste tu contraseña?
             </button>
           </span>
           <span className="fst-italic">
             ¿No tenés cuenta?{" "}
-            <button className="button" onClick={() => navigate("/registro")}>
+            <button className="button button-nohover" onClick={() => navigate("/registro")}>
               Crear Usuario
             </button>
           </span>

@@ -82,25 +82,35 @@ export const TablePas = () => {
           <tbody>
             {pas.map((e, i) => (
               <tr key={i}>
-                <td>{e?.name}</td>
-                <td>{e?.last_name}</td>
-                <td>{e?.email}</td>
                 <td>
-                  {e?.phone_number}{" "}
-                  <a
-                    href={`https://wa.me/+549${e?.phone_number}`}
-                    target="_blank"
-                  >
-                    <Icon icon="ic:baseline-whatsapp" height="24" />
-                  </a>
+                  <p>{e?.name}</p>
                 </td>
-                <td>{e?.id_user}</td>
+                <td>
+                  <p>{e?.last_name}</p>
+                </td>
+                <td>
+                  <p>{e?.email}</p>
+                </td>
+                <td>
+                  <p>
+                    {e?.phone_number}{" "}
+                    <a
+                      href={`https://wa.me/+549${e?.phone_number}`}
+                      target="_blank"
+                    >
+                      <Icon icon="ic:baseline-whatsapp" className="ph1" height="24" />
+                    </a>
+                  </p>
+                </td>
+                <td>
+                  <p>{e?.id_user}</p>
+                </td>
                 <td>
                   <Link
                     to={`user/${e?.id_user}`}
                     style={{ color: "#0d6efd", cursor: "pointer" }}
                   >
-                    Ver usuario
+                    <button className="button main-button br2">Ver</button>
                   </Link>
                 </td>
                 <td className="content-center">
@@ -146,7 +156,9 @@ export const TablePas = () => {
             </strong>
           )
         ) : (
-          <p style={{color: "var(--color-first-light-one)"}}>Oops parece que ha llegado al final</p>
+          <p style={{ color: "var(--color-first-light-one)" }}>
+            Oops parece que ha llegado al final
+          </p>
         )}
       </div>
     </div>
