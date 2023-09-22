@@ -2,13 +2,14 @@ import React from "react";
 import useUser from "../../../../hooks/UseUser";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faCircleCheck, faCircleXmark, faClock } from "@fortawesome/free-solid-svg-icons";
 
 export const TableProductsAdmin = ({ products, handleUpdateState }) => {
   const { user, jwt } = useUser();
   const { userId } = useParams();
   let sendNotification;
   if (userId) {
-    //("hola")
     sendNotification = (description) => {
       const config = {
         method: "post",
@@ -32,19 +33,31 @@ export const TableProductsAdmin = ({ products, handleUpdateState }) => {
         <table className="table table-striped">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">Producto</th>
-              <th scope="col">Acciones</th>
+              <th scope="col">Nombre del producto</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acción</th>
             </tr>
           </thead>
+          <tbody>
           {products.map((e, i) => (
-            <tbody key={i}>
-              <tr>
-                <th scope="row">{e.title}</th>
-                <td>
+              <tr key={i}>
+                <th className="w-60" scope="row">{e.title}</th>
+                <td className="tc w-20">
+                {
+                  e.status === "habilitado" ? 
+                  (<strong className="green">Habilitado <FontAwesomeIcon icon={faCircleCheck}/></strong>) :
+                  e.status === "pendiente deshabilitado" ? 
+                  (<strong className="yellow">Pendiente habilitado <FontAwesomeIcon icon={faClock}/></strong>):
+                  e.status === "pendiente habilitado" ? 
+                  (<strong className="yellow">Pendiente deshabilitado <FontAwesomeIcon icon={faClock}/></strong>):
+                  (<strong className="red">Deshabilitado <FontAwesomeIcon icon={faCircleXmark}/></strong>)
+                }
+                </td>
+                <td className="tc w-20">
                   {e.status === "habilitado" ? (
                     <>
                       <button
-                        className="btn btn-success w-25 me-4"
+                        className="btn main-button w-80"
                         onClick={() => {
                           handleUpdateState(e.name, "pendiente deshabilitado");
                           sendNotification(
@@ -52,28 +65,24 @@ export const TableProductsAdmin = ({ products, handleUpdateState }) => {
                           );
                         }}
                       >
-                        {e.status}
+                        Solicitar deshabilitación
                       </button>
-                      <strong>click para pedir deshabilitar</strong>
                     </>
                   ) : e.status === "pendiente deshabilitado" ? (
                     <>
                       <button
-                        className="btn btn-warning w-25 me-4"
+                        className="btn main-button w-80"
                         onClick={() =>
                           handleUpdateState(e.name, "deshabilitado")
                         }
                       >
-                        {e.status}
+                         Cambiar estado a deshabilitado
                       </button>
-                      <strong>
-                        click para cancelar solicitud de deshabilitacion
-                      </strong>
                     </>
                   ) : e.status === "pendiente habilitado" ? (
                     <>
                       <button
-                        className="btn btn-warning w-25 me-4"
+                        className="btn main-button w-80"
                         onClick={() => {
                           handleUpdateState(e.name, "habilitado");
                           sendNotification(
@@ -81,33 +90,25 @@ export const TableProductsAdmin = ({ products, handleUpdateState }) => {
                           );
                         }}
                       >
-                        {e.status}
+                        Cambiar estado a habilitado
                       </button>
-                      <strong>
-                        click para cambiar estado a pendiente y esperar que un
-                        administrador acepte su solicitud
-                      </strong>
                     </>
                   ) : (
                     <>
                       <button
-                        className="btn btn-danger w-25 me-4"
+                        className="btn main-button w-80"
                         onClick={() =>
                           handleUpdateState(e.name, "pendiente habilitado")
                         }
                       >
-                        {e.status}
+                        Solicitar habilitación
                       </button>
-                      <strong>
-                        click para cambiar estado a pendiente y esperar que un
-                        administrador acepte su solicitud
-                      </strong>
                     </>
                   )}
                 </td>
               </tr>
-            </tbody>
           ))}
+          </tbody>
         </table>
       </div>
     </>

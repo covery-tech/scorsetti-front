@@ -5,7 +5,7 @@ import { PasProductRow } from "./PasProductRow";
 
 export const TableProductsPas = ({ products, handleUpdateState }) => {
   const { user, jwt } = useUser();
-
+  console.log(products)
   const sendNotification = (description) => {
     const config = {
       method: "post",

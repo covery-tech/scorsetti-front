@@ -67,7 +67,8 @@ export const TableProducts = () => {
         <thead>
           <tr>
             <th scope="col">Nombre del Producto</th>
-            <th scope="col">Estado del Producto</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acción</th>
           </tr>
         </thead>
         {products.length ? (

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import useUser from "../../../../hooks/UseUser";
 import ModalPortal from "../../../modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck, faCircleXmark, faClock } from "@fortawesome/free-solid-svg-icons";
 
 export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
   const { user } = useUser();
@@ -9,61 +11,62 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
   return (
     <>
       <tr>
-        <td>{e.title}</td>
-        <td>
+        <th className="w-20" scope="col">{e.title}</th>
+        <td className="tc w-20">
+                {
+                  e.status === "habilitado" ? 
+                  (<strong className="green">Habilitado <FontAwesomeIcon icon={faCircleCheck}/></strong>) :
+                  e.status === "pendiente deshabilitado" ? 
+                  (<strong className="yellow">Pendiente habilitado <FontAwesomeIcon icon={faClock}/></strong>):
+                  e.status === "pendiente habilitado" ? 
+                  (<strong className="yellow">Pendiente deshabilitado <FontAwesomeIcon icon={faClock}/></strong>):
+                  (<strong className="red">Deshabilitado <FontAwesomeIcon icon={faCircleXmark}/></strong>)
+                }
+                </td>
+        <td className="tc w-60">
           {e.status === "habilitado" ? (
             <>
               <button
-                className="btn btn-success"
+                className="btn main-button w-80"
                 onClick={() => {
                   setActionSureDisable(true);
                   // handleUpdateState(e.name,"pendiente deshabilitado")
                   // sendNotification(`${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a deshabilitado`)
                 }}
               >
-                {e.status}
+                Solicitar deshabilitación
               </button>
-              <strong>
-                click en el boton si quiere poner este producto en pendiente por
-                deshabilitar
-              </strong>
             </>
           ) : e.status === "pendiente deshabilitado" ? (
             <>
               <button
-                className="btn btn-warning"
+                className="btn main-button w-80"
                 onClick={() => handleUpdateState(e.name, "habilitado")}
               >
-                {e.status}
+                Cambiar estado a habilitado
               </button>
-              <strong>click para cambiar cancelar esta solicitud</strong>
             </>
           ) : e.status === "pendiente habilitado" ? (
             <>
               <button
-                className="btn btn-warning"
+                className="btn main-button w-80"
                 onClick={() => handleUpdateState(e.name, "deshabilitado")}
               >
-                {e.status}
+                Cambiar estado a deshabilitado
               </button>
-              <strong>click para cambiar cancelar esta solicitud</strong>
             </>
           ) : (
             <>
               <button
-                className="btn btn-danger"
+                className="btn main-button w-80"
                 onClick={() => {
                   setActionSureEnable(true);
                   // handleUpdateState(e.name,"pendiente habilitado")
                   // sendNotification(`${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a habilitado`)
                 }}
               >
-                {e.status}
+                Solicitar habilitación
               </button>
-              <strong>
-                click en el boton si quiere poner este producto en pendiente por
-                habilitar
-              </strong>
             </>
           )}
         </td>
@@ -79,7 +82,7 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
               onClick={() => {
                 handleUpdateState(e.name, "pendiente deshabilitado");
                 sendNotification(
-                  `${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a deshabilitado`
+                  `${user.name},${user.last_name} desea actualizar el estado de su producto ${e.name} a deshabilitado`
                 );
                 setActionSureDisable(false);
               }}
@@ -101,7 +104,7 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
               onClick={() => {
                 handleUpdateState(e.name, "pendiente habilitado");
                 sendNotification(
-                  `${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a habilitado`
+                  `${user.name},${user.last_name} desea actualizar el estado de su producto ${e.name} a habilitado`
                 );
                 setActionSureEnable(false);
               }}
