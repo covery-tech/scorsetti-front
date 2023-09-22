@@ -17,9 +17,9 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
                   e.status === "habilitado" ? 
                   (<strong className="green">Habilitado <FontAwesomeIcon icon={faCircleCheck}/></strong>) :
                   e.status === "pendiente deshabilitado" ? 
-                  (<strong className="yellow">Pendiente habilitado <FontAwesomeIcon icon={faClock}/></strong>):
-                  e.status === "pendiente habilitado" ? 
                   (<strong className="yellow">Pendiente deshabilitado <FontAwesomeIcon icon={faClock}/></strong>):
+                  e.status === "pendiente habilitado" ? 
+                  (<strong className="yellow">Pendiente habilitado <FontAwesomeIcon icon={faClock}/></strong>):
                   (<strong className="red">Deshabilitado <FontAwesomeIcon icon={faCircleXmark}/></strong>)
                 }
                 </td>
@@ -30,8 +30,8 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
                 className="btn main-button w-80"
                 onClick={() => {
                   setActionSureDisable(true);
-                  // handleUpdateState(e.name,"pendiente deshabilitado")
-                  // sendNotification(`${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a deshabilitado`)
+                  handleUpdateState(e.name,"pendiente deshabilitado")
+                  sendNotification(`${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a deshabilitado`)
                 }}
               >
                 Solicitar deshabilitación
@@ -43,7 +43,7 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
                 className="btn main-button w-80"
                 onClick={() => handleUpdateState(e.name, "habilitado")}
               >
-                Cambiar estado a habilitado
+                Cancelar solicitud
               </button>
             </>
           ) : e.status === "pendiente habilitado" ? (
@@ -52,7 +52,7 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
                 className="btn main-button w-80"
                 onClick={() => handleUpdateState(e.name, "deshabilitado")}
               >
-                Cambiar estado a deshabilitado
+                Cancelar solicitud
               </button>
             </>
           ) : (
@@ -61,8 +61,8 @@ export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
                 className="btn main-button w-80"
                 onClick={() => {
                   setActionSureEnable(true);
-                  // handleUpdateState(e.name,"pendiente habilitado")
-                  // sendNotification(`${user.name},${user.last_name} desea acutalizar el estado de su producto ${e.name} a habilitado`)
+                  handleUpdateState(e.name,"pendiente habilitado")
+                  sendNotification(`${user.name},${user.last_name} desea actualizar el estado de su producto ${e.name} a habilitado`)
                 }}
               >
                 Solicitar habilitación

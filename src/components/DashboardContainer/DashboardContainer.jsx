@@ -1,7 +1,7 @@
 export default function DashboardContainer({ children, className }) {
   return (
     <div
-      className={`w-70-l w-95 h-35-l mw8 mh4-l center bg-white pa3${
+      className={`w-95 w-75 h-35-l mw8 mh4-l center bg-white pa3${
         className ? ` ${className}` : ""
       }`}
     >
@@ -13,6 +13,9 @@ export default function DashboardContainer({ children, className }) {
       @media screen and (min-width: 60em) {
         .h-35-l {
           height: 35rem;
+        }
+        .w-75 {
+          width: 75%;
         }
       }
         `}</style>

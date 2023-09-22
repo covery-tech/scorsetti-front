@@ -34,7 +34,7 @@ export const SideBarPas = ({ logout, updateSite }) => {
         </li>
         <li onClick={() => updateSite("productos")} className="flex">
           <FontAwesomeIcon icon={faBagShopping} />
-          <div className="text">Productos</div>
+          <div className="text">Mis productos</div>
         </li>
         <li onClick={() => updateSite("ordenes")} className="flex">
           <FontAwesomeIcon icon={faCartShopping} />
