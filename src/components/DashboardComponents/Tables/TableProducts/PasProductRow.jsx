@@ -4,13 +4,13 @@ import ModalPortal from "../../../modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark, faClock } from "@fortawesome/free-solid-svg-icons";
 
-export const PasProductRow = ({ e, handleUpdateState, sendNotification }) => {
+export const PasProductRow = ({ e, handleUpdateState, sendNotification, key }) => {
   const { user } = useUser();
   const [actionSureDisable, setActionSureDisable] = useState(false);
   const [actionSureEnable, setActionSureEnable] = useState(false);
   return (
     <>
-      <tr>
+      <tr key={key}>
         <th className="w-20" scope="col">{e.title}</th>
         <td className="tc w-20">
                 {

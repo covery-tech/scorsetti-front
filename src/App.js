@@ -112,8 +112,10 @@ function App() {
               path="/scorsetti/panel/user/:userId"
               element={
                 <>
-                  <Navbar />
-                  <ProfilePas />
+                  <ProtectRouteLogin>
+                    <Navbar />
+                    <ProfilePas />
+                  </ProtectRouteLogin>
                 </>
               }
             />

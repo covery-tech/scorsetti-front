@@ -3,9 +3,9 @@ import useUser from "../../hooks/UseUser";
 import { TableProductsAdmin } from "../../components/DashboardComponents/Tables/TableProducts/TableProductsAdmin";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import PrincipalText from "../../components/Principal-Text/Principaltext";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DashboardContent from "../../components/DashboardContent/DashboardContent";
 
 export default function ProfilePas() {
   const { jwt } = useUser();
@@ -56,7 +56,7 @@ export default function ProfilePas() {
     axios(config)
       .then((res) => {
         if (res.data) {
-          toast.success('Solicitud enviada', {
+          toast.success("Solicitud enviada", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -65,7 +65,7 @@ export default function ProfilePas() {
             draggable: true,
             progress: undefined,
             theme: "light",
-            });          
+          });
           getPas();
         }
       })
@@ -74,17 +74,17 @@ export default function ProfilePas() {
       });
   };
   return (
-    <>
-      <div className="container bg-light rounded-4 mt-4">
-        <PrincipalText/>
-        <div className="text-center">
-          <h4>Productor: {pasState?.name} {pasState?.last_name}</h4>
-        </div>
-        <TableProductsAdmin
-          products={products}
-          handleUpdateState={handleUpdateState}
-        />
+    <DashboardContent className={"mt4"}>
+      <div className="tl">
+        <h2 style={{color: "var(--color-first-medium)"}}>
+          Productor: {pasState?.name} {pasState?.last_name}
+        </h2>
       </div>
-    </>
+      <TableProductsAdmin
+        products={products}
+        handleUpdateState={handleUpdateState}
+        loading={loading}
+      />
+    </DashboardContent>
   );
 }

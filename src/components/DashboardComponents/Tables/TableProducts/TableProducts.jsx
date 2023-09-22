@@ -10,7 +10,7 @@ export const TableProducts = () => {
   const { jwt, user } = useUser();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  //(products)
+
   const getPas = () => {
     const config = {
       method: "get",
@@ -29,7 +29,6 @@ export const TableProducts = () => {
   };
 
   const handleUpdateState = (name, status) => {
-    //(status,name)
     const config = {
       method: "put",
       baseURL: `${process.env.REACT_APP_URI_API}/product/statusProduct/${status}/${user.id_user}/${name}`,
@@ -73,21 +72,10 @@ export const TableProducts = () => {
         </thead>
         {products.length ? (
           <tbody>
-            {user.type === "superadmin" || user.type === "admin" ? (
-              <>
-                <TableProductsAdmin
-                  products={products}
-                  handleUpdateState={handleUpdateState}
-                />
-              </>
-            ) : (
-              <>
-                <TableProductsPas
-                  products={products}
-                  handleUpdateState={handleUpdateState}
-                />
-              </>
-            )}
+            <TableProductsPas
+              products={products}
+              handleUpdateState={handleUpdateState}
+            />
           </tbody>
         ) : (
           <></>

@@ -15,6 +15,7 @@ import { MyUser } from "../MyUser/MyUser";
 import OrdersTableAll from "../../components/DashboardComponents/Tables/TableOrders/TableAllOrders";
 import OrdersTableAllClient from "../../components/DashboardComponents/Tables/TableOrders/TableAllOrdersClient";
 import DashboardContainer from "../../components/DashboardContainer/DashboardContainer";
+import DashboardContent from "../../components/DashboardContent/DashboardContent";
 export const Dashboard = () => {
   const { site, jwt } = useUser();
   const [clients, setClients] = useState();
@@ -61,9 +62,9 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex flex-column flex-row-l justify-center-xl mt4-l">
+    <DashboardContainer>
       <SideBar />
-      <DashboardContainer>
+      <DashboardContent className="mh4-l">
         {site === "panel" ? (
           <div className="overflow-y-scroll overflow-x-hidden h-100">
             <div className="flex flex-column flex-row-l w-100">
@@ -95,7 +96,7 @@ export const Dashboard = () => {
         ) : (
           <></>
         )}
-      </DashboardContainer>
-    </div>
+      </DashboardContent>
+    </DashboardContainer>
   );
 };
