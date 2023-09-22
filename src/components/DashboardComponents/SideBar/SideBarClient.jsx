@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
   faCircleUser,
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faShop,
   faBell,
   faArrowRightFromBracket,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import useUser from "../../../hooks/UseUser";
-import { Link } from "react-router-dom";
 export const SideBarClient = ({ logout, updateSite }) => {
   const { jwt } = useUser();
   const [notis, setNotis] = useState(0);
@@ -31,8 +30,8 @@ export const SideBarClient = ({ logout, updateSite }) => {
       <ul>
         <p className="centerP">Listas</p>
         <li onClick={() => updateSite("compras")} className='flex'>
-          <FontAwesomeIcon icon={faShop} />
-          <div className='text'>Mi billetera</div>
+          <FontAwesomeIcon icon={faCartShopping} />
+          <div className='text'>Mis órdenes</div>
         </li>
         <p className="centerP">Útil</p>
         <li

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import useUser from "../../../../hooks/UseUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 export const TablePas = () => {
   const [pas, setPas] = useState([]);
@@ -71,59 +73,66 @@ export const TablePas = () => {
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Email</th>
-            <th scope="col">Telefono</th>
+            <th scope="col">Teléfono</th>
             {/* puede ir el slug en vez del id */}
-            <th scope="col">Id</th>
+            <th scope="col">ID</th>
             <th scope="col">Productos</th>
-            <th scope="col">Activar</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acción</th>
           </tr>
         </thead>
         {pas?.length ? (
           <tbody>
             {pas.map((e, i) => (
               <tr key={i}>
-                <td>{e?.name}</td>
-                <td>{e?.last_name}</td>
-                <td>{e?.email}</td>
                 <td>
-                  {e?.phone_number}{" "}
-                  <a
-                    href={`https://wa.me/+549${e?.phone_number}`}
-                    target="_blank"
-                  >
-                    <Icon icon="ic:baseline-whatsapp" height="24" />
-                  </a>
+                  <p>{e?.name}</p>
                 </td>
-                <td>{e?.id_user}</td>
+                <td>
+                  <p>{e?.last_name}</p>
+                </td>
+                <td>
+                  <p>{e?.email}</p>
+                </td>
+                <td>
+                  <p>
+                    <a
+                      href={`https://wa.me/+549${e?.phone_number}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "var(--color-first-medium-light)" }}
+                      className="flex items-center"
+                    >
+                      <span className="ph1">{e?.phone_number}</span>
+                      <Icon
+                        icon="ic:baseline-whatsapp"
+                        className="ph1"
+                        height="24"
+                      />
+                    </a>
+                  </p>
+                </td>
+                <td>
+                  <p>{e?.id_user}</p>
+                </td>
                 <td>
                   <Link
                     to={`user/${e?.id_user}`}
-                    style={{ color: "#0d6efd", cursor: "pointer" }}
+                    style={{ color: "var(--color-first-medium-light)" }}
                   >
-                    Ver usuario
+                    <span className="ph1">Ver</span>
+                    <FontAwesomeIcon icon={faEye} />
                   </Link>
                 </td>
+                <td>{e?.status_pas ? "Habilitado" : "Deshabilitado"}</td>
                 <td className="content-center">
                   <div className="mx-auto">
-                    {e?.status_pas ? (
-                      <button
-                        className="btn btn-success"
-                        onClick={() =>
-                          onChangeEnable(e?.status_pas, e?.id_user)
-                        }
-                      >
-                        habilitado
-                      </button>
-                    ) : (
-                      <button
-                        className="btn btn-warning"
-                        onClick={() =>
-                          onChangeEnable(e?.status_pas, e?.id_user)
-                        }
-                      >
-                        deshabilitado
-                      </button>
-                    )}
+                    <button
+                      className="button main-button"
+                      onClick={() => onChangeEnable(e?.status_pas, e?.id_user)}
+                    >
+                      Cambiar estado
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -146,7 +155,9 @@ export const TablePas = () => {
             </strong>
           )
         ) : (
-          <p style={{color: "var(--color-first-light-one)"}}>Oops parece que ha llegado al final</p>
+          <p style={{ color: "var(--color-first-light-one)" }}>
+            Oops parece que ha llegado al final
+          </p>
         )}
       </div>
     </div>

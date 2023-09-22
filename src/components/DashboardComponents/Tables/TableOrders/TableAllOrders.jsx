@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./table.css";
+import "../table.css";
 import { Icon } from "@iconify/react";
 import ModalPortal from "../../../modal";
 import useUser from "../../../../hooks/UseUser";

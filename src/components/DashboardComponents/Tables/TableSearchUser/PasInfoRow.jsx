@@ -52,24 +52,22 @@ export const PasInfoRow = ({ e, getAllUser }) => {
       <td>
         <select onChange={(element) => handleSelect(e.id_user, element)}>
           <option selected="true" disabled="disabled">
-            type
+            Seleccionar
           </option>
-          <option value="pas">pas</option>
-          <option value="client">client</option>
+          {e?.type !== "pas" && <option value="pas">pas</option>}
+          {e?.type !== "client" && <option value="client">client</option>}
           {user.type === "superadmin" && <option value="admin">admin</option>}
         </select>
       </td>
       <td>
         <div>
-          {select?.type?.length ? (
-            <button className="btn btn-success" onClick={sendChange}>
-              Actualizar
-            </button>
-          ) : (
-            <button className="btn btn-success" disabled>
-              Actualizar
-            </button>
-          )}
+          <button
+            className="button main-button"
+            onClick={select?.type?.length && sendChange}
+            disabled={!(select?.type?.length)}
+          >
+            Cambiar tipo
+          </button>
         </div>
       </td>
     </tr>
