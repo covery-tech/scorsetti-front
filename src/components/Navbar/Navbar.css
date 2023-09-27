@@ -14,11 +14,12 @@ a {
 .navbar .logo-desktop {
   display: block;
 }
+
 .navbar .logo-mobile {
   display: none;
 }
 
-@media screen and (min-width: 20em) and (max-width: 60em) {
+@media (max-width: 48em) {
   .navbar .logo-desktop {
     display: none;
   }
@@ -33,6 +34,7 @@ a {
     font-size: 0.8rem;
   }
 }
+
 @media screen and (min-width: 48em) and (max-width: 60em) {
   .nav-item a {
     color: var(--color-first-dark);

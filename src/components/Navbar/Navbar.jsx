@@ -2,6 +2,8 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { UserMenu } from "../UserConfig/UserMenu";
 import useUser from "../../hooks/UseUser";
+import { faHome, faLocationDot, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Navbar() {
   const { pas } = useUser();
@@ -38,37 +40,43 @@ export default function Navbar() {
         <span className="nav-item">
           {!pas?.route?.length ? (
             <Link to="/" className="nav-link active">
-              Inicio
+              <span className="logo-desktop">Inicio</span>
+              <FontAwesomeIcon className="logo-mobile pb1 h1-25rem" icon={faHome} />
             </Link>
           ) : (
             <Link to={`/${pas.route}`} className="nav-link active">
-              Inicio
+              <span className="logo-desktop">Inicio</span>
+              <FontAwesomeIcon className="logo-mobile pb1 h1-25rem" icon={faHome} />
             </Link>
           )}
         </span>
         <span className="nav-item">
           {!pas?.route?.length ? (
             <a href="/#quienes-somos" className="nav-link">
-              ¿Quiénes somos?
+              <span className="logo-desktop">¿Quiénes somos?</span>
+              <FontAwesomeIcon className="logo-mobile pb1 h1-25rem" icon={faUsers} />
             </a>
           ) : (
             <a href={`/${pas.route}/#quienes-somos`} className="nav-link">
-              ¿Quiénes somos?
+              <span className="logo-desktop">¿Quiénes somos?</span>
+              <FontAwesomeIcon className="logo-mobile pb1 h1-25rem" icon={faUsers} />
             </a>
           )}
         </span>
         <span className="nav-item">
           {!pas?.route?.length ? (
             <a href="/#contacto" className="nav-link">
-              Contacto y Ubicación
+              <span className="logo-desktop">Contacto y Ubicación</span>
+              <FontAwesomeIcon className="logo-mobile pb1 h1-25rem" icon={faLocationDot} />
             </a>
           ) : (
             <a href={`/${pas.route}/#contacto`} className="nav-link">
-              Contacto y Ubicación
+              <span className="logo-desktop">Contacto y Ubicación</span>
+              <FontAwesomeIcon className="logo-mobile pb1 h1-25rem" icon={faLocationDot} />
             </a>
           )}
         </span>
-        <span className="nav-item">
+        <span className="nav-item w-30 w-25-ns">
           <UserMenu />
         </span>
       </div>

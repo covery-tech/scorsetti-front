@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import useUser from "../../../../hooks/UseUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleXmark, faEye } from "@fortawesome/free-solid-svg-icons";
 
 export const TablePas = () => {
   const [pas, setPas] = useState([]);
@@ -124,15 +124,25 @@ export const TablePas = () => {
                     <FontAwesomeIcon icon={faEye} />
                   </Link>
                 </td>
-                <td>{e?.status_pas ? "Habilitado" : "Deshabilitado"}</td>
+                <td className="tc w-20">
+                {e?.status_pas? (
+                  <strong className="green">
+                    Habilitado <FontAwesomeIcon icon={faCircleCheck} />
+                  </strong>
+                ) : (
+                  <strong className="red">
+                    Deshabilitado <FontAwesomeIcon icon={faCircleXmark} />
+                  </strong>
+                )}
+                </td>
                 <td className="content-center">
                   <div className="mx-auto">
                     <button
-                      className="button main-button"
+                      className="btn main-button w-100"
                       onClick={() => onChangeEnable(e?.status_pas, e?.id_user)}
                     >
-                      Cambiar estado
-                    </button>
+                      { e?.status_pas? 'Cambiar estado a deshabilitado' : 'Cambiar estado a habilitado' }
+                    </button> 
                   </div>
                 </td>
               </tr>

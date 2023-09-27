@@ -14,12 +14,12 @@ export const UserMenu = () => {
   return (
     <>
       {isLoggedIn ? (
-        <div className="w-100">
-          <span className="w-50 pa2 pointer" onClick={() => navigate("/scorsetti/panel")}>
-            <FontAwesomeIcon style={{height: "1.25rem", color: "var(--color-first-medium)"}} icon={faGear} />
+        <div className="flex justify-between justify-end-l">
+          <span className="pa2 pointer" onClick={() => navigate("/scorsetti/panel")}>
+            <FontAwesomeIcon className="h1-25rem" style={{color: "var(--color-first-medium)"}} icon={faGear} />
           </span>
-          <span className="w-50 pa2 pointer" onClick={logout}>
-            <FontAwesomeIcon style={{height: "1.25rem", color: "var(--color-first-medium)"}} icon={faArrowRightFromBracket} />
+          <span className="pa2 pointer" onClick={logout}>
+            <FontAwesomeIcon className="h1-25rem" style={{color: "var(--color-first-medium)"}} icon={faArrowRightFromBracket} />
           </span>
         </div>
       ) : (
