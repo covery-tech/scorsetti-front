@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DashboardContent from "../../components/DashboardContent/DashboardContent";
+import StyledText from "../../components/StyledText/StyledText";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProfilePas() {
   const { jwt } = useUser();
@@ -76,9 +79,10 @@ export default function ProfilePas() {
   return (
     <DashboardContent className={"mt4"}>
       <div className="tl">
-        <h2 style={{color: "var(--color-first-medium)"}}>
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          <FontAwesomeIcon className="img mr2" icon={faUser} />
           Productor: {pasState?.name} {pasState?.last_name}
-        </h2>
+        </StyledText>
       </div>
       <TableProductsAdmin
         products={products}

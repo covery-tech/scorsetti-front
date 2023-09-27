@@ -19,7 +19,7 @@ a {
   display: none;
 }
 
-@media (max-width: 48em) {
+@media (max-width: 60em) {
   .navbar .logo-desktop {
     display: none;
   }
@@ -34,10 +34,3 @@ a {
     font-size: 0.8rem;
   }
 }
-
-@media screen and (min-width: 48em) and (max-width: 60em) {
-  .nav-item a {
-    color: var(--color-first-dark);
-    font-size: 0.9rem;
-  }
-} 

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import useUser from "../../hooks/UseUser";
 import image from "./img/userIMG.png";
-import Validate from "./functions/validate";
+import Validate from "./functions/Validate";
 import { toast } from "react-toastify";
 import "./style.css";
 import StyledText from "../../components/StyledText/StyledText";

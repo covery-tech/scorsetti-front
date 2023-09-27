@@ -18,7 +18,7 @@ export const Modal = ({children,onClose}) => {
 })
 
 useEffect(() => {
-  const element = document.getElementById('buto');
+  const element = document.getElementById('modal-cls-btn');
   if (element) {
     element.addEventListener('click', handleClick);
   }
@@ -34,9 +34,9 @@ const handleClick = () => {
 };
 
   return (
-    <div className='modal' >
-        <div className='modal-contenido overflow-auto ' ref={menuRef}>
-            <button style={{cursor:"pointer"}} className='btn btn-danger' id='buto'>✖</button>
+    <div className='modal-background'>
+        <div className='modal w-80-l w-90 mw8' ref={menuRef}>
+            <button className='button main-button mb2' id='modal-cls-btn'>✖</button>
             {children} 
         </div>
     </div>

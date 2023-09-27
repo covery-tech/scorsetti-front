@@ -5,6 +5,17 @@ import { Icon } from "@iconify/react";
 import ModalPortal from "../../../modal";
 import useUser from "../../../../hooks/UseUser";
 import img from "./img/favicon-32x32.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCircleCheck,
+  faCircleXmark,
+  faClock,
+  faEye,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import StyledText from "../../../StyledText/StyledText";
 
 const OrdersTableAll = () => {
   const { user } = useUser();
@@ -114,20 +125,21 @@ const OrdersTableAll = () => {
   }
 
   return (
-    <div className="w-100 h-100 pre">
-      {ordersData && ordersData.length > 0 ? (
-        <div className="table-responsive responsive pt-3">
-          <table className="table table-bordered table-striped">
+    <>
+      <div className="w-100 h-90 pre">
+        {ordersData && ordersData.length > 0 ? (
+          <table className="table table-striped">
             <thead>
               <tr>
-                <th>Producto</th>
-                <th>Nombre y Apellido</th>
-                <th>Email</th>
-                <th>Fecha</th>
-                <th>Telefono</th>
-                <th>Acción</th>
-                <th>Cotizado</th>
-                {user.type !== "password" ? <th>PAS</th> : <></>}
+                <th scope="col">Producto</th>
+                <th scope="col">Nombre y Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Datos de órden</th>
+                <th scope="col">Acción</th>
+                <th scope="col">Estado</th>
+                {user.type !== "password" ? <th scope="col">PAS</th> : <></>}
               </tr>
             </thead>
             <tbody>
@@ -153,115 +165,99 @@ const OrdersTableAll = () => {
                     </td>
                     <td data-label="Fecha">{order.date}</td>
                     <td data-label="Telefono">
-                      {order.phone_number === null && order?.client === null
-                        ? "sin numero"
-                        : order.phone_number === null
-                        ? order?.client?.telefono
-                        : order.phone_number}{" "}
-                      <a href={`https://wa.me/${order.phone}`}>
-                        <Icon icon="ri:whatsapp-line" />
-                      </a>
+                      <p
+                        style={{
+                          justifyContent: "flex-start",
+                        }}
+                      >
+                        <a
+                          href={`https://wa.me/${order.phone}`}
+                          style={{
+                            color: "var(--color-first-medium-light)",
+                          }}
+                        >
+                          {order.phone_number === null && order?.client === null
+                            ? "sin numero"
+                            : order.phone_number === null
+                            ? order?.client?.telefono
+                            : order.phone_number}{" "}
+                          <Icon icon="ri:whatsapp-line" />
+                        </a>
+                      </p>
                     </td>
                     {order.all_person ||
                     (order.description && order.all_person !== null) ||
                     order.description ? (
-                      <td data-label="Acción">
+                      <td data-label="Datos de órden">
                         {Array.isArray(order.all_person) ? ( // Verifica si es un array
                           <button
-                            className="btn btn-sm btn-primary"
+                            className="button button-nohover"
+                            style={{ color: "var(--color-first-medium-light" }}
                             onClick={() =>
                               handleOpenModal(
                                 order?.all_person || order?.description
                               )
                             }
                           >
-                            Datos
+                            <span className="ph1">Ver</span>
+                            <FontAwesomeIcon icon={faEye} />
                           </button>
                         ) : (
                           <button
-                            className="btn btn-sm btn-primary"
+                            className="button button-nohover"
+                            style={{ color: "var(--color-first-medium-light" }}
                             onClick={() =>
                               handleOpenModal(
                                 order.all_person || order.description
                               )
                             }
                           >
-                            Datos
+                            <span className="ph1">Ver</span>
+                            <FontAwesomeIcon icon={faEye} />
                           </button>
                         )}
                       </td>
                     ) : (
-                      <td data-label="Acción">
+                      <td data-label="Datos de órden">
                         <p>Sin Acción</p>
                       </td>
                     )}
-                    <td data-label="Cotizado">
-                      {userAdmin ? (
-                        order?.cotizated === null ? (
-                          <p
-                            style={{
-                              color: "red",
-                              fontSize: "12px",
-                            }}
-                          >
-                            No se cotiza
-                          </p>
-                        ) : order?.cotizated === 0 ? (
-                          <button
-                            onClick={() =>
-                              changeStatusOrder(order?.id, order.cotizated)
-                            }
-                            className="btn btn-sm btn-danger"
-                          >
-                            Sin cotizar
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() =>
-                              changeStatusOrder(order?.id, order.cotizated)
-                            }
-                            className="btn btn-sm btn-success"
-                          >
-                            Cotizado
-                          </button>
-                        )
-                      ) : order?.cotizated === null ? (
-                        <p
-                          style={{
-                            color: "red",
-                            fontSize: "12px",
-                          }}
-                        >
-                          No se cotiza
-                        </p>
+                    <td data-label="Acción">
+                      <button
+                        onClick={() =>
+                          changeStatusOrder(order?.id, order.cotizated)
+                        }
+                        className="button main-button"
+                        disabled={!userAdmin || order?.cotizated === null}
+                      >
+                        Cambiar estado
+                      </button>
+                    </td>
+                    <td data-label="Estado">
+                      {order?.cotizated === null ? (
+                        <strong className="red">
+                          No se cotiza <FontAwesomeIcon icon={faCircleXmark} />
+                        </strong>
                       ) : order?.cotizated === 0 ? (
-                        <b
-                          style={{
-                            color: "red",
-                            fontSize: "12px",
-                          }}
-                        >
-                          Sin cotizar
-                        </b>
+                        <strong className="yellow">
+                          Sin cotizar <FontAwesomeIcon icon={faClock} />
+                        </strong>
                       ) : (
-                        <b
-                          style={{
-                            color: "green",
-                            fontSize: "12px",
-                          }}
-                        >
-                          Cotizado
-                        </b>
+                        <strong className="green">
+                          Cotizado <FontAwesomeIcon icon={faCircleCheck} />
+                        </strong>
                       )}
                     </td>
                     {userAdmin ? (
                       <td data-label="PAS">
                         {order.amount !== "undefined" ? (
                           <button
-                            className="btn btn-sm btn-primary"
+                            className="button button-nohover"
+                            style={{ color: "var(--color-first-medium-light" }}
                             onClick={() => handleOpenModalPas(order.amount)}
                           >
-                            <Icon icon="el:eye-open" />
+                            <span className="ph1">Ver</span>
+                            <FontAwesomeIcon icon={faEye} />
                           </button>
                         ) : (
                           <img src={img} alt="" />
@@ -275,176 +271,138 @@ const OrdersTableAll = () => {
               })}
             </tbody>
           </table>
-        </div>
-      ) : (
-        <></>
-      )}
-
-      {showModal && (
-        <ModalPortal onClose={handleCloseModal}>
-          {modalData && Object.keys(modalData).length > 0 ? (
-            <div className="table-responsive">
-              <table className="table table-striped">
-                <thead>
-                  {Array.isArray(modalData) ? (
-                    <tr>
-                      {Object.keys(modalData[0]).map((key) => (
-                        <th key={formatColumnName(key)}>
-                          {formatColumnName(key)}
-                        </th>
-                      ))}
-                    </tr>
-                  ) : (
-                    <tr>
-                      {Object.keys(modalData).map((key) => (
-                        <th key={formatColumnName(key)}>
-                          {formatColumnName(key)}
-                        </th>
-                      ))}
-                    </tr>
-                  )}
-                </thead>
-                <tbody>
-                  {Array.isArray(modalData) ? (
-                    <>
-                      {modalData.map((obj, i) => (
-                        <tr key={i}>
-                          {Object.values(obj).map((value, index) => (
-                            <td key={index} data-label={i}>
-                              {typeof value === "boolean"
-                                ? value
-                                  ? "Si"
-                                  : "No"
-                                : value}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </>
-                  ) : (
-                    <>
-                      {
-                        <tr>
-                          {Object.values(modalData).map((value, index) => (
-                            <td key={index}>
-                              {typeof value === "boolean"
-                                ? value
-                                  ? "Si"
-                                  : "No"
-                                : value}
-                            </td>
-                          ))}
-                        </tr>
-                      }
-                    </>
-                  )}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <></>
-          )}
-        </ModalPortal>
-      )}
-      {showModalPas && (
-        <ModalPortal onClose={handleCloseModalPas}>
-          {modalDataPas && Object.keys(modalDataPas).length > 0 ? (
-            <div className="table-responsive">
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Ruta</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{modalDataPas.name}</td>
-                    <td>{modalDataPas.last_name}</td>
-                    <td>{modalDataPas.email}</td>
-                    <td>{modalDataPas.phone_number}</td>
-                    <td>{modalDataPas.route}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <></>
-          )}
-        </ModalPortal>
-      )}
-      <div className="pb-3">
-        {currentPage === 1 ? (
-          <button
-            style={{
-              color: "#0d6efd",
-              padding: 3,
-              cursor: "not-allowed",
-              border: "none",
-            }}
-            disabled
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >{`⪡`}</button>
         ) : (
-          <button
-            style={{
-              color: "#0d6efd",
-              cursor: "pointer",
-              padding: 3,
-              border: "none",
-            }}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >{`⪡`}</button>
+          <></>
         )}
-        <strong
-          style={{
-            color: "#0d6efd",
-            padding: 3,
-            border: "solid 1px #0d6efd",
-            margin: 10,
-          }}
+
+        {showModal && (
+          <ModalPortal onClose={handleCloseModal}>
+            {modalData && Object.keys(modalData).length > 0 ? (
+              <div className="w-100 h-90 pre">
+                <table className="table table-striped">
+                  <thead>
+                    {Array.isArray(modalData) ? (
+                      <tr>
+                        {Object.keys(modalData[0]).map((key) => (
+                          <th key={formatColumnName(key)}>
+                            {formatColumnName(key)}
+                          </th>
+                        ))}
+                      </tr>
+                    ) : (
+                      <tr>
+                        {Object.keys(modalData).map((key) => (
+                          <th key={formatColumnName(key)}>
+                            {formatColumnName(key)}
+                          </th>
+                        ))}
+                      </tr>
+                    )}
+                  </thead>
+                  <tbody>
+                    {Array.isArray(modalData) ? (
+                      <>
+                        {modalData.map((obj, i) => (
+                          <tr key={i}>
+                            {Object.values(obj).map((value, index) => (
+                              <td key={index} data-label={i}>
+                                {typeof value === "boolean"
+                                  ? value
+                                    ? "Si"
+                                    : "No"
+                                  : value}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        {
+                          <tr>
+                            {Object.values(modalData).map((value, index) => (
+                              <td key={index}>
+                                {typeof value === "boolean"
+                                  ? value
+                                    ? "Si"
+                                    : "No"
+                                  : value}
+                              </td>
+                            ))}
+                          </tr>
+                        }
+                      </>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <></>
+            )}
+          </ModalPortal>
+        )}
+        {showModalPas && (
+          <ModalPortal onClose={handleCloseModalPas}>
+            {modalDataPas && Object.keys(modalDataPas).length > 0 ? (
+              <div className="w-100 h-90 pre">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Email</th>
+                      <th>Teléfono</th>
+                      <th>Ruta</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{modalDataPas.name}</td>
+                      <td>{modalDataPas.last_name}</td>
+                      <td>{modalDataPas.email}</td>
+                      <td>{modalDataPas.phone_number}</td>
+                      <td>{modalDataPas.route}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <></>
+            )}
+          </ModalPortal>
+        )}
+      </div>
+      <div className="flex justify-center items-center pb2 w-100">
+        <button
+          className="button main-button mh3"
+          style={{ padding: "0.2rem", height: "50%" }}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 1}
         >
-          {currentPage}
-        </strong>
-        <strong
-          style={{
-            color: "#0d6efd",
-            cursor: "pointer",
-            padding: 3,
-            border: "solid 1px #0d6efd",
-            margin: 10,
-          }}
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <p className="current-page">{currentPage}</p>
+        <p
+          className="last-page"
           onClick={() => setCurrentPage(arrayNoVacio.length)}
         >
           {arrayNoVacio.length}
-        </strong>
-        {currentPage === arrayNoVacio.length ? (
-          <button
-            style={{
-              color: "#0d6efd",
-              padding: 3,
-              cursor: "not-allowed",
-              border: "none",
-            }}
-            disabled
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >{`⪢`}</button>
-        ) : (
-          <button
-            style={{
-              color: "#0d6efd",
-              cursor: "pointer",
-              padding: 3,
-              border: "none",
-            }}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >{`⪢`}</button>
-        )}
+        </p>
+        <button
+          className="button main-button mh3"
+          style={{ padding: "0.2rem", height: "50%" }}
+          disabled={currentPage === arrayNoVacio.length}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
       </div>
-    </div>
+      <style jsx>{`
+        .h-90 {
+          height: 90%;
+        }
+      `}</style>
+    </>
   );
 };
 

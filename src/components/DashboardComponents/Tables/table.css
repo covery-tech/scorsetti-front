@@ -21,10 +21,13 @@
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: center;
   border-top: 1px solid #dee2e6;
   white-space: nowrap;
   text-align: center;
+}
+
+.table td {
+  height: 4rem;
 }
 
 .table td p {
@@ -36,6 +39,26 @@
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
+}
+
+.current-page {
+  background-color: var(--color-first-light-one);
+  padding-right: 0.9rem;
+  padding-left: 0.9rem;
+  border-radius: 10rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  color: #fff;
+}
+
+.last-page {
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: var(--color-first-medium);
+  font-weight: bold;
 }
 
 @media (max-width: 780px) {

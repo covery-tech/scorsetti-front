@@ -95,7 +95,11 @@ export const TablePas = () => {
                   <p>{e?.email}</p>
                 </td>
                 <td>
-                  <p>
+                  <p
+                    style={{
+                      justifyContent: "flex-start",
+                    }}
+                  >
                     <a
                       href={`https://wa.me/+549${e?.phone_number}`}
                       target="_blank"
@@ -104,11 +108,7 @@ export const TablePas = () => {
                       className="flex items-center"
                     >
                       <span className="ph1">{e?.phone_number}</span>
-                      <Icon
-                        icon="ic:baseline-whatsapp"
-                        className="ph1"
-                        height="24"
-                      />
+                      <Icon icon="ic:baseline-whatsapp" />
                     </a>
                   </p>
                 </td>
