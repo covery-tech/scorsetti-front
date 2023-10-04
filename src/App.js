@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import OptionsMenu from "./Pages/OptionsMenu/OptionsMenu";
@@ -7,17 +6,16 @@ import Register from "./Pages/Register/Register";
 import { UserContext } from "./components/Context/userContext";
 import Footer from "./components/Footer/Footer";
 import { UserDetail } from "./Pages/Detail/userDetail";
-import { TablePas } from "./Pages/TablePas/Table";
-import { TableEditPas } from "./Pages/TableEditPas/TableEditPas";
+import { TablePas } from "./components/DashboardComponents/Tables/TablePas/TablePas";
+import { TableEditPas } from "./components/DashboardComponents/Tables/TableEditPas/TableEditPas";
 import { ProtectRoute } from "./ProtectRoute";
 import { MyUser } from "./Pages/MyUser/MyUser";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
-// import { ProtectRoutePas } from "./ProtectRoutePas";
 import ProfilePas from "./Pages/ProfilePas/ProfilePas";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
-import OrdersTableAll from "./components/DashBoard/TableOrders/TableAllOrders";
+import OrdersTableAll from "./components/DashboardComponents/Tables/TableOrders/TableAllOrders";
 import Cars from "./Pages/Products/Cars/CarsContainer";
 import Motorcycles from "./Pages/Products/Motorcycles/MotorcyclesContainer";
 import { ProtectRouteLogin } from "./ProtectRouteLog";
@@ -33,8 +31,24 @@ function App() {
           <Routes>
             {/* Public home routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/ingresar" element={<Login />} />
-            <Route path="/registro" element={<Register />} />
+            <Route
+              path="/ingresar"
+              element={
+                <>
+                  <Navbar />
+                  <Login />
+                </>
+              }
+            />
+            <Route
+              path="/registro"
+              element={
+                <>
+                  <Navbar />
+                  <Register />
+                </>
+              }
+            />
 
             {/* Protected user routes */}
             <Route
@@ -85,7 +99,7 @@ function App() {
             />
             {/*Panel Admin and Pas */}
             <Route
-              path="/scorsetti/panel-admin"
+              path="/scorsetti/panel"
               element={
                 <ProtectRouteLogin>
                   <Navbar />
@@ -95,11 +109,13 @@ function App() {
             />
             {/*crear perfil de cada usuario */}
             <Route
-              path="/scorsetti/panel-admin/user/:userId"
+              path="/scorsetti/panel/user/:userId"
               element={
                 <>
-                  <Navbar />
-                  <ProfilePas />
+                  <ProtectRouteLogin>
+                    <Navbar />
+                    <ProfilePas />
+                  </ProtectRouteLogin>
                 </>
               }
             />
@@ -112,7 +128,7 @@ function App() {
                 </>
               }
             />
-                        <Route
+            <Route
               path="/orders/:userId"
               element={
                 <>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import useUser from "../../../../components/hooks/UseUser";
+import useUser from "../../../../hooks/UseUser";
 
 const codeRamo = 4; //cars
 // const codeRamo = 24; //motorbikes

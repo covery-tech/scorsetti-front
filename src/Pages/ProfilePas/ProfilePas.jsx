@@ -1,11 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
-import useUser from "../../components/hooks/UseUser";
-import { TableProductsAdmin } from "../../components/DashBoard/TableProducts/TableProductsAdmin";
+import React, { useEffect, useState } from "react";
+import useUser from "../../hooks/UseUser";
+import { TableProductsAdmin } from "../../components/DashboardComponents/Tables/TableProducts/TableProductsAdmin";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import PrincipalText from "../../components/Principal-Text/Principaltext";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DashboardContent from "../../components/DashboardContent/DashboardContent";
+import StyledText from "../../components/StyledText/StyledText";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProfilePas() {
   const { jwt } = useUser();
@@ -45,7 +48,7 @@ export default function ProfilePas() {
         alert("error de servidor: Not Found");
       });
     getPas();
-  }, [getPas, jwt, userId]);
+  }, [jwt, userId]);
   const handleUpdateState = (name, status) => {
     //(status, name);
     const config = {
@@ -56,7 +59,7 @@ export default function ProfilePas() {
     axios(config)
       .then((res) => {
         if (res.data) {
-          toast.success('Solicitud enviada', {
+          toast.success("Solicitud enviada", {
             position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -65,7 +68,7 @@ export default function ProfilePas() {
             draggable: true,
             progress: undefined,
             theme: "light",
-            });          
+          });
           getPas();
         }
       })
@@ -74,17 +77,18 @@ export default function ProfilePas() {
       });
   };
   return (
-    <>
-      <div className="container bg-light rounded-4 mt-4">
-        <PrincipalText/>
-        <div className="text-center">
-          <h4>Productor: {pasState?.name} {pasState?.last_name}</h4>
-        </div>
-        <TableProductsAdmin
-          products={products}
-          handleUpdateState={handleUpdateState}
-        />
+    <DashboardContent className={"mt4"}>
+      <div className="tl">
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
+          <FontAwesomeIcon className="img mr2" icon={faUser} />
+          Productor: {pasState?.name} {pasState?.last_name}
+        </StyledText>
       </div>
-    </>
+      <TableProductsAdmin
+        products={products}
+        handleUpdateState={handleUpdateState}
+        loading={loading}
+      />
+    </DashboardContent>
   );
 }

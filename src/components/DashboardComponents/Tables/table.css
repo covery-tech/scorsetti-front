@@ -1,0 +1,98 @@
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container .table {
+  margin: 0 auto;
+  float: none;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: #fff;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.table td {
+  height: 4rem;
+}
+
+.table td p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.current-page {
+  background-color: var(--color-first-light-one);
+  padding-right: 0.9rem;
+  padding-left: 0.9rem;
+  border-radius: 10rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  color: #fff;
+}
+
+.last-page {
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: var(--color-first-medium);
+  font-weight: bold;
+}
+
+.empty {
+  color: var(--color-first-medium-light);
+}
+
+@media (max-width: 780px) {
+  .container {
+    width: 60vw !important;
+  }
+  .responsive {
+    display: block;
+    width: 100% !important;
+  }
+
+  .responsive .table {
+    width: 100% !important;
+  }
+
+  .responsive .table th,
+  .responsive .table td {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .responsive .table thead {
+    display: none;
+  }
+
+  .responsive .table tbody td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.625rem;
+  }
+}

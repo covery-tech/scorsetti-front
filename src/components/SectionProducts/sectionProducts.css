@@ -1,58 +1,15 @@
-#SectionProducts-container {
-  max-width: 860px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#CadsPanelSelected{
-  max-width: 640px;
-}
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-ul.item-selector-content{
-  width: 100%;
-}
-.item-selector-content{
-  width: 10%;
-  height: 3rem;
-  font-size: medium;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  list-style-type: none;
-}
-.item-selector :hover{
-  color: var(--color-gray-dark);
-  cursor: pointer;
-  font-weight: 500;
-}
-
-span.buttonChange {
+.item-selector {
   color: var(--color-gray-medium);
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
-span.selected {
+.selected {
   color: var(--color-gray-dark);
   font-weight: 500;
 }
 
-@media (max-width: 60em) {
-  .container {
-    width: 90vw;
-  }
-
-  .content {
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+@media screen and (min-width: 60em) {
+  .item-selector:hover {
+    color: var(--color-gray-dark);
+    cursor: pointer;
+    font-weight: 500;
   }
 }

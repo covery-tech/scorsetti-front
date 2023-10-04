@@ -1,16 +1,16 @@
 import "./index.css";
 
 export default function WeInfo({ description, name }) {
-  const URLSERVER = process.env.REACT_APP_URI_API + "";
+  // const URLSERVER = process.env.REACT_APP_URI_API + "";
   return (
-    <section className="weInfo d-flex" id="quienes-somos">
-      <div className="weImg d-flex bg-white">
+    <div className="weinfo tc center pt4" id="quienes-somos">
+      <div className="weinfo-img bg-white center pa3">
         <img src="/logo-vertical.png" alt="#" />
       </div>
-      <div className="weDescription">
-        {/* <h1>{name}</h1> */}
-        <h3>{description}</h3>
+      <div className="white">
+        <h1 className="ph3 center f3">{name}</h1>
+        <p className="ph3 center f6 f5-l">{description}</p>
       </div>
-    </section>
+    </div>
   );
 }

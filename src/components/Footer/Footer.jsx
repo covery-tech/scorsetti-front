@@ -6,34 +6,30 @@ export default function Footer() {
   return (
     <>
       <Social />
-      <div className="info p-0"> {/*pb-5 mt-5*/}
-        <section className="infoOrganismo">
-          <div className="infoItem">
+      <div className="footer bg-white pa2 flex flex-column flexrow-m flex-row-l">
+        <div className="flex flex-column flex-row-l justify-around-l items-center w-50m w-100-l">
+          <div className="tc mv1 ph1">
             <span>
-              Nº de inscripción en SSN <br />
-              <strong>87170</strong>
+              Nº de matrícula -<strong> 0531</strong>
             </span>
           </div>
-          <div className="infoItem">
+          <div className="tc mv1 ph1">
             <span>
-              Atención al asegurado
-              <br />
-              <strong>0800-666-4800</strong>
+              Atención al asegurado -<strong> 011 4964-0011</strong>
             </span>
           </div>
-          <div className="infoItem">
+          <div className="tc mv1 ph1">
             <span>
               Organismo de control
-              <br />
               <a href="http://www.argentina.gob.ar/ssn" target="_blank">
-                www.argentina.gob.ar/ssn
+                {" www.argentina.gob.ar/ssn"}
               </a>
             </span>
           </div>
-          <div className="infoItem">
-            <img className="img" src={ssn} alt="SSN" id="SSN" />
-          </div>
-        </section>
+        </div>
+        <div className="flex items-center justify-center tc mv1 w-50m ph1">
+          <img className="w5" src={ssn} alt="SSN" />
+        </div>
       </div>
     </>
   );

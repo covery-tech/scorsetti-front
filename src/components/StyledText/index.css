@@ -10,15 +10,18 @@
 .f-lighter h3 {
     font-weight: 300;
 }
+.f-medium h3 {
+    font-weight: 500;
+}
 .f-bold h3 {
     font-weight: bold;
-}
-.styled-text h3 {
-    font-size: 2.3rem;
 }
 .form-title {
     background-color: var(--color-first-medium);
     padding-left: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    margin-bottom: 0.5rem;
 }
 .form-title h3{
     font-weight: bold;

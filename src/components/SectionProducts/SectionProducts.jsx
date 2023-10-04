@@ -5,13 +5,14 @@ import { infoProducts, listProducts } from "./products";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./sectionProducts.css";
-import useUser from "../hooks/UseUser";
+import useUser from "../../hooks/UseUser";
+import Container from "../Container/Container";
 
 export default function SectionProducts({ route }) {
   const [userPas, setUserPas] = useState([]);
   const { getRoute } = useUser();
   useEffect(() => {
-    if(route) {
+    if (route) {
       const config2 = {
         method: "GET",
         baseURL:
@@ -27,6 +28,7 @@ export default function SectionProducts({ route }) {
         });
     }
   }, [getRoute, route]);
+
   // SWITCH
   const [clientSection, setClientSection] = useState("Persona");
   const changeClient = () => {
@@ -34,63 +36,56 @@ export default function SectionProducts({ route }) {
       ? setClientSection("Empresa")
       : setClientSection("Persona");
   };
+  
   // PUBLICACIÓN DE CARD PRODUCT
-  const returnCardProduct = (p, i) => {
+  const ProductCardComponent = (p, i) => {
     return (
-      <Link key={i} to={`/producto/${p}`} className="aProducts">
+      <Link key={i} to={`/producto/${p}`} className="no-underline">
         <ProductCard props={infoProducts[p]} />
       </Link>
     );
   };
 
   return (
-    <div id="SectionProducts-container" className="container bg-white mt-5 p-5">
+    <Container>
       <PrincipalText />
-      <ul className="item-selector-content px-0">
-        <li className="item-selector">
-          <span
-            className={`buttonChange ${
-              clientSection === "Persona" && "selected"
-            }`}
-            onClick={changeClient}
-          >
-            Persona
-          </span>
-        </li>
-        <li className="item-selector">
-          <span
-            className={`buttonChange ${
-              clientSection === "Empresa" && "selected"
-            }`}
-            onClick={changeClient}
-          >
-            Empresa
-          </span>
-        </li>
-      </ul>
-      <div id="CadsPanelSelected" className="row justify-content-around">
+      <div className="flex flex-wrap justify-center pb3">
+        <span
+          className={`item-selector pv2 ph3 ${
+            clientSection === "Persona" && "selected"
+          }`}
+          onClick={changeClient}
+        >
+          Persona
+        </span>
+        <span
+          className={`item-selector pa2 ${
+            clientSection === "Empresa" && "selected"
+          }`}
+          onClick={changeClient}
+        >
+          Empresa
+        </span>
+      </div>
+      <div className="flex flex-wrap justify-center">
         {route ? (
-          <div className="content">
+          <>
             {userPas.products?.map((p, i) => {
               if (clientSection === infoProducts[p]?.client) {
-                return (
-                  <Link to={"producto/" + p} key={i}>
-                    <ProductCard props={infoProducts[p]} />
-                  </Link>
-                );
+                return ProductCardComponent(p, i);
               }
             })}
-          </div>
+          </>
         ) : (
-          <div className="content">
+          <>
             {listProducts.map((p, i) => {
               if (clientSection === infoProducts[p].client) {
-                return returnCardProduct(p, i);
+                return ProductCardComponent(p, i);
               }
             })}
-          </div>
+          </>
         )}
       </div>
-    </div>
+    </Container>
   );
 }

@@ -18,9 +18,9 @@ export default function MotorcycleBasicInfo({
   return (
     <form>
       {/* DATOS DEL VEHICULO */}
-      <div className="basicInfo">
-        <StyledText className="form-title">Datos del vehículo</StyledText>
-        <div className="inputCouple d-flex">
+      <div className="basic-info">
+        <StyledText className="form-title" fontClasses="f4 f4-m f3-l">Datos del vehículo</StyledText>
+        <div className="input-couple">
           <Input
             placeholder={"Año *"}
             onChange={onChange}
@@ -56,7 +56,7 @@ export default function MotorcycleBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Marca *"}
             onChange={onChange}
@@ -91,7 +91,7 @@ export default function MotorcycleBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"Vigencia *"}
             onChange={onChange}
@@ -104,6 +104,7 @@ export default function MotorcycleBasicInfo({
               marginBottom: "2rem",
               marginRight: "0.5rem",
             }}
+            classes={"w-50-l"}
             type={"select"}
             name={"vigencia"}
             options={validity}
@@ -111,7 +112,7 @@ export default function MotorcycleBasicInfo({
             instance={instance}
           />
         </div>
-        <div className="inputCouple d-flex">
+        <div className="input-couple">
           <Input
             placeholder={"0 km"}
             onChange={onChange}
@@ -122,8 +123,8 @@ export default function MotorcycleBasicInfo({
             showErrors={showErrors}
             styles={{
               marginBottom: "2rem",
-              width: "20%",
             }}
+            classes={"w-20"}
             type={"checkbox"}
             name={"cero_km"}
             validate={Validate}

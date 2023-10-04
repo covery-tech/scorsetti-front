@@ -1,15 +1,14 @@
-import './ProductCard.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import "./ProductCard.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProductCard({ props }) {
-    return (
-        <div className="item align-content-center p-3"  >
-            <div className="service" data-toggle="tooltip" data-placement="top" title={props?.title2}>
-                <div className="icon">
-                    <FontAwesomeIcon className='img' icon={props?.img} />
-                </div>
-                <h4>{props?.title}</h4>
-            </div>
-        </div>
-    )
+  return (
+    <div className="product-card">
+      <div className="h-50 pt2 flex justify-center items-center">
+        <FontAwesomeIcon icon={props?.img} />
+      </div>
+      <p className="f6-m f6-l f7 tc ph2">{props?.title}</p>
+    </div>
+  );
 }
+

@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import {  useState } from "react";
 import { Link } from "react-router-dom";
-import useUser from "../hooks/UseUser";
+import useUser from "../../hooks/UseUser";
 import ModalPortal from "../modal";
 import { TableSearchUser } from "../Tables/TableSearchUser";
 import "./style.css"

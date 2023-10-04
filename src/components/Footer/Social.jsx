@@ -1,18 +1,43 @@
-export default function Social(){
-    return(
-        <footer className="footer-wrapper" id="footer" role="contentinfo">
-        <div className="col">
-          <ul className="social-icons" style={{paddingLeft: 0}}>
-            <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-            <li><a href="#"><i className="fa fa-instagram"></i></a></li>
-          </ul>
-        </div>
-        <div className="col-lg-12">
-          <p className="copyright">Copyright © {new Date().getFullYear()}.       
-          <br/>Powered by: <a style={{textDecoration:'none', color:'gray'}}rel="sponsored" href="https://covery.tech" target="_blank">Covery</a></p>
-        </div>
-      </footer>    
-    )
+export default function Social() {
+  return (
+    <div className="flex flex-column tc mb2 mt5 w-100">
+      <div className="flex justify-center items-center mb2">
+        <span className="social-item">
+          <a
+            href="https://www.facebook.com/institutoscorsetti/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fa fa-facebook"></i>
+          </a>
+        </span>
+        <span className="social-item">
+          <a
+            href="https://ar.linkedin.com/company/scorsettiseguros"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fa fa-linkedin"></i>
+          </a>
+        </span>
+        <span className="social-item">
+          <a
+            href="https://www.instagram.com/scorsettiseguros"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="fa fa-instagram"></i>
+          </a>
+        </span>
+      </div>
+      <p className="copyright white">
+        Copyright © {new Date().getFullYear()}.
+        <br />
+        Powered by:{" "}
+        <a href="https://covery.tech" target="_blank" rel="noreferrer">
+          Covery
+        </a>
+      </p>
+    </div>
+  );
 }

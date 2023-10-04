@@ -1,71 +1,39 @@
 // import React from 'react'
-import { Link } from "react-router-dom";
-import useUser from "../hooks/UseUser";
-import "./UserMenu.css";
-import { Icon } from "@iconify/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useUser from "../../hooks/UseUser";
+import { useNavigate } from "react-router-dom";
+import {
+  faArrowRightFromBracket,
+  faGear,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const UserMenu = () => {
-  const { isLoggedIn, logout, user } = useUser();
+  const { isLoggedIn, logout } = useUser();
+  const navigate = useNavigate();
 
   return (
-    <div>
+    <>
       {isLoggedIn ? (
-        <>
-          <button
-            className="btn btn-secondary dropdown-toggle"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Opciones
-          </button>
-          <ul
-            className="dropdown-menu dropdown-menu-end list-drop "
-            aria-labelledby="dropdownMenuLink"
-          >
-            
-            <li>
-              {user?.type === "admin" ||
-              user?.type === "superadmin" ||
-              user.type === "pas" ? (
-                <div className="nav-item dropdown">
-                  <Link to="/scorsetti/panel-admin" className="dropdown-item">
-                    <Icon icon="vscode-icons:file-type-light-config" />
-                    <span> Panel de admin</span>
-                  </Link>
-                </div>
-              ) : user.type === "client" ? (
-                <div className="nav-item dropdown">
-                  <Link to="/scorsetti/panel-admin" className="dropdown-item">
-                    <Icon icon="vscode-icons:file-type-light-config" />
-                    <span> Panel </span>
-                  </Link>
-                </div>
-              ) : (
-                <></>
-              )}
-            </li>
-            <Link className="dropdown-item" to="#" onClick={logout}>
-              <i className="fa fa-user-o me-2"></i>
-              Cerrar sesión
-            </Link>
-          </ul>
-        </>
+        <div className="flex justify-between justify-end-l">
+          <span className="pa2 pointer" onClick={() => navigate("/scorsetti/panel")}>
+            <FontAwesomeIcon className="h1-25rem" style={{color: "var(--color-first-medium)"}} icon={faGear} />
+          </span>
+          <span className="pa2 pointer" onClick={logout}>
+            <FontAwesomeIcon className="h1-25rem" style={{color: "var(--color-first-medium)"}} icon={faArrowRightFromBracket} />
+          </span>
+        </div>
       ) : (
-        <>
-          <Link
-            className="dropdown-item text-white"
-            to="/ingresar"
-            style={{
-              backgroundColor: "#388dfc",
-              padding: "0.5rem",
-            }}
+        <div className="w-100">
+          <button
+            className="button main-button"
+            onClick={() =>
+              navigate("/ingresar")
+            }
           >
-            <i className="fa fa-user-o"></i>
-            <span> ACCEDER</span>
-          </Link>
-        </>
+            <b>Acceder</b>
+          </button>
+        </div>
       )}
-    </div>
+    </>
   );
 };

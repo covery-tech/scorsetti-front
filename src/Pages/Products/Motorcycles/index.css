@@ -34,13 +34,13 @@
     max-height: 18rem;
     overflow-y: scroll;
 }
-.accessoriesData .inputCouple{
+.accessoriesData .input-couple{
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 @media screen and (max-width: 47.938em) {
-    .inputCouple {
+    .input-couple {
         flex-direction: column;
     }
     .formContainer {

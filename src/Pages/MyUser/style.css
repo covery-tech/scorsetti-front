@@ -16,6 +16,9 @@
     display:flex; 
     flex-direction:column
 }
+.max-height-33rem{
+    max-height: 33rem;
+}
 
 @media (max-width: 900px) {
     .contentInfo{
