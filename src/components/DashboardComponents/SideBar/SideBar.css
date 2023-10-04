@@ -9,6 +9,7 @@
 .sidebar {
     background-color: #fff;
     max-width: 20%;
+    min-width: 20%;
 }
 
 .bar {
@@ -68,6 +69,15 @@
     color: #fff;
 }
 
+.selected {
+    color: #000;
+    border-left: 4px solid;
+    font-weight: 600;
+    border-color: var(--color-first-light-one);
+    background-color: #d7dcff;
+    white-space: nowrap;
+}
+
 @media (max-width: 60em) {
     .sidebar{
         max-width: 100%;        
@@ -77,6 +87,7 @@
     }
     .centerP{
         padding: 0 10px 0 0 ;
+        display: none;
     }
     .sidebar .center ul {
         display: flex;

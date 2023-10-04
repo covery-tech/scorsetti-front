@@ -1,7 +1,7 @@
 import { useState } from "react";
 import onChange from "../../../utils/onChangeInput";
 import reloadPage from "../../../utils/reloadPage";
-import Validate from "./functions/validate";
+import Validate from "./functions/Validate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "./info";
 import Form from "../../../components/FormContainer/FormContainer";

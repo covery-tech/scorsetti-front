@@ -6,7 +6,7 @@ import ModalPortal from "../../../modal";
 import useUser from "../../../../hooks/UseUser";
 
 const OrdersTableAllClient = () => {
-    const {jwt} = useUser(); 
+    const { jwt } = useUser();
     const [ordersData, setOrdersData] = useState([]);
     const [modalData, setModalData] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -14,10 +14,10 @@ const OrdersTableAllClient = () => {
     const [cuantityPage, setCuantityPage] = useState(0);
     const resultsPerPage = 7;
     const arrayNoVacio = cuantityPage
-    ? Array(cuantityPage)
-        .fill(null)
-        .map((_, index) => index + 1)
-    : [];
+        ? Array(cuantityPage)
+            .fill(null)
+            .map((_, index) => index + 1)
+        : [];
 
     useEffect(() => {
         axios
@@ -27,7 +27,7 @@ const OrdersTableAllClient = () => {
                     params: {
                         page: currentPage,
                     },
-                    headers:{token:jwt}
+                    headers: { token: jwt }
                 }
             )
             .then((response) => {
@@ -73,7 +73,7 @@ const OrdersTableAllClient = () => {
                                         {(order.client === null && order?.name !== "null null" && order?.name !== "undefined undefined") ? order?.name : order.client?.nombre ? `${order.client?.nombre} ${order.client?.apellido}` : "anonimo"}
                                     </td>
                                     <td>
-                                         {(order.email === null && order?.client === null) ? "Sin email" : order.email === null ? order?.client?.email : order.email}
+                                        {(order.email === null && order?.client === null) ? "Sin email" : order.email === null ? order?.client?.email : order.email}
                                     </td>
                                     <td>{order.date}</td>
                                     <td>
@@ -85,12 +85,12 @@ const OrdersTableAllClient = () => {
                                         </a>
                                     </td>
                                     {order.all_person &&
-                                    order.all_person !== null ? (
+                                        order.all_person !== null ? (
                                         <td>
                                             <button
                                                 onClick={() =>
                                                     handleOpenModal(
-                                                            order.all_person
+                                                        order.all_person
                                                     )
                                                 }
                                             >
@@ -136,111 +136,117 @@ const OrdersTableAllClient = () => {
                     </tbody>
                 </table>
             ) : (
-                <></>
+                <>
+                <div className="flex justify-center">
+                  <strong className="empty">
+                    Aún no tienes órdenes.
+                  </strong>
+                </div>
+              </>
             )}
 
             {showModal && (
                 <ModalPortal onClose={handleCloseModal} >
-                        {modalData && modalData.length > 0 ? (
-                            <div className="row">
-                                <div className="col">
-                                    <table className="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Nacimiento</th>
-                                                <th>Sexo</th>
-                                                <th>Covertura</th>
-                                                <th>Provincia</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {modalData
-                                                .map((value, key) => (
-                                                    <tr key={key}>
-                                                        <td>{value.name} {value.last_name}</td>
-                                                        <td>{value.birthdate}</td>
-                                                        <td>{value.sex}</td>
-                                                        <td>{value.covert}</td>
-                                                        <td>{value.province}</td>
-                                                    </tr>
-                                                ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                    {modalData && modalData.length > 0 ? (
+                        <div className="row">
+                            <div className="col">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Nacimiento</th>
+                                            <th>Sexo</th>
+                                            <th>Covertura</th>
+                                            <th>Provincia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {modalData
+                                            .map((value, key) => (
+                                                <tr key={key}>
+                                                    <td>{value.name} {value.last_name}</td>
+                                                    <td>{value.birthdate}</td>
+                                                    <td>{value.sex}</td>
+                                                    <td>{value.covert}</td>
+                                                    <td>{value.province}</td>
+                                                </tr>
+                                            ))}
+                                    </tbody>
+                                </table>
                             </div>
-                        ) : (
-                            <></>
-                        )}
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                 </ModalPortal>
             )}
 
-        {currentPage === 1 ? (
-          <button
-            style={{
-              color: "#0d6efd",
-              padding: 3,
-              cursor: "not-allowed",
-              border: "none",
-            }}
-            disabled
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >{`⪡`}</button>
-        ) : (
-          <button
-            style={{
-              color: "#0d6efd",
-              padding: 3,
-              cursor: "pointer",
-              border: "none",
-            }}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >{`⪡`}</button>
-        )}
-        <strong
-          style={{
-            color: "#0d6efd",
-            padding: 3,
-            border: "solid 1px #0d6efd",
-            margin: 10,
-          }}
-        >
-          {currentPage}
-        </strong>
-        <strong
-          style={{
-            color: "#0d6efd",
-            cursor: "pointer",
-            padding: 3,
-            border: "solid 1px #0d6efd",
-            margin: 10,
-          }}
-          onClick={() => setCurrentPage(arrayNoVacio.length)}
-        >
-          {arrayNoVacio.length}
-        </strong>
-        {currentPage === arrayNoVacio.length ? (
-          <button
-            style={{
-              color: "#0d6efd",
-              padding: 3,
-              cursor: "not-allowed",
-              border: "none",
-            }}
-            disabled
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >{`⪢`}</button>
-        ) : (
-          <button
-            style={{
-              color: "#0d6efd",
-              padding: 3,
-              cursor: "pointer",
-              border: "none",
-            }}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >{`⪢`}</button>
-        )}
+            {currentPage === 1 ? (
+                <button
+                    style={{
+                        color: "#0d6efd",
+                        padding: 3,
+                        cursor: "not-allowed",
+                        border: "none",
+                    }}
+                    disabled
+                    onClick={() => setCurrentPage((prev) => prev - 1)}
+                >{`⪡`}</button>
+            ) : (
+                <button
+                    style={{
+                        color: "#0d6efd",
+                        padding: 3,
+                        cursor: "pointer",
+                        border: "none",
+                    }}
+                    onClick={() => setCurrentPage((prev) => prev - 1)}
+                >{`⪡`}</button>
+            )}
+            <strong
+                style={{
+                    color: "#0d6efd",
+                    padding: 3,
+                    border: "solid 1px #0d6efd",
+                    margin: 10,
+                }}
+            >
+                {currentPage}
+            </strong>
+            <strong
+                style={{
+                    color: "#0d6efd",
+                    cursor: "pointer",
+                    padding: 3,
+                    border: "solid 1px #0d6efd",
+                    margin: 10,
+                }}
+                onClick={() => setCurrentPage(arrayNoVacio.length)}
+            >
+                {arrayNoVacio.length}
+            </strong>
+            {currentPage === arrayNoVacio.length ? (
+                <button
+                    style={{
+                        color: "#0d6efd",
+                        padding: 3,
+                        cursor: "not-allowed",
+                        border: "none",
+                    }}
+                    disabled
+                    onClick={() => setCurrentPage((prev) => prev + 1)}
+                >{`⪢`}</button>
+            ) : (
+                <button
+                    style={{
+                        color: "#0d6efd",
+                        padding: 3,
+                        cursor: "pointer",
+                        border: "none",
+                    }}
+                    onClick={() => setCurrentPage((prev) => prev + 1)}
+                >{`⪢`}</button>
+            )}
         </div>
     );
 };

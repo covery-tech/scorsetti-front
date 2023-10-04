@@ -171,7 +171,7 @@ export function MyUser() {
   };
 
   return (
-      <div className="form-container w-100">
+      <div className="form-container w-100 max-height-33rem">
         <StyledText className="form-title" fontClasses="f4 f4-m f3-l">
           Actualizar usuario
         </StyledText>

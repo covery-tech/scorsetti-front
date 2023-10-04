@@ -1,7 +1,7 @@
 import { useState } from "react";
 import onChange from "../../../utils/onChangeInput";
 import reloadPage from "../../../utils/reloadPage";
-import Validate from "./formUtils/validate";
+import Validate from "./formUtils/Validate";
 import CarSummary from "./CarSummary";
 import CarBasicInfo from "./formInstances/CarBasicInfo";
 import PersonalInfo from "./formInstances/PersonalInfo";

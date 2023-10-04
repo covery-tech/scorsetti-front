@@ -272,7 +272,13 @@ const OrdersTableAll = () => {
             </tbody>
           </table>
         ) : (
-          <></>
+          <>
+            <div className="flex justify-center">
+              <strong className="empty">
+                Aún no tienes órdenes.
+              </strong>
+            </div>
+          </>
         )}
 
         {showModal && (

@@ -11,6 +11,10 @@ import {
 import axios from "axios";
 import useUser from "../../../hooks/UseUser";
 export const SideBarPas = ({ logout, updateSite }) => {
+  const [select, setSelect] = useState("profile");
+  const Selected = (valor) => {
+    setSelect(valor);
+  };
   const { jwt } = useUser();
   const [notis, setNotis] = useState(0);
   useEffect(() => {
@@ -28,21 +32,45 @@ export const SideBarPas = ({ logout, updateSite }) => {
     <>
       <ul>
         <p className="centerP">Listas</p>
-        <li onClick={() => updateSite("clientes")} className="flex">
-          <FontAwesomeIcon icon={faUser} />
-          <div className="text">Clientes</div>
+        <li onClick={() => { updateSite("clientes"); Selected("clientes") }} className="flex">
+          {select == "clientes" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faUser} className="pl1" />
+              Clientes
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faUser} />
+              Clientes
+            </div>}
         </li>
-        <li onClick={() => updateSite("productos")} className="flex">
-          <FontAwesomeIcon icon={faBagShopping} />
-          <div className="text">Mis productos</div>
+        <li onClick={() => { updateSite("productos"); Selected("productos") }} className="flex">
+          {select == "productos" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faBagShopping} className="pl1" />
+              Mis productos
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faBagShopping} />
+              Mis productos
+            </div>}
         </li>
-        <li onClick={() => updateSite("ordenes")} className="flex">
-          <FontAwesomeIcon icon={faCartShopping} />
-          <div className="text">Órdenes</div>
+        <li onClick={() => { updateSite("ordenes"); Selected("ordenes") }} className="flex">
+          {select == "ordenes" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faCartShopping} className="pl1" />
+              Órdenes
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faCartShopping} />
+              Órdenes
+            </div>}
         </li>
         <p className="centerP">Útil</p>
         <li
-          onClick={() => updateSite("notificaciones")}
+          onClick={() => { updateSite("notificaciones"); Selected("notificaciones") }}
           className="flex relative"
         >
           {notis ? (
@@ -64,18 +92,41 @@ export const SideBarPas = ({ logout, updateSite }) => {
           ) : (
             <></>
           )}
-
-          <FontAwesomeIcon icon={faBell} />
-          <div className="text">Notificaciones</div>
+          {select == "notificaciones" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faBell} className="pl1" />
+              Notificaciones
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faBell} />
+              Notificaciones
+            </div>}
         </li>
-        <li className="flex" onClick={() => updateSite("panel")}>
-          <FontAwesomeIcon icon={faChartSimple} />
-          <div className="text">Estadísticas</div>
+        <li className="flex" onClick={() => { updateSite("panel"); Selected("panel") }}>
+          {select == "panel" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faChartSimple} className="pl1" />
+              Estadísticas
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faChartSimple} />
+              Estadísticas
+            </div>}
         </li>
         <p className="centerP">Usuario</p>
-        <li onClick={() => updateSite("profile")} className="flex">
-          <FontAwesomeIcon icon={faCircleUser} />
-          <div className="text">Perfil</div>
+        <li onClick={() => { updateSite("profile"); Selected("profile") }} className="flex">
+          {select == "profile" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faCircleUser} className="pl1" />
+              Perfil
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faCircleUser} />
+              Perfil
+            </div>}
         </li>
         <li onClick={logout} className="flex-l dn">
           <FontAwesomeIcon icon={faArrowRightFromBracket} />

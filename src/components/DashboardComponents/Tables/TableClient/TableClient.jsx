@@ -56,7 +56,15 @@ export const TableClient = () => {
             ))}
           </tbody>
         ) : (
-          <></>
+          <tbody>
+          <tr>
+            <td colSpan="4" className="text-center">
+              <strong className="empty">
+                Aún no tienes clientes.
+              </strong>
+            </td>
+          </tr>
+        </tbody>
         )}
       </table>
       <div className="tc mb1 mt3">

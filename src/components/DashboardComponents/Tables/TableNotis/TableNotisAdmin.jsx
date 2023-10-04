@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../../../hooks/UseUser";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const TableNotisAdmin = ({
   notis,
@@ -83,29 +85,35 @@ export const TableNotisAdmin = ({
                   <Link
                     to={`user/${e?.idPas}`}
                     style={{
-                      color: "#0d6efd",
+                      color: "var(--color-first-medium-light)" ,
                       cursor: "pointer",
                     }}
                   >
-                    Ver Usuario
+                    <span className="ph1">Ver</span>
+                    <FontAwesomeIcon icon={faEye} />
                   </Link>
                 </td>
                 <td>
-                  <strong
-                    style={{
-                      color: "#dc3545",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => deleteNoti(e?.id, "notification_for_user")}
-                  >
-                    Eliminar
-                  </strong>
+                  <button
+                      className="btn delete-button"
+                      onClick={() => deleteNoti(e?.id, "notification_for_user")}
+                    >
+                      Eliminar
+                    </button> 
                 </td>
               </tr>
             ))}
           </tbody>
         ) : (
-          <></>
+          <tbody>
+          <tr>
+            <td colSpan="7" className="text-center">
+              <strong className="empty">
+                Nada nuevo por aquí!
+              </strong>
+            </td>
+          </tr>
+          </tbody>
         )}
       </table>
       <div className="tc mb1 mt3">

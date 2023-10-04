@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import StyledText from "../../components/StyledText/StyledText";
 import onChange from "../../utils/onChangeInput";
-import Validate from "../Login/loginUtils/validate";
+import Validate from "../Login/loginUtils/Validate";
 import registerSession from "./registerUtils/register-session";
 import togglePassword from "../../utils/toggle-password";
 

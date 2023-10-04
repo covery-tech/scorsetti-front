@@ -72,7 +72,15 @@ export const TableNotiClient = ({
             ))}
           </tbody>
         ) : (
-          <></>
+          <tbody>
+          <tr>
+            <td colSpan="2" className="text-center">
+              <strong className="empty">
+                Nada nuevo por aquí!
+              </strong>
+            </td>
+          </tr>
+        </tbody>
         )}
       </table>
       <div className="tc mb1 mt3">

@@ -12,6 +12,10 @@ import {
 import axios from "axios";
 import useUser from "../../../hooks/UseUser";
 export const SideBarClient = ({ logout, updateSite }) => {
+  const [select, setSelect] = useState("profile");
+  const Selected = (valor) => {
+    setSelect(valor);
+  };
   const { jwt } = useUser();
   const [notis, setNotis] = useState(0);
   useEffect(() => {
@@ -29,13 +33,21 @@ export const SideBarClient = ({ logout, updateSite }) => {
     <>
       <ul>
         <p className="centerP">Listas</p>
-        <li onClick={() => updateSite("compras")} className='flex'>
-          <FontAwesomeIcon icon={faCartShopping} />
-          <div className='text'>Mis órdenes</div>
+        <li onClick={() => { updateSite("compras"); Selected("compras") }} className='flex'>
+          {select == "compras" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faCartShopping} className="pl1" />
+              Mis órdenes
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faCartShopping} />
+              Mis órdenes
+            </div>}
         </li>
         <p className="centerP">Útil</p>
         <li
-          onClick={() => updateSite("notificaciones")}
+          onClick={() => { updateSite("notificaciones"); Selected("notificaciones") }}
           className='flex relative'
         >
           {notis ? (
@@ -57,17 +69,33 @@ export const SideBarClient = ({ logout, updateSite }) => {
           ) : (
             <></>
           )}
-          <FontAwesomeIcon icon={faBell} />
-          <div className='text'>Notificaciones</div>
+          {select == "notificaciones" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faBell} className="pl1" />
+              Notificaciones
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faBell} />
+              Notificaciones
+            </div>}
         </li>
         <p className="centerP">Usuario</p>
 
         <li
-          onClick={() => updateSite("profile")}
+          onClick={() => { updateSite("profile"); Selected("profile") }}
           className='flex relative'
         >
-          <FontAwesomeIcon icon={faCircleUser} />
-          <div className='text'>Perfil</div>
+         {select == "profile" ?
+            <div className="selected w-100">
+              <FontAwesomeIcon icon={faCircleUser} className="pl1" />
+              Perfil
+            </div>
+            :
+            <div className="text">
+              <FontAwesomeIcon icon={faCircleUser} />
+              Perfil
+            </div>}
         </li>
         <li onClick={logout} className='flex-l dn'>
           <FontAwesomeIcon icon={faArrowRightFromBracket} />

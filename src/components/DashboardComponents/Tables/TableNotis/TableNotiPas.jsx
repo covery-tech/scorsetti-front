@@ -61,18 +61,26 @@ export const TableNotiPas = ({
               <tr key={e?.id}>
                 <td>{e?.description}</td>
                 <td>
-                  <strong
-                    style={{ color: "#dc3545", cursor: "pointer" }}
-                    onClick={() => deleteNoti(e?.id, "notification")}
-                  >
-                    Eliminar
-                  </strong>
+                  <button
+                      className="btn delete-button"
+                      onClick={() => deleteNoti(e?.id, "notification")}
+                    >
+                      Eliminar
+                    </button> 
                 </td>
               </tr>
             ))}
           </tbody>
         ) : (
-          <></>
+          <tbody>
+          <tr>
+            <td colSpan="2" className="text-center">
+              <strong className="empty">
+                Nada nuevo por aquí!
+              </strong>
+            </td>
+          </tr>
+        </tbody>
         )}
       </table>
       <div className="tc mb1 mt3">

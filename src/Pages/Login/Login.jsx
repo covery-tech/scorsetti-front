@@ -7,7 +7,7 @@ import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import StyledText from "../../components/StyledText/StyledText";
 import Input from "../../components/Input/Input";
 import onChange from "../../utils/onChangeInput";
-import Validate from "./loginUtils/validate";
+import Validate from "./loginUtils/Validate";
 import initSession from "./loginUtils/init-session";
 import togglePassword from "../../utils/toggle-password";
 

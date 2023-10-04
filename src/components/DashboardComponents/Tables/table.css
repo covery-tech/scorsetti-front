@@ -61,6 +61,10 @@
   font-weight: bold;
 }
 
+.empty {
+  color: var(--color-first-medium-light);
+}
+
 @media (max-width: 780px) {
   .container {
     width: 60vw !important;
