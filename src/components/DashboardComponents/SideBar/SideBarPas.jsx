@@ -36,36 +36,36 @@ export const SideBarPas = ({ logout, updateSite }) => {
           {select == "clientes" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faUser} className="pl1" />
-              Clientes
+              <label className="text">Clientes</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faUser} />
-              Clientes
+              <label className="text">Clientes</label>
             </div>}
         </li>
         <li onClick={() => { updateSite("productos"); Selected("productos") }} className="flex">
           {select == "productos" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faBagShopping} className="pl1" />
-              Mis productos
+              <label className="text">Mis productos</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faBagShopping} />
-              Mis productos
+            <div>
+              <FontAwesomeIcon icon={faBagShopping}/>
+              <label className="text">Mis productos</label>
             </div>}
         </li>
         <li onClick={() => { updateSite("ordenes"); Selected("ordenes") }} className="flex">
           {select == "ordenes" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faCartShopping} className="pl1" />
-              Órdenes
+              <label className="text">Órdenes</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faCartShopping} />
-              Órdenes
+            <div>
+              <FontAwesomeIcon icon={faCartShopping}/>
+              <label className="text">Órdenes</label>
             </div>}
         </li>
         <p className="centerP">Útil</p>
@@ -94,38 +94,38 @@ export const SideBarPas = ({ logout, updateSite }) => {
           )}
           {select == "notificaciones" ?
             <div className="selected w-100">
-              <FontAwesomeIcon icon={faBell} className="pl1" />
-              Notificaciones
+              <FontAwesomeIcon icon={faBell} className="pl1"/>
+              <label className="text">Notificaciones</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faBell} />
-              Notificaciones
+            <div>
+              <FontAwesomeIcon icon={faBell}/>
+              <label className="text">Notificaciones</label>
             </div>}
         </li>
         <li className="flex" onClick={() => { updateSite("panel"); Selected("panel") }}>
           {select == "panel" ?
             <div className="selected w-100">
-              <FontAwesomeIcon icon={faChartSimple} className="pl1" />
-              Estadísticas
+              <FontAwesomeIcon icon={faChartSimple} className="pl1"/>
+              <label className="text">Notificaciones</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faChartSimple} />
-              Estadísticas
+              <label className="text">Estadísticas</label>
             </div>}
         </li>
         <p className="centerP">Usuario</p>
         <li onClick={() => { updateSite("profile"); Selected("profile") }} className="flex">
           {select == "profile" ?
             <div className="selected w-100">
-              <FontAwesomeIcon icon={faCircleUser} className="pl1" />
-              Perfil
+              <FontAwesomeIcon icon={faCircleUser} className="pl1"/>
+              <label className="text">Perfil</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faCircleUser} />
-              Perfil
+            <div>
+              <FontAwesomeIcon icon={faCircleUser}/>
+              <label className="text">Perfil</label>
             </div>}
         </li>
         <li onClick={logout} className="flex-l dn">

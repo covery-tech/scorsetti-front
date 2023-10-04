@@ -36,36 +36,36 @@ export const SideBarAdmin = ({ logout, updateSite }) => {
           {select == "usuariosPas" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faUser} className="pl1" />
-              Usuarios PAS
+              <label className="text">Usuarios PAS</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faUser} />
-              Usuarios PAS
+              <label className="text">Usuarios PAS</label>
             </div>}
         </li>
         <li onClick={() => { updateSite("actualizarUser"); Selected("actualizarUser") }} className="flex">
           {select == "actualizarUser" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faPenToSquare} className="pl1" />
-              Editar usuarios
+              <label className="text">Editar usuarios</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faPenToSquare} />
-              Editar usuarios
+              <label className="text">Editar usuarios</label>
             </div>}
         </li>
         <li onClick={() => { updateSite("ordenes"); Selected("ordenes") }} className="flex">
           {select == "ordenes" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faCartShopping} className="pl1" />
-              Órdenes
+              <label className="text">Órdenes</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faCartShopping} />
-              Órdenes
+            <div>
+              <FontAwesomeIcon icon={faCartShopping}/>
+              <label className="text">Órdenes</label>
             </div>}
         </li>
         <p className="centerP text">Útil</p>
@@ -95,24 +95,24 @@ export const SideBarAdmin = ({ logout, updateSite }) => {
           {select == "notificaciones" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faBell} className="pl1" />
-              Notificaciones
+              <label className="text">Notificaciones</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faBell} />
-              Notificaciones
+            <div>
+              <FontAwesomeIcon icon={faBell}/>
+              <label className="text">Notificaciones</label>
             </div>}
         </li>
         <li className="flex" onClick={() => { updateSite("panel"); Selected("panel") }}>
           {select == "panel" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faChartSimple} className="pl1" />
-              Estadísticas
+              <label className="text">Estadísticas</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faChartSimple} />
-              Estadísticas
+            <div>
+              <FontAwesomeIcon icon={faChartSimple}/>
+              <label className="text">Estadísticas</label>
             </div>}
         </li>
         <p className="centerP text">Usuario</p>
@@ -120,12 +120,12 @@ export const SideBarAdmin = ({ logout, updateSite }) => {
           {select == "profile" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faCircleUser} className="pl1" />
-              Perfil
+              <label className="text">Perfil</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faCircleUser} />
-              Perfil
+              <label className="text">Perfil</label>
             </div>}
         </li>
         <li onClick={logout} className="flex-l dn">

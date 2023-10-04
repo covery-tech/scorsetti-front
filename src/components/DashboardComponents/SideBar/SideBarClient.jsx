@@ -36,13 +36,13 @@ export const SideBarClient = ({ logout, updateSite }) => {
         <li onClick={() => { updateSite("compras"); Selected("compras") }} className='flex'>
           {select == "compras" ?
             <div className="selected w-100">
-              <FontAwesomeIcon icon={faCartShopping} className="pl1" />
-              Mis órdenes
+              <FontAwesomeIcon icon={faCartShopping} className="pl1"/>
+              <label className="text">Mis órdenes</label>
             </div>
             :
-            <div className="text">
-              <FontAwesomeIcon icon={faCartShopping} />
-              Mis órdenes
+            <div>
+              <FontAwesomeIcon icon={faCartShopping}/>
+              <label className="text">Mis órdenes</label>
             </div>}
         </li>
         <p className="centerP">Útil</p>
@@ -72,12 +72,12 @@ export const SideBarClient = ({ logout, updateSite }) => {
           {select == "notificaciones" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faBell} className="pl1" />
-              Notificaciones
+              <label className="text">Notificaciones</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faBell} />
-              Notificaciones
+              <label className="text">Notificaciones</label>
             </div>}
         </li>
         <p className="centerP">Usuario</p>
@@ -89,12 +89,12 @@ export const SideBarClient = ({ logout, updateSite }) => {
          {select == "profile" ?
             <div className="selected w-100">
               <FontAwesomeIcon icon={faCircleUser} className="pl1" />
-              Perfil
+              <label className="text">Perfil</label>
             </div>
             :
-            <div className="text">
+            <div>
               <FontAwesomeIcon icon={faCircleUser} />
-              Perfil
+              <label className="text">Perfil</label>
             </div>}
         </li>
         <li onClick={logout} className='flex-l dn'>
